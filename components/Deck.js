@@ -4,6 +4,8 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { black, gray, white, softPurp, lightBlue } from '../utils/colors';
 import { MaterialCommunityIcons, EvilIcons } from '@expo/vector-icons';
 
+// Todo: Add scrollView
+
 class Deck extends Component {
   render() {
     console.log(this.props)

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet } from 'react-native';
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { softPurp, white, lightBlue, black } from '../utils/colors';
+import { addCard } from '../actions';
+import { addCardToDeck, getDecks } from '../utils/api';
+import { NavigationActions } from 'react-navigation';
+
+// Todo: Add keyboard feature to zoom everything up.
 
 function SubmitBtn({ onPress }) {
   return (
@@ -21,6 +26,11 @@ class NewCard extends Component {
     underColorA: false,
   }
 
+  componentDidMount() {
+    const { currentDeck } = this.props;
+
+  }
+
   changeUderlineColor = (chosenInput) => {
     if (chosenInput === 'question') {
       this.setState(() => ({
@@ -33,6 +43,30 @@ class NewCard extends Component {
         underColorQ: false
       }))
     }
+  }
+
+  submit = () => {
+    const { question, answer } = this.state;
+    const { currentDeck } = this.props;
+    const deckTitle = currentDeck.title;
+    const card = {['question']: question, ['answer']: answer};
+
+    this.props.dispatch(addCard({
+      card,
+      deckTitle
+    }));
+
+    this.toHome()
+
+    addCardToDeck(card, deckTitle);
+  }
+
+  toHome = () => {
+    backAction = NavigationActions.back({
+      key: null,
+    });
+
+    this.props.navigation.dispatch(backAction)
   }
 
   render() {
@@ -60,6 +94,7 @@ class NewCard extends Component {
           />
           <Text>DEFINITION</Text>
         </View>
+        <SubmitBtn onPress={this.submit} />
       </View>
     )
   }
@@ -76,27 +111,27 @@ const styles = StyleSheet.create({
     borderColor: black,
   },
   inputActive: {
-    
+
     fontSize: 20,
     borderBottomWidth: 4,
     borderColor: '#e6b800',
   },
   iosSubmitBtn: {
-    backgroundColor: softPurp,
+    backgroundColor: '#1b1b7e',
     padding: 10,
-    borderRadius: 7,
     height: 45,
+    marginTop: 40,
     marginLeft: 40,
     marginRight: 40,
   },
   androidSubmitBtn: {
-    backgroundColor: softPurp,
+    backgroundColor: '#1b1b7e',
     padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
+    marginTop: 40,
+    marginLeft: 40,
+    marginRight: 40,
     height: 45,
     borderRadius: 2,
-    alignSelf: 'flex-end',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -119,6 +154,14 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
-})
+});
 
-export default connect()(NewCard);
+function mapStateToProps (state, { navigation }) {
+  // console.log(navigation)
+  const { currentDeck } = navigation.state.params
+  return {
+    currentDeck
+  }
+}
+
+export default connect(mapStateToProps)(NewCard);

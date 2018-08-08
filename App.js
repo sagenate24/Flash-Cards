@@ -76,6 +76,7 @@ const Stack = createStackNavigator({
     NewCard: {
       screen: NewCard,
       navigationOptions: () => ({
+        tabBarLabel: 'NewCard',
         headerTintColor: white,
         title: 'NEW CARD',
         headerStyle: {

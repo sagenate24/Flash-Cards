@@ -18,6 +18,6 @@ function setDummyData () {
   return dummyData
 }
 
-export function formatDeckResults (results) {
+export function formatDeckResults () {
   return setDummyData()
 }
