@@ -7,6 +7,7 @@ import { addCardToDeck, getDecks } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
 
 // Todo: Add keyboard feature to zoom everything up.
+// KeyboardAvoidingView
 
 function SubmitBtn({ onPress }) {
   return (

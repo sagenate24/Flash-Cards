@@ -13,6 +13,8 @@ import DeckList from './components/DeckList';
 import NewDeck from './components/NewDeck';
 import Deck from './components/Deck';
 import NewCard from './components/NewCard';
+import Quiz from './components/Quiz';
+import Results from './components/Results';
 
 function CardsStatusBar({ backgroundColor, ...props }) {
   return (
@@ -54,7 +56,7 @@ const Tabs = createBottomTabNavigator({
         shadowOpacity: 1,
       }
     }
-});
+  });
 
 const Stack = createStackNavigator({
   Home: {
@@ -72,26 +74,43 @@ const Stack = createStackNavigator({
         backgroundColor: '#1b1b7e',
       }
     })
-    },
-    NewCard: {
-      screen: NewCard,
-      navigationOptions: () => ({
-        tabBarLabel: 'NewCard',
-        headerTintColor: white,
-        title: 'NEW CARD',
-        headerStyle: {
-          backgroundColor: '#1b1b7e',
-        }
-      })
+  },
+  NewCard: {
+    screen: NewCard,
+    navigationOptions: () => ({
+      tabBarLabel: 'NewCard',
+      headerTintColor: white,
+      title: 'NEW CARD',
+      headerStyle: {
+        backgroundColor: '#1b1b7e',
       }
-  })
+    })
+  },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: () => ({
+      headerTintColor: white,
+      title: 'QUIZ',
+      headerStyle: {
+        backgroundColor: '#1b1b7e',
+      }
+    })
+  },
+  Results: {
+    screen: Results,
+    mode: 'modal',
+    navigationOptions: () => ({
+      header: null
+    })
+  },
+})
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer, middleware)}>
         <View style={{ flex: 1 }}>
-          <CardsStatusBar backgroundColor={'#1b1b7e'} barStyle='light-content'/>
+          <CardsStatusBar backgroundColor={'#1b1b7e'} barStyle='light-content' />
           <Stack />
         </View>
       </Provider>

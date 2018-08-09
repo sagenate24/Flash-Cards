@@ -8,7 +8,6 @@ import { MaterialCommunityIcons, EvilIcons } from '@expo/vector-icons';
 
 class Deck extends Component {
   render() {
-    console.log(this.props)
     const { title, questions } = this.props.deck;
     return (
       <View style={styles.container}>
@@ -20,7 +19,7 @@ class Deck extends Component {
         <Text style={styles.title}>{title}</Text>
         <View style={styles.optionsContainer}>
         <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
-                'QUIZ',
+                'Quiz',
                 { currentDeck: this.props.deck }
               )}>
             <Text style={styles.header}>

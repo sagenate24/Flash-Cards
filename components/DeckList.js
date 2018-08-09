@@ -29,7 +29,7 @@ class DeckList extends Component {
 
   render() {
 
-    console.log(this.props)
+    // console.log(this.props)
     // Todo: Add TimeStamp to each deck listed
 
     const { decks } = this.props;
@@ -43,7 +43,7 @@ class DeckList extends Component {
       <View>
         <Text style={styles.deckListTitle}>Your Decks</Text>
         {Object.keys(decks).map((deck) => {
-          console.log(deck)
+          // console.log(deck)
           // const { title, questions } = getDeckMetaInfo(deck);
 
           return (
