@@ -7,6 +7,8 @@ import { getDeckMetaInfo } from '../utils/helpers';
 import { AppLoading } from 'expo';
 import { gray, white, lightBlue } from '../utils/colors';
 
+// TODO: Add TimeStamp to each deck listed
+
 class DeckList extends Component {
   state = {
     ready: false,
@@ -28,10 +30,6 @@ class DeckList extends Component {
   }
 
   render() {
-
-    // console.log(this.props)
-    // Todo: Add TimeStamp to each deck listed
-
     const { decks } = this.props;
     const { ready } = this.state;
 
@@ -43,11 +41,8 @@ class DeckList extends Component {
       <View>
         <Text style={styles.deckListTitle}>Your Decks</Text>
         {Object.keys(decks).map((deck) => {
-          // console.log(deck)
-          // const { title, questions } = getDeckMetaInfo(deck);
 
           return (
-
             <View style={styles.item} key={deck}>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
                 'Deck',

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Platform } from 'react-native'
 import { connect } from 'react-redux';
 import { white, black } from '../utils/colors';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
@@ -65,14 +65,14 @@ class Results extends Component {
             <Text>You got {correctAnswers} out of {questions.length} correct.</Text>
           </View>
           <TouchableOpacity
-            style={styles.container}
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
             onPress={this.studyMore}>
-            <Text>Study More</Text>
+            <Text style={styles.submitBtnText}>Study More</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.container}
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
             onPress={this.goToHome}>
-            <Text>View All Decks</Text>
+            <Text style={styles.submitBtnText}>View All Decks</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -110,7 +110,33 @@ const styles = StyleSheet.create({
     fontSize: 34,
     fontWeight: 'bold',
     color: black,
-  }
+  },
+  iosSubmitBtn: {
+    backgroundColor: '#e6b800',
+    borderRadius: 2,
+    width: 200,
+    padding: 10,
+    height: 45,
+    marginTop: 40,
+    marginLeft: 40,
+    marginRight: 40,
+  },
+  androidSubmitBtn: {
+    backgroundColor: '#6ed3cf',
+    padding: 10,
+    marginTop: 40,
+    marginLeft: 40,
+    marginRight: 40,
+    height: 45,
+    borderRadius: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  submitBtnText: {
+    color: white,
+    fontSize: 22,
+    textAlign: 'center',
+  },
 })
 
 export default connect()(Results);

@@ -6,18 +6,9 @@ import { addCard } from '../actions';
 import { addCardToDeck, getDecks } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
 
-// Todo: Add keyboard feature to zoom everything up.
-// KeyboardAvoidingView
-
-function SubmitBtn({ onPress }) {
-  return (
-    <TouchableOpacity
-      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-      onPress={onPress}>
-      <Text style={styles.submitBtnText}>Submit</Text>
-    </TouchableOpacity>
-  )
-}
+// TODO: Add keyboard feature to zoom everything up. KeyboardAvoidingView
+// TODO: addSubmit button Animation
+// TODO: add TextInput Bottom Border Animation
 
 class NewCard extends Component {
   state = {
@@ -50,7 +41,7 @@ class NewCard extends Component {
     const { question, answer } = this.state;
     const { currentDeck } = this.props;
     const deckTitle = currentDeck.title;
-    const card = {['question']: question, ['answer']: answer};
+    const card = { ['question']: question, ['answer']: answer };
 
     this.props.dispatch(addCard({
       card,
@@ -71,7 +62,7 @@ class NewCard extends Component {
   }
 
   render() {
-    const { underColorA, underColorQ } = this.state;
+    const { underColorA, underColorQ, question, answer } = this.state;
 
     return (
       <View style={styles.container}>
@@ -95,7 +86,15 @@ class NewCard extends Component {
           />
           <Text>DEFINITION</Text>
         </View>
-        <SubmitBtn onPress={this.submit} />
+        {question === '' || answer === ''
+          ? null
+          : <TouchableOpacity
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
+            onPress={this.submit}
+            disabled={question === '' || answer === ''}>
+            <Text style={styles.submitBtnText}>Submit</Text>
+          </TouchableOpacity>
+        }
       </View>
     )
   }
@@ -112,7 +111,6 @@ const styles = StyleSheet.create({
     borderColor: black,
   },
   inputActive: {
-
     fontSize: 20,
     borderBottomWidth: 4,
     borderColor: '#e6b800',
@@ -157,7 +155,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps (state, { navigation }) {
+function mapStateToProps(state, { navigation }) {
   // console.log(navigation)
   const { currentDeck } = navigation.state.params
   return {

@@ -21,3 +21,15 @@ function setDummyData () {
 export function formatDeckResults () {
   return setDummyData()
 }
+
+export function formatNewDeck(deckTitle) {
+  const timestamp = Date.now();
+
+  return JSON.stringify({
+    [deckTitle]: {
+      title: deckTitle,
+      timestamp: timestamp,
+      questions: [],
+    },
+  })
+}

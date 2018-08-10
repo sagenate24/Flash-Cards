@@ -1,61 +1,63 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { black, gray, white, softPurp, lightBlue } from '../utils/colors';
 import { MaterialCommunityIcons, EvilIcons } from '@expo/vector-icons';
 
-// Todo: Add scrollView
+// TODO: Get decks from AsnyStorage
 
 class Deck extends Component {
   render() {
     const { title, questions } = this.props.deck;
     return (
-      <View style={styles.container}>
-        <Text style={styles.cardCount}>
-          {questions.length > 1
-            ? questions.length + ` Cards`
-            : questions.length + ` Card`}
-        </Text>
-        <Text style={styles.title}>{title}</Text>
-        <View style={styles.optionsContainer}>
-        <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
-                'Quiz',
-                { currentDeck: this.props.deck }
-              )}>
-            <Text style={styles.header}>
-            <MaterialCommunityIcons
-                name='pencil-box-outline'
-                size={34}
-                style={{ color: '#262673' }} />
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.cardCount}>
+            {questions.length > 1
+              ? questions.length + ` Cards`
+              : questions.length + ` Card`}
+          </Text>
+          <Text style={styles.title}>{title}</Text>
+          <View style={styles.optionsContainer}>
+            <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
+              'Quiz',
+              { currentDeck: this.props.deck }
+            )}>
+              <Text style={styles.header}>
+                <MaterialCommunityIcons
+                  name='pencil-box-outline'
+                  size={34}
+                  style={{ color: '#262673' }} />
+              </Text>
+              <Text style={[styles.subHeader, { color: lightBlue }]}>
+                QUIZ
             </Text>
-            <Text style={[styles.subHeader, { color: lightBlue }]}>
-              QUIZ
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
+              'NewCard',
+              { currentDeck: this.props.deck }
+            )}>
+              <Text style={styles.header}>
+                <MaterialCommunityIcons
+                  name='cards-outline'
+                  size={34}
+                  style={{ color: '#262673' }} />
+              </Text>
+              <Text style={[styles.subHeader, { color: lightBlue }]}>
+                NEW CARD
             </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
-                'NewCard',
-                { currentDeck: this.props.deck }
-              )}>
-            <Text style={styles.header}>
-              <MaterialCommunityIcons
-                name='cards-outline'
-                size={34}
-                style={{ color: '#262673' }} />
-            </Text>
-            <Text style={[styles.subHeader, { color: lightBlue }]}>
-              NEW CARD
-            </Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
+          <Text style={styles.title}>Cards</Text>
+          {questions.map((item) => {
+            return (
+              <View style={styles.item} key={item.question}>
+                <Text>{item.question}</Text>
+              </View>
+            )
+          })}
         </View>
-        <Text style={styles.title}>Cards</Text>
-        {questions.map((item) => {
-          return (
-            <View style={styles.item} key={item.question}>
-              <Text>{item.question}</Text>
-            </View>
-          )
-        })}
-      </View>
+      </ScrollView>
     )
   }
 }
