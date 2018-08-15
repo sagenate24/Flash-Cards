@@ -4,37 +4,49 @@ import { connect } from 'react-redux';
 import { white, black } from '../utils/colors';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { NavigationActions } from 'react-navigation';
+import { recentActivityScore } from '../utils/api';
+import Quiz from './Quiz';
+import { addScore } from '../actions';
+import { timestamp } from '../node_modules/rxjs/operator/timestamp';
 
+// TODO: When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
 
 class Results extends Component {
+  componentDidMount() {
+    const { currentDeck, correctAnswers } = this.props;
+    let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
+    let timeStamp = Date.now()
+    recentActivityScore(currentDeck.title, correctPercent, timeStamp);
+
+    this.props.dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
+
+    console.log(this.props);
+  }
 
   handlePercent = () => {
-    const { questions, correctAnswers } = this.props;
-    let correctPercent = Math.round((correctAnswers / questions.length) * 100);
+    const { currentDeck, correctAnswers } = this.props;
+    let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
 
     return correctPercent;
   }
 
   studyMore = () => {
-    console.log(this.props.navigation)
-    const backAction = NavigationActions.back({
-      key: null,
-    });
-
-    this.props.navigation.dispatch(backAction)
+    this.props.navigation.navigate(
+      'Deck',
+      {currentDeck: this.props.currentDeck.title}
+    )
   }
 
-  goToHome = () => {
+  quizRetake = () => {
     this.props.navigation.navigate(
-      'Home'
+      'Quiz',
+      {currentDeck: this.props.currentDeck}
     )
   }
 
   render() {
-    console.log(this.props)
-
-    const { questions, correctAnswers } = this.props;
-    let percent = this.handlePercent()
+    const { currentDeck, correctAnswers } = this.props;
+    const percent = this.handlePercent();
 
     return (
       <View style={styles.container}>
@@ -62,17 +74,17 @@ class Results extends Component {
             }
           </View>
           <View>
-            <Text>You got {correctAnswers} out of {questions.length} correct.</Text>
+            <Text>You got {correctAnswers} out of {currentDeck.questions.length} correct.</Text>
           </View>
+          <TouchableOpacity
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
+            onPress={this.quizRetake}>
+            <Text style={styles.submitBtnText}>Retake</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
             onPress={this.studyMore}>
             <Text style={styles.submitBtnText}>Study More</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-            onPress={this.goToHome}>
-            <Text style={styles.submitBtnText}>View All Decks</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -139,4 +151,13 @@ const styles = StyleSheet.create({
   },
 })
 
-export default connect()(Results);
+function mapStateToProps(state, { navigation }) {
+  const { correctAnswers, currentDeck } = navigation.state.params
+
+  return {
+    correctAnswers: correctAnswers,
+    currentDeck
+  }
+}
+
+export default connect(mapStateToProps)(Results);

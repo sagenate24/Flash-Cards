@@ -3,6 +3,9 @@ import { Text, View, Modal, StyleSheet, Button, TouchableOpacity, TouchableHighl
 import { connect } from 'react-redux';
 import { white } from '../utils/colors';
 import Results from './Results';
+import { recentActivityScore } from '../utils/api';
+
+// TODO: When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
 
 class Quiz extends Component {
   state = {
@@ -13,21 +16,33 @@ class Quiz extends Component {
 
   correctAnswer = () => {
     const { questionIndex, correctAnswers } = this.state;
+    const { questions } = this.props.currentDeck;
 
-    this.setState(() => ({
-      correctAnswers: correctAnswers + 1,
-      questionIndex: questionIndex + 1,
-      showAnswer: false
-    }))
+    if (questionIndex + 1 === questions.length) {
+      this.goToResults('correct')
+    } else {
+      this.setState(() => ({
+        correctAnswers: correctAnswers + 1,
+        questionIndex: questionIndex + 1,
+        showAnswer: false
+      }))
+    }
+
+
   }
 
   wrongAnswer = () => {
     const { questionIndex } = this.state;
+    const { questions } = this.props.currentDeck;
 
-    this.setState(() => ({
-      questionIndex: questionIndex + 1,
-      showAnswer: false,
-    }))
+    if (questionIndex + 1 === questions.length) {
+      this.goToResults('incorrect')
+    } else {
+      this.setState(() => ({
+        questionIndex: questionIndex + 1,
+        showAnswer: false,
+      }))
+    }
   }
 
   showAnswer = () => {
@@ -43,21 +58,51 @@ class Quiz extends Component {
     }
   }
 
+  goToResults = (lastAnswer) => {
+
+    // const { correctAnswers } = this.state;
+    // const { currentDeck } = this.props;
+    // let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
+
+
+
+    if (lastAnswer === 'correct') {
+      // let numberCorrect = correctAnswers + 1
+
+      // let correctPercent = Math.round((numberCorrect / currentDeck.questions.length) * 100);
+
+      // recentActivityScore(currentDeck.title, correctPercent);
+
+      this.props.navigation.navigate(
+        'Results',
+        { correctAnswers: this.state.correctAnswers + 1,
+        currentDeck: this.props.currentDeck }
+      )
+    } else {
+
+      // let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
+
+      // recentActivityScore(currentDeck.title, correctPercent);
+
+      this.props.navigation.navigate(
+        'Results',
+        { correctAnswers: this.state.correctAnswers,
+        currentDeck: this.props.currentDeck }
+      )
+    }
+
+    this.setState(() => ({
+      questionIndex: 0,
+      correctAnswers: 0,
+      showAnswer: false,
+    }))
+  }
+
   render() {
     const { questions } = this.props.currentDeck;
     const { questionIndex, showAnswer, correctAnswers } = this.state;
-
-    let index = questionIndex + 1;
-
-    if (index > questions.length) {
-      return (
-          <Results
-            correctAnswers={correctAnswers}
-            questions={questions}
-            navigation={this.props.navigation}
-          />
-      )
-    }
+    const questionsRemaining = questions.length - questionIndex;
+    console.log(questionsRemaining)
 
     return (
       <TouchableOpacity
@@ -65,7 +110,7 @@ class Quiz extends Component {
         onPress={this.showAnswer}
       >
         <View style={styles.card}>
-          <Text style={{ alignSelf: 'flex-start', justifyContent: 'flex-start' }}>{questionIndex + 1} / {questions.length}</Text>
+          <Text style={questionsRemaining === 1 ? styles.lastCard : styles.cardsRemaining}>{questionsRemaining} Left</Text>
           <View style={styles.content}>
             {showAnswer
               ? <Text style={[styles.cardText, { textAlign: 'center' }]}>{questions[questionIndex].answer}</Text>
@@ -110,6 +155,15 @@ const styles = StyleSheet.create({
   cardText: {
     color: '#000',
     fontSize: 20,
+  },
+  cardsRemaining: {
+    alignSelf: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  lastCard: {
+    alignSelf: 'flex-start',
+    justifyContent: 'flex-start',
+    color: 'red',
   },
 })
 

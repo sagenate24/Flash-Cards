@@ -1,20 +1,17 @@
-import React from 'react';
-import { View, StyleSheet, AsyncStorage } from 'react-native';
-import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { white, richRed, lightBlue, softPurp, grey } from './colors';
-import { Notifications, Permissions } from 'expo';
 
-export function timeToString(time = Date.now()) {
-  const date = new Date(time);
-  const todayDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  return todayDate.toISOString().split('T')[0];
+export function timeToString(timestamp) {
+  const date = new Date(timestamp)
+  const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+
+  return todayUTC.toDateString().split('Mon')[1]
 }
 
 export function getDeckMetaInfo(deck) {
   const info = {
     React: {
       title: 'React',
-      timeStamp: '2018-02-04',
+      timeStamp: 1534284894237,
+      recentScore: 35,
       questions: [
         {
           question: 'What is React?',
@@ -28,11 +25,23 @@ export function getDeckMetaInfo(deck) {
     },
     JavaScript: {
       title: 'JavaScript',
-      timeStamp: '2018-02-08',
+      timeStamp: 1534284869329,
+      recentScore: 100,
       questions: [
         {
           question: 'What is a closure?',
           answer: 'The combination of a function and the lexical enviornment with in which that function was declared.'
+        }
+      ]
+    },
+    Blahhah: {
+      title: 'Blahhah',
+      timeStamp: 1534284869331,
+      recentScore: 67,
+      questions: [
+        {
+          question: 'Wha',
+          answer: 'The'
         }
       ]
     }
@@ -41,4 +50,13 @@ export function getDeckMetaInfo(deck) {
   return typeof deck === 'undefined'
     ? info
     : info[deck]
+}
+
+export function getProfileMetaInfo(profile) {
+  const info = {
+    Profile: {
+      name: '',
+      avatarURL: '',
+    }
+  }
 }

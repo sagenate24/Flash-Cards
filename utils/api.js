@@ -1,5 +1,11 @@
 import { AsyncStorage } from 'react-native';
-import { formatDeckResults, formatNewDeck, STORAGE_KEY } from './_data';
+import {
+  formatDeckResults,
+  formatNewDeck,
+  STORAGE_KEY,
+  PROFILE_KEY,
+  formatProfileResults
+} from './_data';
 
 export const getDecks = async () => {
   try {
@@ -17,12 +23,10 @@ export const getDeck = async (deckTitle) => {
     const decks = await AsyncStorage.getItem(STORAGE_KEY)
       .then((results) => JSON.parse(results))
 
-      return decks[deckTitle];
+    return decks[deckTitle];
   } catch (error) {
     console.log(error.message);
   }
-
-
 }
 
 export function addCardToDeck(card, deckTitle) {
@@ -53,4 +57,62 @@ export const addDeckTitle = async (title) => {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+export const getProfile = async () => {
+  try {
+    const profile = await AsyncStorage.getItem(PROFILE_KEY)
+      .then((results) => formatProfileResults(results));
+
+    return profile;
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export function addProfileImg(image) {
+  AsyncStorage.getItem(PROFILE_KEY, () => {
+
+    AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+      'avatar': image
+    }), () => {
+      AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
+    });
+  });
+}
+
+export function addProfileCover(image) {
+  AsyncStorage.getItem(PROFILE_KEY, () => {
+
+    AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+      'profileCover': image
+    }), () => {
+      AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
+    });
+  });
+}
+
+export function addProfileName(username) {
+  AsyncStorage.getItem(PROFILE_KEY, () => {
+
+    AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+      'name': username
+    }), () => {
+      AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
+    });
+  });
+}
+
+export function recentActivityScore(deckTitle, score, timeStamp) {
+  AsyncStorage.getItem(STORAGE_KEY, () => {
+
+    AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+      [deckTitle]: {
+        'recentScore': score,
+        ['timeStamp']: timeStamp,
+      }
+    }), () => {
+      AsyncStorage.getItem(STORAGE_KEY).then((results) => console.log(JSON.parse(results)))
+    })
+  })
 }

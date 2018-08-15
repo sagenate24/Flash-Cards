@@ -2,11 +2,11 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
-import middleware from './middleware/index';
-import { View, Platform, StatusBar } from 'react-native';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
-import { lightBlue, white, softPurp } from './utils/colors';
+import middleware from './middleware';
+import { View, StatusBar } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator, createStackNavigator, HeaderBackButton } from 'react-navigation';
+import { lightBlue, white, softPurp, black, gray } from './utils/colors';
 import { Constants } from 'expo';
 
 import DeckList from './components/DeckList';
@@ -15,6 +15,13 @@ import Deck from './components/Deck';
 import NewCard from './components/NewCard';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
+import Profile from './components/Profile';
+import Settings from './components/Settings';
+import ProfilePic from './components/ProfilePic';
+
+
+// TODO: style stack and tab api https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
+// TODO: Put Stack navigator inside tab navigator!!!
 
 function CardsStatusBar({ backgroundColor, ...props }) {
   return (
@@ -27,25 +34,35 @@ function CardsStatusBar({ backgroundColor, ...props }) {
 const Tabs = createBottomTabNavigator({
   DeckList: {
     screen: DeckList,
+    animationEnabled: true,
     navigationOptions: {
-      tabBarLabel: 'Decks',
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Ionicons size={35} name='ios-home' color={tintColor}/>
     }
   },
-  NewDeck: {
-    screen: NewDeck,
+  Profile: {
+    screen: Profile,
+    title: 'PROFILE',
+    animationEnabled: true,
     navigationOptions: {
-      tabBarLabel: 'New Deck',
-      tabBarIcon: ({ tintColor }) => <FontAwesome name='plus-square' size={30} color={tintColor} />
+      tabBarIcon: (<ProfilePic />),
     },
-  }
+  },
+  Settings: {
+    screen: Settings,
+    animationEnabled: true,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-settings' size={40} color={tintColor} />
+    },
+  },
 }, {
-    navigationOptions: {
-      header: null
-    },
+    backBehavior: 'none',
+    animationEnabled: true,
     tabBarOptions: {
+      showLabel: false,
       style: {
         height: 56,
+        alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: white,
         shadowColor: 'rgba(0,0,0,0.24)',
         shadowOffset: {
@@ -61,49 +78,89 @@ const Tabs = createBottomTabNavigator({
 const Stack = createStackNavigator({
   Home: {
     screen: Tabs,
-    navigationOptions: {
-      header: null
-    }
+    animationEnabled: true,
+    mode: 'card',
+    navigationOptions: ({ navigation }) => {
+      const Titles = ['HOME', 'PROFILE', 'SETTINGS'];
+
+      return {
+        headerTintColor: white,
+        title: Titles[navigation.state.index],
+        headerStyle: {
+          backgroundColor: '#1b1b7e',
+        },
+      }
+    },
   },
   Deck: {
     screen: Deck,
-    navigationOptions: () => ({
-      headerTintColor: white,
-      title: 'SET',
-      headerStyle: {
-        backgroundColor: '#1b1b7e',
+    navigationOptions: ({ navigation }) => {
+      console.log(navigation)
+      return {
+        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Home') }} />),
+        title: 'SET',
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: '#1b1b7e',
+        }
       }
-    })
+    }
   },
   NewCard: {
     screen: NewCard,
-    navigationOptions: () => ({
-      tabBarLabel: 'NewCard',
-      headerTintColor: white,
-      title: 'NEW CARD',
-      headerStyle: {
-        backgroundColor: '#1b1b7e',
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Deck') }} />),
+        title: 'NEW CARD',
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: '#1b1b7e',
+        }
       }
-    })
+    }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    mode: 'modal',
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Home') }} />),
+        title: 'NEW DECK',
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: '#1b1b7e',
+        }
+      }
+    }
   },
   Quiz: {
     screen: Quiz,
-    navigationOptions: () => ({
-      headerTintColor: white,
-      title: 'QUIZ',
-      headerStyle: {
-        backgroundColor: '#1b1b7e',
+    navigationOptions: ({ navigation }) => {
+      return {
+        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Deck') }} />),
+        title: 'QUIZ',
+        headerTintColor: white,
+        headerStyle: {
+          backgroundColor: '#1b1b7e',
+        }
       }
-    })
+    }
   },
   Results: {
     screen: Results,
     mode: 'modal',
     navigationOptions: () => ({
+      title: 'RESULTS',
       header: null
     })
   },
-})
+}, {
+    initialRouteName: 'Home',
+    mode: 'card',
+    headerMode: 'float',
+    headerTransitionPreset: 'uikit',
+    headerLayoutPreset: 'center'
+  })
 
 export default class App extends React.Component {
   render() {

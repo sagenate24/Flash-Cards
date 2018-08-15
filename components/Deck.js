@@ -13,9 +13,12 @@ class Deck extends Component {
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.cardCount}>
-            {questions.length > 1
-              ? questions.length + ` Cards`
-              : questions.length + ` Card`}
+            {questions && questions.length
+              ? questions.length > 1
+                ? questions.length + ' Cards'
+                : questions.length + ' Card'
+              : '0 Cards'
+            }
           </Text>
           <Text style={styles.title}>{title}</Text>
           <View style={styles.optionsContainer}>
@@ -25,8 +28,8 @@ class Deck extends Component {
             )}>
               <Text style={styles.header}>
                 <MaterialCommunityIcons
-                  name='pencil-box-outline'
                   size={34}
+                  name='pencil-box-outline'
                   style={{ color: '#262673' }} />
               </Text>
               <Text style={[styles.subHeader, { color: lightBlue }]}>
@@ -39,23 +42,27 @@ class Deck extends Component {
             )}>
               <Text style={styles.header}>
                 <MaterialCommunityIcons
-                  name='cards-outline'
                   size={34}
+                  name='cards-outline'
                   style={{ color: '#262673' }} />
               </Text>
               <Text style={[styles.subHeader, { color: lightBlue }]}>
-                NEW CARD
+                ADD CARD
             </Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.title}>Cards</Text>
-          {questions.map((item) => {
-            return (
-              <View style={styles.item} key={item.question}>
-                <Text>{item.question}</Text>
-              </View>
-            )
-          })}
+          {questions && questions.length
+            ? questions.map((item) => {
+              return (
+                <View style={styles.item} key={item.question}>
+                  <Text>{item.question}</Text>
+                </View>
+              )
+            })
+            : <Text>No Cards</Text>
+          }
+          {}
         </View>
       </ScrollView>
     )
@@ -126,11 +133,12 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(Decks, { navigation }) {
-  const { entryId } = navigation.state.params;
+  const { currentDeck } = navigation.state.params;
+
+  console.log(currentDeck)
 
   return {
-    entryId,
-    deck: Decks[entryId]
+    deck: Decks[currentDeck]
   }
 }
 

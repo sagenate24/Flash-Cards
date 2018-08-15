@@ -1,4 +1,4 @@
-import { RECEIVE_DECKS, ADD_DECK, ADD_CARD } from '../actions';
+import { RECEIVE_DECKS, ADD_DECK, ADD_CARD, ADD_SCORE } from '../actions';
 
 function decks (state = {}, action) {
   switch (action.type) {
@@ -10,18 +10,24 @@ function decks (state = {}, action) {
     case ADD_DECK :
       return {
         ...state,
-        ...action.deck,
+        [action.deck.title]: action.deck,
       }
     case ADD_CARD :
-      console.log(action)
       return {
         ...state,
         [action.deckTitle]: {
           ...state[action.deckTitle],
           questions: state[action.deckTitle].questions.concat([action.card])
         }
-
-
+      }
+      case ADD_SCORE :
+      return {
+        ...state,
+        [action.deckTitle]: {
+          ...state[action.deckTitle],
+          recentScore: action.score,
+          timeStamp: action.timeStamp,
+        }
       }
     default :
       return state

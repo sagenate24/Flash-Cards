@@ -3,6 +3,7 @@ import { Text, View, TextInput, TouchableOpacity, StyleSheet, Platform } from 'r
 import { connect } from 'react-redux';
 import { addDeckTitle, getDeck } from '../utils/api';
 import { white, black } from '../utils/colors';
+import { addDeck } from '../actions';
 
 class NewDeck extends Component {
   state = {
@@ -12,10 +13,16 @@ class NewDeck extends Component {
   onSubmit = () => {
     const { title } = this.state;
 
-    // TODO: dispatch to redux and navigate to new card.
+    console.log(this.props);
+
 
     addDeckTitle(title).then(() => getDeck(title).then((deck) => {
       console.log(deck)
+      this.props.dispatch(addDeck(deck))
+        this.props.navigation.navigate(
+          'Deck',
+          { currentDeck: title }
+        )
     }))
   }
   render() {
@@ -37,7 +44,7 @@ class NewDeck extends Component {
           onPress={this.onSubmit}
           style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
         >
-          <Text>CREATE</Text>
+          <Text style={styles.btnText}>CREATE DECK</Text>
         </TouchableOpacity>
       </View>
     )
@@ -90,6 +97,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  btnText: {
+    color: white,
+    fontSize: 22,
+    textAlign: 'center',
+  }
 })
 
 export default connect()(NewDeck);
