@@ -1,5 +1,4 @@
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
-export const RECEIVE_PROFILE = 'RECEIVE_PROFILE';
 export const ADD_DECK = 'ADD_DECK';
 export const ADD_CARD = 'ADD_CARD';
 export const ADD_SCORE = 'ADD_SCORE';
@@ -23,13 +22,6 @@ export function addCard({ card, deckTitle }) {
     type: ADD_CARD,
     card,
     deckTitle
-  }
-}
-
-export function receiveProfile(profile) {
-  return {
-    type: RECEIVE_PROFILE,
-    profile,
   }
 }
 

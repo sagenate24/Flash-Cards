@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { getDecks, getProfile } from '../utils/api';
-import { receiveDecks, receiveProfile } from '../actions';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { handleInitialData } from '../actions/shared';
 import { AppLoading } from 'expo';
 import { gray, white, lightBlue, black } from '../utils/colors';
+import OnLoad from './OnLoad';
 
 // TODO: Add TimeStamp to each deck listed
 
@@ -15,36 +15,39 @@ class DeckList extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
 
-    getProfile()
-      .then((results) => dispatch(receiveProfile(results)))
-
-    getDecks()
-      .then((results) => dispatch(receiveDecks(results)))
-      .then(() => this.setState(() => ({
-        ready: true,
-      })))
+    dispatch(handleInitialData()).then(() =>
+      setTimeout(() => {
+        this.setState(() => ({
+          ready: true,
+        }))
+      }, 4000));
   }
 
   render() {
-    const { decks, profile } = this.props;
+    const { decks } = this.props;
     const { ready } = this.state;
 
-    console.log(profile)
-
     if (ready === false) {
-      return <AppLoading />
+      return (
+        <Modal
+          // animationType="fade"
+          transparent={false}
+          visible={!ready}>
+          <OnLoad />
+        </Modal>
+      )
     }
 
     return (
       <ScrollView style={styles.container}>
         <View>
-        <TouchableOpacity style={styles.newDeck} onPress={() => this.props.navigation.navigate(
-              'NewDeck'
-            )}>
-              <Text style={styles.btnText}>
-                Create a new study deck
+          <TouchableOpacity style={styles.newDeck} onPress={() => this.props.navigation.navigate(
+            'NewDeck'
+          )}>
+            <Text style={styles.btnText}>
+              Create a new study deck
             </Text>
-            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
         <Text style={styles.deckListTitle}>Your Decks</Text>
         {Object.keys(decks).map((deck) => {
@@ -53,7 +56,7 @@ class DeckList extends Component {
             <View style={styles.item} key={deck}>
               <TouchableOpacity onPress={() => this.props.navigation.navigate(
                 'Deck',
-                { currentDeck: deck }
+                { currentDeck: decks[deck] }
               )}>
                 <Text style={{ fontSize: 20 }}>
                   {decks[deck].title}
@@ -126,7 +129,7 @@ const styles = StyleSheet.create({
   }
 });
 
-function mapStateToProps(decks) {
+function mapStateToProps({ decks }) {
   return {
     decks,
   }

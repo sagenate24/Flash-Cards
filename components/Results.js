@@ -3,13 +3,8 @@ import { Text, View, StyleSheet, TouchableOpacity, Platform } from 'react-native
 import { connect } from 'react-redux';
 import { white, black } from '../utils/colors';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { NavigationActions } from 'react-navigation';
 import { recentActivityScore } from '../utils/api';
-import Quiz from './Quiz';
-import { addScore } from '../actions';
-import { timestamp } from '../node_modules/rxjs/operator/timestamp';
-
-// TODO: When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
+import { addScore } from '../actions/decks';
 
 class Results extends Component {
   componentDidMount() {
@@ -19,8 +14,6 @@ class Results extends Component {
     recentActivityScore(currentDeck.title, correctPercent, timeStamp);
 
     this.props.dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
-
-    console.log(this.props);
   }
 
   handlePercent = () => {
@@ -33,7 +26,7 @@ class Results extends Component {
   studyMore = () => {
     this.props.navigation.navigate(
       'Deck',
-      {currentDeck: this.props.currentDeck.title}
+      {currentDeck: this.props.currentDeck}
     )
   }
 

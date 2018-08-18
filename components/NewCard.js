@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { Text, View, TextInput, StyleSheet, TouchableOpacity, Platform, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
-import { softPurp, white, lightBlue, black } from '../utils/colors';
-import { addCard } from '../actions';
-import { addCardToDeck, getDecks } from '../utils/api';
+import { white, black } from '../utils/colors';
+import { addCard } from '../actions/decks';
+import { addCardToDeck } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
 
 // TODO: Add keyboard feature to zoom everything up. KeyboardAvoidingView
@@ -65,7 +65,7 @@ class NewCard extends Component {
     const { underColorA, underColorQ, question, answer } = this.state;
 
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
         <View style={styles.item}>
           <TextInput
             value={this.state.question}
@@ -95,7 +95,7 @@ class NewCard extends Component {
             <Text style={styles.submitBtnText}>Submit</Text>
           </TouchableOpacity>
         }
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
@@ -156,7 +156,6 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state, { navigation }) {
-  // console.log(navigation)
   const { currentDeck } = navigation.state.params
   return {
     currentDeck

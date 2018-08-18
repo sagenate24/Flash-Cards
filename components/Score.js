@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, Easing } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 function colorPicker(percent) {
@@ -29,11 +29,12 @@ export default function Score({ size, percent, width, textSize }) {
       onAnimationComplete={() => console.log('onAnimationComplete')}
       backgroundColor="#f2f2f2" >
       {
-        (fill) => (
-          <Text style={textSize}>
-            {percent}%
-            </Text>
-        )
+
+          (fill) => (
+            <Text style={textSize}>
+              {percent}%
+              </Text>
+          )
       }
     </AnimatedCircularProgress>
   )

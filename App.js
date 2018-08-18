@@ -6,7 +6,7 @@ import middleware from './middleware';
 import { View, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator, createStackNavigator, HeaderBackButton } from 'react-navigation';
-import { lightBlue, white, softPurp, black, gray } from './utils/colors';
+import { white } from './utils/colors';
 import { Constants } from 'expo';
 
 import DeckList from './components/DeckList';
@@ -18,6 +18,7 @@ import Results from './components/Results';
 import Profile from './components/Profile';
 import Settings from './components/Settings';
 import ProfilePic from './components/ProfilePic';
+import OnLoad from './components/OnLoad';
 
 
 // TODO: style stack and tab api https://reactnavigation.org/docs/en/stack-navigator.html#routeconfigs
@@ -36,7 +37,7 @@ const Tabs = createBottomTabNavigator({
     screen: DeckList,
     animationEnabled: true,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Ionicons size={35} name='ios-home' color={tintColor}/>
+      tabBarIcon: ({ tintColor }) => <Ionicons size={35} name='ios-home' color={tintColor} />
     }
   },
   Profile: {
@@ -44,7 +45,7 @@ const Tabs = createBottomTabNavigator({
     title: 'PROFILE',
     animationEnabled: true,
     navigationOptions: {
-      tabBarIcon: (<ProfilePic />),
+      tabBarIcon: ({ tintColor }) => (<ProfilePic tintColor={tintColor} />),
     },
   },
   Settings: {
@@ -80,6 +81,7 @@ const Stack = createStackNavigator({
     screen: Tabs,
     animationEnabled: true,
     mode: 'card',
+    headerBackImage: null,
     navigationOptions: ({ navigation }) => {
       const Titles = ['HOME', 'PROFILE', 'SETTINGS'];
 
@@ -154,6 +156,13 @@ const Stack = createStackNavigator({
       header: null
     })
   },
+  OnLoad: {
+    screen: OnLoad,
+    mode: 'modal',
+    navigationOptions: () => ({
+      header: null
+    })
+  },
 }, {
     initialRouteName: 'Home',
     mode: 'card',
@@ -162,7 +171,8 @@ const Stack = createStackNavigator({
     headerLayoutPreset: 'center'
   })
 
-export default class App extends React.Component {
+class App extends React.Component {
+
   render() {
     return (
       <Provider store={createStore(reducer, middleware)}>
@@ -174,3 +184,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;

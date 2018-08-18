@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, Modal, StyleSheet, Button, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
 import { white } from '../utils/colors';
-import Results from './Results';
-import { recentActivityScore } from '../utils/api';
-
-// TODO: When the score is displayed, buttons are displayed to either start the quiz over or go back to the Individual Deck view.
 
 class Quiz extends Component {
   state = {
@@ -59,35 +55,21 @@ class Quiz extends Component {
   }
 
   goToResults = (lastAnswer) => {
-
-    // const { correctAnswers } = this.state;
-    // const { currentDeck } = this.props;
-    // let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
-
-
-
     if (lastAnswer === 'correct') {
-      // let numberCorrect = correctAnswers + 1
-
-      // let correctPercent = Math.round((numberCorrect / currentDeck.questions.length) * 100);
-
-      // recentActivityScore(currentDeck.title, correctPercent);
-
       this.props.navigation.navigate(
         'Results',
-        { correctAnswers: this.state.correctAnswers + 1,
-        currentDeck: this.props.currentDeck }
+        {
+          correctAnswers: this.state.correctAnswers + 1,
+          currentDeck: this.props.currentDeck
+        }
       )
     } else {
-
-      // let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
-
-      // recentActivityScore(currentDeck.title, correctPercent);
-
       this.props.navigation.navigate(
         'Results',
-        { correctAnswers: this.state.correctAnswers,
-        currentDeck: this.props.currentDeck }
+        {
+          correctAnswers: this.state.correctAnswers,
+          currentDeck: this.props.currentDeck
+        }
       )
     }
 
@@ -100,9 +82,8 @@ class Quiz extends Component {
 
   render() {
     const { questions } = this.props.currentDeck;
-    const { questionIndex, showAnswer, correctAnswers } = this.state;
+    const { questionIndex, showAnswer } = this.state;
     const questionsRemaining = questions.length - questionIndex;
-    console.log(questionsRemaining)
 
     return (
       <TouchableOpacity

@@ -5,44 +5,42 @@ import {
   StyleSheet,
   ImageEditor,
   TouchableOpacity,
-  Image,
   TextInput,
-  KeyboardAvoidingView
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
+import { addProfileName, getProfile, deleteProfile, removeDecks } from '../utils/api';
+import { editCover, editAvatar, editUsername } from '../actions/profile';
+import { addProfileCover, addProfileImg } from '../utils/api';
 import { ImagePicker, Permissions } from 'expo';
-import { addProfileImg, addProfileName, getProfile, addProfileCover } from '../utils/api';
 import { connect } from 'react-redux';
 
 class Settings extends Component {
   state = {
-    image: null,
-    userName: null,
     showInput: false,
     status: null,
+    userName: '',
   }
 
   componentDidMount() {
-    getProfile()
-      .then((results) => {
-        if (results && results.avatar && results.name) {
-          this.setState(() => ({
-            image: results.avatar,
-            userName: results.name
-          }));
-        } else {
-          this.setState(() => ({
-            image: null
-          }));
+    Permissions.getAsync(Permissions.CAMERA_ROLL)
+      .then(({ status }) => {
+        if (status === 'granted') {
+          this.setState(() => ({ status }));
         }
+        this.setState(() => ({ status }));
+      })
+      .catch((error) => {
+        console.warn('Error getting Location permission: ', error);
+
+        this.setState(() => ({ status: 'undetermined' }));
       })
   }
 
-  askPermission = () => {
+  askPermission = (type) => {
     Permissions.askAsync(Permissions.CAMERA_ROLL)
       .then(({ status }) => {
         if (status === 'granted') {
-          return this.pickImage();
+          return this.pickImage(type);
         }
 
         this.setState(() => ({ status }));
@@ -53,38 +51,64 @@ class Settings extends Component {
       })
   }
 
-  pickImage = () => {
+  pickImage = (type) => {
     ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [2, 1]
     }).then((result) => {
-      console.log(result)
       if (result.cancelled) {
         return
       }
-
-
 
       ImageEditor.cropImage(result.uri, {
         offset: { x: 0, y: 0 },
         size: { width: result.width, height: result.height },
         displaySize: { width: 300, height: 160, },
         resizeMode: 'contain',
-      }, (uri) => addProfileCover(result.uri),
+      }, (uri) => {
+        if (type === 'avatar') {
+          addProfileImg(result.uri);
+          this.props.dispatch(editAvatar(result.uri));
+        } else if (type === 'cover') {
+          addProfileCover(result.uri);
+          this.props.dispatch(editCover(result.uri));
+        }
+
+        this.props.navigation.navigate(
+          'Profile'
+        )
+      },
         () => console.log('Error'))
     });
   };
 
-  submitUserName = () => {
-    const { userName } = this.state;
+  showInput = () => {
     this.setState(() => ({
-      showInput: false
+      showInput: true
     }))
-    addProfileName(userName)
   }
 
+  submitUserName = () => {
+    const { userName } = this.state;
+    const { dispatch } = this.props;
+    addProfileName(userName)
+    dispatch(editUsername(userName));
+
+    this.setState(() => ({
+      userName: '',
+      showInput: false
+    }))
+
+    setTimeout(() => {
+      this.props.navigation.navigate(
+        'Profile'
+      )
+    }, 1000)
+  }
+
+
   render() {
-    const { image, status, showInput, userName } = this.state;
+    const { status, showInput, userName } = this.state;
 
     if (status === 'denied') {
       return (
@@ -114,92 +138,73 @@ class Settings extends Component {
     }
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <View style={styles.topContent}>
-        </View>
-
-        {image && (
-          <View>
-            <Image style={styles.img} source={{ uri: image }} />
-          </View>
-        )}
-        {userName && (
-          <Text style={{ fontSize: 30, color: '#000' }}>{userName}</Text>
-        )}
-        <KeyboardAvoidingView style={styles.center} behavior='padding' enabled>
-          <TouchableOpacity onPress={() => this.askPermission()}>
-            <Text>Choose photo</Text>
-            {showInput
-              ? <View>
-                <TextInput
-                  value={this.state.userName}
-                  underlineColorAndroid='rgba(0,0,0,0)'
-                  onChangeText={(userName) => this.setState({ userName })}
-                  selectionColor={'#000'}
-                />
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={this.submitUserName}
-                  disabled={userName === ''}>
-                  <Text style={styles.buttonText}>Submit</Text>
-                </TouchableOpacity>
-              </View>
-              : null
-            }
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
-      </KeyboardAvoidingView>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.item} onPress={() => this.showInput()}>
+          <Text style={styles.itemText}>Edit Username</Text>
+          {showInput
+            ? <View>
+              <TextInput
+                value={userName}
+                style={styles.userNameField}
+                underlineColorAndroid='rgba(0,0,0,0)'
+                onChangeText={(userName) => this.setState({ userName })}
+                selectionColor={'#000'}
+              />
+              <TouchableOpacity
+                style={styles.button}
+                onPress={this.submitUserName}
+                disabled={userName === ''}>
+                <Text style={styles.buttonText}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+            : null
+          }
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => this.askPermission('avatar')}>
+          <Text style={styles.itemText}>Edit Profile Photo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => this.askPermission('cover')}>
+          <Text style={styles.itemText}>Edit Cover Photo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => deleteProfile()}>
+          <Text style={styles.deleteInfo}>Delete Profile</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.item} onPress={() => removeDecks()}>
+          <Text style={styles.deleteInfo}>Delete Decks</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  topContent: {
-    width: '100%',
-    height: 100,
-    backgroundColor: '#ffffff',
-    shadowOpacity: 0.8,
-    shadowColor: 'rgba(0,0,0,0.24)',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-  },
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 30,
-    marginRight: 30,
-  },
-  img: {
-    width: 140,
-    height: 140,
-    resizeMode: 'contain',
-    borderRadius: 70,
-    marginBottom: 20,
-    marginTop: -70,
-  },
-  editPicIcon: {
-    alignSelf: 'flex-end',
-    marginTop: -40,
-    marginLeft: -20,
-  },
-  button: {
     padding: 10,
-    backgroundColor: '#1b1b7e',
-    alignSelf: 'center',
-    borderRadius: 5,
-    margin: 20,
+    backgroundColor: '#fff',
+  },
+  deleteInfo: {
+    fontSize: 22,
+    color: 'red',
+  },
+  item: {
+    borderBottomWidth: 1,
+    borderColor: 'gray',
+    padding: 10,
+  },
+  itemText: {
+    fontSize: 21,
+    color: '#000',
+  },
+  userNameField: {
+    margin: 10,
+    backgroundColor: '#fff',
+    fontSize: 18,
+    borderBottomWidth: 1,
+    borderColor: '#e6b800'
   },
   buttonText: {
-    color: '#fff',
-    fontSize: 20,
-  },
+    paddingLeft: 10,
+  }
 });
 
 function mapStateToProps(decks) {

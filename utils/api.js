@@ -50,7 +50,6 @@ export const addDeckTitle = async (title) => {
   try {
     const newDeck = await AsyncStorage.mergeItem(STORAGE_KEY, formatNewDeck(title), () => {
       AsyncStorage.getItem(STORAGE_KEY)
-        .then((results) => console.log(JSON.parse(results)))
     });
 
     return JSON.parse(newDeck);
@@ -70,6 +69,13 @@ export const getProfile = async () => {
   }
 }
 
+export function deleteProfile() {
+  AsyncStorage.removeItem(PROFILE_KEY)
+}
+export function removeDecks() {
+  AsyncStorage.removeItem(STORAGE_KEY)
+}
+
 export function addProfileImg(image) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
 
@@ -85,7 +91,7 @@ export function addProfileCover(image) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
 
     AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
-      'profileCover': image
+      'cover': image
     }), () => {
       AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
     });
@@ -96,7 +102,7 @@ export function addProfileName(username) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
 
     AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
-      'name': username
+      'username': username
     }), () => {
       AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
     });

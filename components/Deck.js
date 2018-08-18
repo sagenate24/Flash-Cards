@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { black, gray, white, softPurp, lightBlue } from '../utils/colors';
-import { MaterialCommunityIcons, EvilIcons } from '@expo/vector-icons';
+import { black, white, lightBlue } from '../utils/colors';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 // TODO: Get decks from AsnyStorage
 
@@ -22,7 +22,7 @@ class Deck extends Component {
           </Text>
           <Text style={styles.title}>{title}</Text>
           <View style={styles.optionsContainer}>
-            <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
+            <TouchableOpacity disabled={questions.length === 0} style={styles.metric} onPress={() => this.props.navigation.navigate(
               'Quiz',
               { currentDeck: this.props.deck }
             )}>
@@ -62,7 +62,6 @@ class Deck extends Component {
             })
             : <Text>No Cards</Text>
           }
-          {}
         </View>
       </ScrollView>
     )
@@ -132,13 +131,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(Decks, { navigation }) {
+function mapStateToProps(state, { navigation }) {
   const { currentDeck } = navigation.state.params;
 
-  console.log(currentDeck)
-
   return {
-    deck: Decks[currentDeck]
+    deck: state.decks[currentDeck.title],
   }
 }
 
