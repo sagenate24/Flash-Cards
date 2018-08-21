@@ -7,4 +7,4 @@ export default (store) => (next) => (action) => {
   console.groupEnd();
 
   return returnValue;
-}
+};

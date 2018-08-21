@@ -6,23 +6,23 @@ export default function profile(state = {}, action) {
       return {
         ...state,
         ...action.profile,
-      }
+      };
     case EDIT_AVATAR :
       return {
         ...state,
         avatar: action.image,
-      }
+      };
     case EDIT_COVER :
       return {
         ...state,
         cover: action.image,
-      }
+      };
     case EDIT_USERNAME :
       return {
         ...state,
         username: action.username,
-      }
+      };
     default :
       return state
-  }
-}
+  };
+};

@@ -6,12 +6,12 @@ export default function decks(state = {}, action) {
       return {
         ...state,
         ...action.decks,
-      }
+      };
     case ADD_DECK :
       return {
         ...state,
         [action.deck.title]: action.deck,
-      }
+      };
     case ADD_CARD :
       return {
         ...state,
@@ -19,7 +19,7 @@ export default function decks(state = {}, action) {
           ...state[action.deckTitle],
           questions: state[action.deckTitle].questions.concat([action.card])
         }
-      }
+      };
       case ADD_SCORE :
       return {
         ...state,
@@ -28,8 +28,8 @@ export default function decks(state = {}, action) {
           recentScore: action.score,
           timeStamp: action.timeStamp,
         }
-      }
+      };
     default :
       return state
-  }
-}
+  };
+};

@@ -1,41 +1,56 @@
-import React from 'react';
-import { Text, Easing } from 'react-native';
+import React, { Component } from 'react';
+import { Text, Easing, Animated } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
-function colorPicker(percent) {
-  let color;
-
-  if (percent <= 40) {
-    color = 'red'
-  } else if (percent <= 80) {
-    color = '#eded0f'
-  } else if (percent === 100) {
-    color = '#0fed7a'
+class Score extends Component {
+  state = {
+    fill: 0
   }
 
-  return color;
-}
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState(() => ({
+        fill: this.props.percent
+      }));
+    }, 200);
+  };
 
-export default function Score({ size, percent, width, textSize }) {
+  colorPicker = (percent) => {
+    if (percent <= 40) {
+      return '#D71414';
+    }
+    if (percent <= 80) {
+      return '#e3b505';
+    }
+    if (percent === 100) {
+      return '#14D751';
+    };
+  };
 
-  return (
-    <AnimatedCircularProgress
+  render() {
+    const { textSize, size, width } = this.props;
+
+    return (
+      <AnimatedCircularProgress
       size={size}
       width={width}
       prefill={0}
-      fill={percent}
-      tintColor={colorPicker(percent)}
+      fill={this.state.fill}
+      ref={(ref) => this.state.percentCircle = ref}
+      tintColor={this.colorPicker(this.state.fill)}
       rotation={360}
       onAnimationComplete={() => console.log('onAnimationComplete')}
       backgroundColor="#f2f2f2" >
       {
-
-          (fill) => (
+          () => (
             <Text style={textSize}>
-              {percent}%
-              </Text>
+              {this.state.fill}%
+            </Text>
           )
       }
     </AnimatedCircularProgress>
-  )
+    );
+  }
 }
+
+export default Score;

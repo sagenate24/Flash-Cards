@@ -6,26 +6,28 @@ import {
   Animated,
   StatusBar
 } from 'react-native';
+import { spaceCadet } from '../utils/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const AnimatedIcon = Animated.createAnimatedComponent(MaterialCommunityIcons);
 
-export default class OnLoad extends Component {
+class OnLoad extends Component {
   state = {
     opacity: new Animated.Value(0),
     bounceValue: new Animated.Value(0.1)
-  }
+  };
+
   componentDidMount() {
     const { opacity, bounceValue } = this.state;
 
-    Animated.timing(opacity, { toValue: 1, duration: 800 }).start()
+    Animated.timing(opacity, { toValue: 1, duration: 800 }).start();
     Animated.sequence([
-      Animated.delay(400),
+      Animated.delay(300),
       Animated.timing(bounceValue, { duration: 200, toValue: 1.04 }),
       Animated.spring(bounceValue, { toValue: 1, friction: 4 }),
     ]).start();
+  };
 
-  }
   render() {
     const { opacity, bounceValue } = this.state;
 
@@ -45,9 +47,9 @@ export default class OnLoad extends Component {
           </Animated.Text>
         </View>
       </View>
-    )
-  }
-}
+    );
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -67,3 +69,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+export default OnLoad;

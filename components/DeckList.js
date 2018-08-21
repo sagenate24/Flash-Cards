@@ -2,26 +2,31 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import { handleInitialData } from '../actions/shared';
-import { AppLoading } from 'expo';
-import { gray, white, lightBlue, black } from '../utils/colors';
+import { gray, white, lightBlue, black, honeydew, red } from '../utils/colors';
 import OnLoad from './OnLoad';
 
-// TODO: Add TimeStamp to each deck listed
 
 class DeckList extends Component {
   state = {
-    ready: false,
-  }
+    ready: true,
+    modalType: 'none',
+  };
+
   componentDidMount() {
     const { dispatch } = this.props;
+    setTimeout(() => {
+      this.setState(() => ({
+        modalType: 'slide',
+      }));
+    }, 1000);
 
     dispatch(handleInitialData()).then(() =>
       setTimeout(() => {
         this.setState(() => ({
           ready: true,
-        }))
+        }));
       }, 4000));
-  }
+  };
 
   render() {
     const { decks } = this.props;
@@ -30,13 +35,13 @@ class DeckList extends Component {
     if (ready === false) {
       return (
         <Modal
-          // animationType="fade"
+          animationType={this.state.modalType}
           transparent={false}
           visible={!ready}>
           <OnLoad />
         </Modal>
-      )
-    }
+      );
+    };
 
     return (
       <ScrollView style={styles.container}>
@@ -73,12 +78,12 @@ class DeckList extends Component {
                 }
               </TouchableOpacity>
             </View>
-          )
+          );
         })}
       </ScrollView>
     );
-  }
-}
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -101,7 +106,7 @@ const styles = StyleSheet.create({
     },
   },
   newDeck: {
-    backgroundColor: lightBlue,
+    backgroundColor: red,
     borderRadius: 2,
     padding: 24,
     marginLeft: 12,
@@ -132,7 +137,7 @@ const styles = StyleSheet.create({
 function mapStateToProps({ decks }) {
   return {
     decks,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(DeckList);

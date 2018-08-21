@@ -1,8 +1,6 @@
-import { AsyncStorage } from 'react-native'
-// import { getDeckMetaInfo, timeToString } from './helpers'
-
-export const STORAGE_KEY = 'FlashCards:decks'
-export const PROFILE_KEY = 'FlashCards:profile'
+import { AsyncStorage } from 'react-native';
+export const STORAGE_KEY = 'FlashCards:decks';
+export const PROFILE_KEY = 'FlashCards:profile';
 
 function getDecks(deck) {
   const info = {
@@ -48,41 +46,42 @@ function getDecks(deck) {
   return typeof deck === 'undefined'
     ? info
     : info[deck]
-}
+};
 
 function getProfile(profile) {
   const info = {
     profile: {
-      name: '',
+      username: '',
       avatar: '',
       cover: '',
     }
-  }
+  };
+
   return typeof profile === 'undefined'
     ? info
     : info[profile]
-}
+};
 
 function setDummyData() {
-  const { React, JavaScript, Blahhah } = getDecks()
+  const { React, JavaScript, Blahhah } = getDecks();
+  let dummyData = {};
 
-  let dummyData = {}
   dummyData = {
     React,
     JavaScript,
     Blahhah,
-  }
+  };
 
-  AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dummyData))
+  AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dummyData));
 
-  return dummyData
-}
+  return dummyData;
+};
 
 export function formatDeckResults(results) {
   return results === null
     ? setDummyData()
-    : JSON.parse(results)
-}
+    : JSON.parse(results);
+};
 
 export function formatNewDeck(deckTitle) {
   const timestamp = Date.now();
@@ -93,28 +92,31 @@ export function formatNewDeck(deckTitle) {
       timeStamp: timestamp,
       questions: [],
     },
-  })
-}
+  });
+};
 
 function setDummyProfile() {
-  const { profile } = getProfile()
+  const { profile } = getProfile();
 
-  AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(profile))
+  AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
 
   return profile;
-}
+};
 
 export function formatProfileResults(results) {
   return results === null
     ? setDummyProfile()
     : JSON.parse(results);
-}
+};
 
 export function formatNewProfileImage(image) {
-
   return JSON.stringify({
     userProfile: {
       avatar: image,
-    }
-  })
-}
+    },
+  });
+};
+
+export function formatNewProfile() {
+  return setDummyProfile()
+};

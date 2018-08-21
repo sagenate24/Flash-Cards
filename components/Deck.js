@@ -58,15 +58,15 @@ class Deck extends Component {
                 <View style={styles.item} key={item.question}>
                   <Text>{item.question}</Text>
                 </View>
-              )
+              );
             })
             : <Text>No Cards</Text>
           }
         </View>
       </ScrollView>
-    )
-  }
-}
+    );
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -136,7 +136,7 @@ function mapStateToProps(state, { navigation }) {
 
   return {
     deck: state.decks[currentDeck.title],
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps)(Deck)
+export default connect(mapStateToProps)(Deck);

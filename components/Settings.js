@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -8,8 +8,9 @@ import {
   TextInput,
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
-import { addProfileName, getProfile, deleteProfile, removeDecks } from '../utils/api';
-import { editCover, editAvatar, editUsername } from '../actions/profile';
+import { addProfileName, deleteProfile, removeDecks } from '../utils/api';
+import { editCover, editAvatar, editUsername, receiveProfile } from '../actions/profile';
+import { white, black, gray, red, lightBlue, spaceCadet } from '../utils/colors';
 import { addProfileCover, addProfileImg } from '../utils/api';
 import { ImagePicker, Permissions } from 'expo';
 import { connect } from 'react-redux';
@@ -19,7 +20,7 @@ class Settings extends Component {
     showInput: false,
     status: null,
     userName: '',
-  }
+  };
 
   componentDidMount() {
     Permissions.getAsync(Permissions.CAMERA_ROLL)
@@ -33,8 +34,8 @@ class Settings extends Component {
         console.warn('Error getting Location permission: ', error);
 
         this.setState(() => ({ status: 'undetermined' }));
-      })
-  }
+      });
+  };
 
   askPermission = (type) => {
     Permissions.askAsync(Permissions.CAMERA_ROLL)
@@ -45,11 +46,11 @@ class Settings extends Component {
 
         this.setState(() => ({ status }));
       }).catch((error) => {
-        console.warn('Error getting camera roll permission: ', error)
+        console.warn('Error getting camera roll permission: ', error);
 
-        this.setState(() => ({ status: 'undetermined' }))
-      })
-  }
+        this.setState(() => ({ status: 'undetermined' }));
+      });
+  };
 
   pickImage = (type) => {
     ImagePicker.launchImageLibraryAsync({
@@ -57,15 +58,15 @@ class Settings extends Component {
       aspect: [2, 1]
     }).then((result) => {
       if (result.cancelled) {
-        return
-      }
+        return;
+      };
 
       ImageEditor.cropImage(result.uri, {
         offset: { x: 0, y: 0 },
         size: { width: result.width, height: result.height },
         displaySize: { width: 300, height: 160, },
         resizeMode: 'contain',
-      }, (uri) => {
+      }, () => {
         if (type === 'avatar') {
           addProfileImg(result.uri);
           this.props.dispatch(editAvatar(result.uri));
@@ -76,36 +77,50 @@ class Settings extends Component {
 
         this.props.navigation.navigate(
           'Profile'
-        )
+        );
       },
-        () => console.log('Error'))
+        () => console.log('Error'));
     });
   };
 
   showInput = () => {
     this.setState(() => ({
       showInput: true
-    }))
-  }
+    }));
+  };
 
   submitUserName = () => {
     const { userName } = this.state;
     const { dispatch } = this.props;
-    addProfileName(userName)
+    addProfileName(userName);
     dispatch(editUsername(userName));
 
     this.setState(() => ({
       userName: '',
       showInput: false
-    }))
+    }));
 
+    this.goToProfile();
+  };
+
+  deleteProfile = () => {
+    const { dispatch } = this.props;
+
+    deleteProfile()
+      .then((results) => {
+        dispatch(receiveProfile(results));
+      });
+
+    this.goToProfile();
+  };
+
+  goToProfile = () => {
     setTimeout(() => {
       this.props.navigation.navigate(
         'Profile'
-      )
-    }, 1000)
+      );
+    }, 1000);
   }
-
 
   render() {
     const { status, showInput, userName } = this.state;
@@ -118,8 +133,8 @@ class Settings extends Component {
             You denied your location. You can fix this by visiting your settings and enableing location services for this app.
           </Text>
         </View>
-      )
-    }
+      );
+    };
 
     if (status === 'undetermined') {
       return (
@@ -134,8 +149,8 @@ class Settings extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-      )
-    }
+      );
+    };
 
     return (
       <View style={styles.container}>
@@ -166,38 +181,39 @@ class Settings extends Component {
         <TouchableOpacity style={styles.item} onPress={() => this.askPermission('cover')}>
           <Text style={styles.itemText}>Edit Cover Photo</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => deleteProfile()}>
+        <TouchableOpacity style={styles.item} onPress={() => this.deleteProfile()}>
           <Text style={styles.deleteInfo}>Delete Profile</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.item} onPress={() => removeDecks()}>
           <Text style={styles.deleteInfo}>Delete Decks</Text>
         </TouchableOpacity>
       </View>
-    )
-  }
-}
+    );
+  };
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor: '#fff',
+    backgroundColor: white,
   },
   deleteInfo: {
     fontSize: 22,
-    color: 'red',
+    color: red,
   },
   item: {
     borderBottomWidth: 1,
-    borderColor: 'gray',
+    borderColor: gray,
     padding: 10,
   },
   itemText: {
     fontSize: 21,
-    color: '#000',
+    color: black,
   },
   userNameField: {
     margin: 10,
-    backgroundColor: '#fff',
+    backgroundColor: white,
     fontSize: 18,
     borderBottomWidth: 1,
     borderColor: '#e6b800'
@@ -208,7 +224,9 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(decks) {
-  return { decks }
-}
+  return {
+    decks
+  };
+};
 
 export default connect(mapStateToProps)(Settings);

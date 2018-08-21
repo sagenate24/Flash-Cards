@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import { Text, View, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native'
+import React, { Component } from 'react';
+import { Text, View, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { addDeckTitle, getDeck } from '../utils/api';
-import { white, black } from '../utils/colors';
+import { white, black, red, honeydew } from '../utils/colors';
 import { addDeck } from '../actions/decks';
 
 class NewDeck extends Component {
   state = {
     title: '',
-  }
+  };
 
   onSubmit = () => {
     const { title } = this.state;
 
     addDeckTitle(title).then(() => getDeck(title).then((deck) => {
-      console.log(deck)
+      console.log(deck);
       this.props.dispatch(addDeck(deck))
         this.props.navigation.navigate(
           'Deck',
           { currentDeck: deck }
-        )
-    }))
-  }
-  
+        );
+    }));
+  };
+
   render() {
     const { title } = this.state;
 
@@ -46,9 +46,9 @@ class NewDeck extends Component {
           <Text style={styles.btnText}>CREATE DECK</Text>
         </TouchableOpacity>
       </View>
-    )
-  }
-}
+    );
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     borderColor: black,
   },
   iosSubmitBtn: {
-    backgroundColor: '#1b1b7e',
+    backgroundColor: red,
     padding: 10,
     height: 45,
     marginTop: 40,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
   },
   androidSubmitBtn: {
-    backgroundColor: '#1b1b7e',
+    backgroundColor: red,
     padding: 10,
     marginTop: 40,
     marginLeft: 40,
@@ -98,6 +98,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
   }
-})
+});
 
 export default connect()(NewDeck);

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Text, View, TextInput, StyleSheet, TouchableOpacity, Platform, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
-import { white, black } from '../utils/colors';
+import { white, black, red, honeydew } from '../utils/colors';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
 
-// TODO: Add keyboard feature to zoom everything up. KeyboardAvoidingView
 // TODO: addSubmit button Animation
 // TODO: add TextInput Bottom Border Animation
 
@@ -16,31 +15,26 @@ class NewCard extends Component {
     answer: '',
     underColorQ: false,
     underColorA: false,
-  }
-
-  componentDidMount() {
-    const { currentDeck } = this.props;
-
-  }
+  };
 
   changeUderlineColor = (chosenInput) => {
     if (chosenInput === 'question') {
       this.setState(() => ({
         underColorQ: true,
         underColorA: false
-      }))
+      }));
     } else {
       this.setState(() => ({
         underColorA: true,
         underColorQ: false
-      }))
-    }
-  }
+      }));
+    };
+  };
 
   submit = () => {
-    const { question, answer } = this.state;
     const { currentDeck } = this.props;
     const deckTitle = currentDeck.title;
+    const { question, answer } = this.state;
     const card = { ['question']: question, ['answer']: answer };
 
     this.props.dispatch(addCard({
@@ -48,18 +42,18 @@ class NewCard extends Component {
       deckTitle
     }));
 
-    this.toHome()
+    this.toHome();
 
     addCardToDeck(card, deckTitle);
-  }
+  };
 
   toHome = () => {
     backAction = NavigationActions.back({
       key: null,
     });
 
-    this.props.navigation.dispatch(backAction)
-  }
+    this.props.navigation.dispatch(backAction);
+  };
 
   render() {
     const { underColorA, underColorQ, question, answer } = this.state;
@@ -68,37 +62,35 @@ class NewCard extends Component {
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.item}>
           <TextInput
-            value={this.state.question}
-            style={underColorQ === true ? styles.inputActive : styles.input}
-            underlineColorAndroid='rgba(0,0,0,0)'
-            onChangeText={(question) => this.setState({ question })}
             selectionColor={black}
+            value={this.state.question}
+            underlineColorAndroid='rgba(0,0,0,0)'
             onFocus={() => this.changeUderlineColor('question')}
-          />
+            onChangeText={(question) => this.setState({ question })}
+            style={underColorQ === true ? styles.inputActive : styles.input}/>
           <Text>TERM</Text>
           <TextInput
-            value={this.state.answer}
-            style={underColorA === true ? styles.inputActive : styles.input}
-            underlineColorAndroid='rgba(0,0,0,0)'
-            onChangeText={(answer) => this.setState({ answer })}
             selectionColor={black}
+            value={this.state.answer}
+            underlineColorAndroid='rgba(0,0,0,0)'
             onFocus={() => this.changeUderlineColor('answer')}
-          />
+            onChangeText={(answer) => this.setState({ answer })}
+            style={underColorA === true ? styles.inputActive : styles.input}/>
           <Text>DEFINITION</Text>
         </View>
         {question === '' || answer === ''
           ? null
           : <TouchableOpacity
-            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
             onPress={this.submit}
-            disabled={question === '' || answer === ''}>
+            disabled={question === '' || answer === ''}
+            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
             <Text style={styles.submitBtnText}>Submit</Text>
           </TouchableOpacity>
         }
       </KeyboardAvoidingView>
-    )
-  }
-}
+    );
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -116,7 +108,7 @@ const styles = StyleSheet.create({
     borderColor: '#e6b800',
   },
   iosSubmitBtn: {
-    backgroundColor: '#1b1b7e',
+    backgroundColor: red,
     padding: 10,
     height: 45,
     marginTop: 40,
@@ -124,7 +116,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
   },
   androidSubmitBtn: {
-    backgroundColor: '#1b1b7e',
+    backgroundColor: red,
     padding: 10,
     marginTop: 40,
     marginLeft: 40,
@@ -156,10 +148,11 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state, { navigation }) {
-  const { currentDeck } = navigation.state.params
+  const { currentDeck } = navigation.state.params;
+
   return {
     currentDeck
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(NewCard);

@@ -1,41 +1,43 @@
-import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Platform } from 'react-native'
+import React, { Component } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { connect } from 'react-redux';
-import { white, black } from '../utils/colors';
+import { white, black, red } from '../utils/colors';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { recentActivityScore } from '../utils/api';
 import { addScore } from '../actions/decks';
+import Score from './Score';
 
 class Results extends Component {
   componentDidMount() {
     const { currentDeck, correctAnswers } = this.props;
     let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
-    let timeStamp = Date.now()
+    let timeStamp = Date.now();
+
     recentActivityScore(currentDeck.title, correctPercent, timeStamp);
 
     this.props.dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
-  }
+  };
 
   handlePercent = () => {
     const { currentDeck, correctAnswers } = this.props;
     let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
 
     return correctPercent;
-  }
+  };
 
   studyMore = () => {
     this.props.navigation.navigate(
       'Deck',
       {currentDeck: this.props.currentDeck}
-    )
-  }
+    );
+  };
 
   quizRetake = () => {
     this.props.navigation.navigate(
       'Quiz',
       {currentDeck: this.props.currentDeck}
-    )
-  }
+    );
+  };
 
   render() {
     const { currentDeck, correctAnswers } = this.props;
@@ -44,22 +46,15 @@ class Results extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.card}>
-          <AnimatedCircularProgress
-            size={150}
+          <Score
+            percent={percent}
             width={10}
-            fill={this.handlePercent()}
-            tintColor="#1b1b7e"
-            rotation={360}
-            onAnimationComplete={() => console.log('onAnimationComplete')}
-            backgroundColor="#f2f2f2" >
-            {
-              (fill) => (
-                <Text style={styles.percentText}>
-                  {percent}%
-                </Text>
-              )
-            }
-          </AnimatedCircularProgress>
+            size={150}
+            textSize={{
+              fontSize: 34,
+              fontWeight: 'bold'
+            }} />
+
           <View style={{ marginTop: 20 }}>
             {percent >= 80
               ? <Text style={styles.reviewText}>Great Job!</Text>
@@ -81,9 +76,9 @@ class Results extends Component {
           </TouchableOpacity>
         </View>
       </View>
-    )
-  }
-}
+    );
+  };
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -104,7 +99,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   cardText: {
-    color: '#000',
+    color: black,
     fontSize: 20,
   },
   percentText: {
@@ -117,7 +112,7 @@ const styles = StyleSheet.create({
     color: black,
   },
   iosSubmitBtn: {
-    backgroundColor: '#e6b800',
+    backgroundColor: red,
     borderRadius: 2,
     width: 200,
     padding: 10,
@@ -127,7 +122,7 @@ const styles = StyleSheet.create({
     marginRight: 40,
   },
   androidSubmitBtn: {
-    backgroundColor: '#6ed3cf',
+    backgroundColor: red,
     padding: 10,
     marginTop: 40,
     marginLeft: 40,
@@ -142,15 +137,15 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
   },
-})
+});
 
 function mapStateToProps(state, { navigation }) {
-  const { correctAnswers, currentDeck } = navigation.state.params
+  const { correctAnswers, currentDeck } = navigation.state.params;
 
   return {
     correctAnswers: correctAnswers,
     currentDeck
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(Results);

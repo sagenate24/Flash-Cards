@@ -5,4 +5,4 @@ import profile from './profile';
 export default combineReducers({
   decks,
   profile,
-})
+});

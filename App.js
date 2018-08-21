@@ -6,7 +6,7 @@ import middleware from './middleware';
 import { View, StatusBar } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator, createStackNavigator, HeaderBackButton } from 'react-navigation';
-import { white } from './utils/colors';
+import { white, spaceCadet, queenBlue } from './utils/colors';
 import { Constants } from 'expo';
 
 import DeckList from './components/DeckList';
@@ -29,8 +29,8 @@ function CardsStatusBar({ backgroundColor, ...props }) {
     <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
       <StatusBar translucent backgroundColor={backgroundColor} {...props} />
     </View>
-  )
-}
+  );
+};
 
 const Tabs = createBottomTabNavigator({
   DeckList: {
@@ -89,7 +89,7 @@ const Stack = createStackNavigator({
         headerTintColor: white,
         title: Titles[navigation.state.index],
         headerStyle: {
-          backgroundColor: '#1b1b7e',
+          backgroundColor: queenBlue,
         },
       }
     },
@@ -103,7 +103,7 @@ const Stack = createStackNavigator({
         title: 'SET',
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: '#1b1b7e',
+          backgroundColor: queenBlue,
         }
       }
     }
@@ -116,7 +116,7 @@ const Stack = createStackNavigator({
         title: 'NEW CARD',
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: '#1b1b7e',
+          backgroundColor: queenBlue,
         }
       }
     }
@@ -130,7 +130,7 @@ const Stack = createStackNavigator({
         title: 'NEW DECK',
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: '#1b1b7e',
+          backgroundColor: queenBlue,
         }
       }
     }
@@ -143,7 +143,7 @@ const Stack = createStackNavigator({
         title: 'QUIZ',
         headerTintColor: white,
         headerStyle: {
-          backgroundColor: '#1b1b7e',
+          backgroundColor: queenBlue,
         }
       }
     }
@@ -169,20 +169,19 @@ const Stack = createStackNavigator({
     headerMode: 'float',
     headerTransitionPreset: 'uikit',
     headerLayoutPreset: 'center'
-  })
+  });
 
 class App extends React.Component {
-
   render() {
     return (
       <Provider store={createStore(reducer, middleware)}>
         <View style={{ flex: 1 }}>
-          <CardsStatusBar backgroundColor={'#1b1b7e'} barStyle='light-content' />
+          <CardsStatusBar backgroundColor={queenBlue} barStyle='light-content' />
           <Stack />
         </View>
       </Provider>
     );
-  }
-}
+  };
+};
 
 export default App;

@@ -6,9 +6,8 @@ export function handleInitialData() {
   return (dispatch) => {
 
     return getInitialData().then(({ decks, profile }) => {
-      console.log(decks)
       dispatch(receiveDecks(decks));
       dispatch(receiveProfile(profile));
     });
-  }
-}
+  };
+};
