@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
+  TextInput,
   StyleSheet,
   ImageEditor,
   TouchableOpacity,
-  TextInput,
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
-import { addProfileName, deleteProfile, removeDecks } from '../utils/api';
-import { editCover, editAvatar, editUsername, receiveProfile } from '../actions/profile';
-import { white, black, gray, red, lightBlue, spaceCadet } from '../utils/colors';
-import { addProfileCover, addProfileImg } from '../utils/api';
+import {
+  deleteProfile,
+  addProfileImg,
+  addProfileName,
+  addProfileCover,
+} from '../utils/api';
 import { ImagePicker, Permissions } from 'expo';
-import { connect } from 'react-redux';
+import { white, black, gray, red } from '../utils/colors';
+import { editCover, editAvatar, editUsername, receiveProfile } from '../actions/profile';
 
 class Settings extends Component {
   state = {
-    showInput: false,
     status: null,
     userName: '',
+    showInput: false,
+    underColorU: false
   };
 
   componentDidMount() {
@@ -32,7 +37,6 @@ class Settings extends Component {
       })
       .catch((error) => {
         console.warn('Error getting Location permission: ', error);
-
         this.setState(() => ({ status: 'undetermined' }));
       });
   };
@@ -43,11 +47,9 @@ class Settings extends Component {
         if (status === 'granted') {
           return this.pickImage(type);
         }
-
         this.setState(() => ({ status }));
       }).catch((error) => {
         console.warn('Error getting camera roll permission: ', error);
-
         this.setState(() => ({ status: 'undetermined' }));
       });
   };
@@ -60,12 +62,9 @@ class Settings extends Component {
       if (result.cancelled) {
         return;
       };
-
       ImageEditor.cropImage(result.uri, {
         offset: { x: 0, y: 0 },
         size: { width: result.width, height: result.height },
-        displaySize: { width: 300, height: 160, },
-        resizeMode: 'contain',
       }, () => {
         if (type === 'avatar') {
           addProfileImg(result.uri);
@@ -75,18 +74,10 @@ class Settings extends Component {
           this.props.dispatch(editCover(result.uri));
         }
 
-        this.props.navigation.navigate(
-          'Profile'
-        );
+        this.props.navigation.navigate('Profile');
       },
         () => console.log('Error'));
     });
-  };
-
-  showInput = () => {
-    this.setState(() => ({
-      showInput: true
-    }));
   };
 
   submitUserName = () => {
@@ -100,30 +91,39 @@ class Settings extends Component {
       showInput: false
     }));
 
-    this.goToProfile();
+    this.goTo('Profile');
   };
 
-  deleteProfile = () => {
-    const { dispatch } = this.props;
-
+  removeProfile = () => {
     deleteProfile()
       .then((results) => {
-        dispatch(receiveProfile(results));
+        this.props.dispatch(receiveProfile(results));
+      }).then(() => {
+        this.goTo('Profile');
       });
-
-    this.goToProfile();
   };
 
-  goToProfile = () => {
+  goTo = (view) => {
     setTimeout(() => {
-      this.props.navigation.navigate(
-        'Profile'
-      );
+      this.props.navigation.navigate(view)
     }, 1000);
+  };
+
+  showOrHideInput = () => {
+    if (this.state.showInput === false) {
+      this.setState(() => ({
+        showInput: true,
+        underColorU: false,
+        userName: ''
+      }));
+    } else {
+      this.setState(() => ({ showInput: false }));
+    }
+
   }
 
   render() {
-    const { status, showInput, userName } = this.state;
+    const { status, showInput, userName, underColorU } = this.state;
 
     if (status === 'denied') {
       return (
@@ -154,21 +154,23 @@ class Settings extends Component {
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.item} onPress={() => this.showInput()}>
+        <TouchableOpacity style={styles.item} onPress={() => this.showOrHideInput()}>
           <Text style={styles.itemText}>Edit Username</Text>
           {showInput
             ? <View>
               <TextInput
                 value={userName}
-                style={styles.userNameField}
+                selectionColor={'#000'}
+                maxLength={16}
+                style={underColorU === true ? styles.inputIsActive : styles.input}
+                onFocus={() => this.setState({ underColorU: true })}
                 underlineColorAndroid='rgba(0,0,0,0)'
                 onChangeText={(userName) => this.setState({ userName })}
-                selectionColor={'#000'}
               />
               <TouchableOpacity
                 style={styles.button}
-                onPress={this.submitUserName}
-                disabled={userName === ''}>
+                disabled={userName === ''}
+                onPress={this.submitUserName}>
                 <Text style={styles.buttonText}>Submit</Text>
               </TouchableOpacity>
             </View>
@@ -181,11 +183,8 @@ class Settings extends Component {
         <TouchableOpacity style={styles.item} onPress={() => this.askPermission('cover')}>
           <Text style={styles.itemText}>Edit Cover Photo</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => this.deleteProfile()}>
+        <TouchableOpacity style={styles.item} onPress={() => this.removeProfile()}>
           <Text style={styles.deleteInfo}>Delete Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => removeDecks()}>
-          <Text style={styles.deleteInfo}>Delete Decks</Text>
         </TouchableOpacity>
       </View>
     );
@@ -199,28 +198,54 @@ const styles = StyleSheet.create({
     backgroundColor: white,
   },
   deleteInfo: {
-    fontSize: 22,
     color: red,
+    fontSize: 22,
   },
   item: {
-    borderBottomWidth: 1,
-    borderColor: gray,
     padding: 10,
+    borderColor: gray,
+    borderBottomWidth: 1,
   },
   itemText: {
     fontSize: 21,
     color: black,
   },
-  userNameField: {
+  input: {
     margin: 10,
-    backgroundColor: white,
     fontSize: 18,
-    borderBottomWidth: 1,
-    borderColor: '#e6b800'
+    borderBottomWidth: 2,
+    paddingBottom: 2,
+    borderColor: black,
+    backgroundColor: white,
+  },
+  inputIsActive: {
+    margin: 10,
+    fontSize: 18,
+    borderBottomWidth: 4,
+    borderColor: '#e6b800',
+    backgroundColor: white,
+  },
+  button: {
+    padding: 10,
+    backgroundColor: red,
+    marginLeft: 40,
+    marginTop: 10,
+    marginRight: 40,
+    borderRadius: 2,
+    shadowOpacity: 0.8,
+    shadowColor: 'rgba(0,0,0,0.24)',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
   },
   buttonText: {
     paddingLeft: 10,
-  }
+    fontSize: 18,
+    alignSelf: 'center',
+    color: white,
+    fontWeight: 'bold'
+  },
 });
 
 function mapStateToProps(decks) {

@@ -5,9 +5,10 @@ import {
   STORAGE_KEY,
   PROFILE_KEY,
   formatProfileResults,
-  formatNewProfile
+  formatNewProfile,
 } from './_data';
 
+// Deck APIs.
 export const getDecks = async () => {
   try {
     const decks = await AsyncStorage.getItem(STORAGE_KEY)
@@ -59,6 +60,33 @@ export const addDeckTitle = async (title) => {
   };
 };
 
+export function removeDeck(key) {
+  return AsyncStorage.getItem(STORAGE_KEY)
+    .then((results) => {
+      const data = JSON.parse(results);
+      data[key] = undefined;
+      delete data[key];
+      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data)), () => {
+        AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
+      }
+    })
+}
+
+export function recentActivityScore(deckTitle, score, timeStamp) {
+  AsyncStorage.getItem(STORAGE_KEY, () => {
+
+    AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+      [deckTitle]: {
+        'recentScore': score,
+        ['timeStamp']: timeStamp,
+      }
+    }), () => {
+      AsyncStorage.getItem(STORAGE_KEY).then((results) => console.log(JSON.parse(results)));
+    });
+  });
+};
+
+// Profile APIs.
 export const getProfile = async () => {
   try {
     const profile = await AsyncStorage.getItem(PROFILE_KEY)
@@ -80,10 +108,6 @@ export const deleteProfile = async () => {
     console.log(error.message);
   };
 };
-
-export function removeDecks() {
-  AsyncStorage.removeItem(STORAGE_KEY);
-}
 
 export function addProfileImg(image) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
@@ -114,20 +138,6 @@ export function addProfileName(username) {
       'username': username
     }), () => {
       AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)));
-    });
-  });
-};
-
-export function recentActivityScore(deckTitle, score, timeStamp) {
-  AsyncStorage.getItem(STORAGE_KEY, () => {
-
-    AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-      [deckTitle]: {
-        'recentScore': score,
-        ['timeStamp']: timeStamp,
-      }
-    }), () => {
-      AsyncStorage.getItem(STORAGE_KEY).then((results) => console.log(JSON.parse(results)));
     });
   });
 };

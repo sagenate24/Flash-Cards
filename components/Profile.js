@@ -7,66 +7,83 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 import { connect } from 'react-redux';
-import { black, red, spaceCadet, lightBlue, queenBlue, honeydew, white } from '../utils/colors';
+import {
+  black,
+  red,
+  white,
+} from '../utils/colors';
 import { timeToString } from '../utils/helpers';
-import Score from './Score';
+
+import ProfilePic from './ProfilePic';
+import CircleScore from './CircleScore';
 
 class Profile extends Component {
   render() {
     const { decks, profile } = this.props;
 
+    console.log(profile)
     return (
       <ScrollView style={styles.container}>
         <View>
           {profile.cover.length > 1
             ? <Image style={styles.topContent} source={{ uri: profile.cover }} />
             : <TouchableOpacity style={styles.topContent} onPress={() => this.props.navigation.navigate('Settings')}>
-                <Text style={{ fontSize: 16, alignSelf: 'center', marginTop: 10 }}>Choose cover photo</Text>
-              </TouchableOpacity>
+              <Text style={{ fontSize: 16, alignSelf: 'center', marginTop: 10, color: 'gray' }}>Choose cover photo</Text>
+            </TouchableOpacity>
           }
         </View>
-        <View style={styles.profileHeader}>
+        <View style={styles.profileAvatar}>
           {profile.avatar.length > 1
             ? <View>
-                <Image style={[styles.img]} source={{ uri: profile.avatar }} />
-              </View>
+              <ProfilePic borderColor={white} backUpSize={40} backUp={false} styles={styles.img} />
+            </View>
             : <TouchableOpacity style={styles.img} onPress={() => this.props.navigation.navigate('Settings')}>
-                <Text style={styles.cameraIcon}><Feather name='user-plus' color='#000' size={40} /></Text>
-              </TouchableOpacity>
+              <Text style={styles.cameraIcon}><Entypo name='add-user' style={{ color: 'gray' }} size={40} /></Text>
+            </TouchableOpacity>
           }
           {profile.username.length > 1
             ? <Text style={[styles.text, { fontSize: 30, padding: 20 }]}>{profile.username}</Text>
             : <TouchableOpacity onPress={() => this.props.navigation.navigate('Settings')}>
-                <Text style={[styles.text, { fontSize: 30, padding: 20 }]}>Create Username</Text>
-              </TouchableOpacity>
+              <Text style={[styles.text, { fontSize: 18, padding: 20, color: 'gray' }]}>Create Username</Text>
+            </TouchableOpacity>
           }
         </View>
         <View style={styles.itemContainer}>
-          <Text style={[styles.text, { fontSize: 20 }]}>Lastest Quiz Scores</Text>
+          <Text style={[styles.text, { fontSize: 20, marginBottom: 10 }]}>Lastest Quiz Scores</Text>
           {decks.map((deck) => {
-
             return (
               deck.recentScore || deck.recentScore === 0
-                ? <View style={styles.item} key={deck.timeStamp}>
-                    <View style={[styles.itemBox, { alignItems: 'flex-start', flex: 3 }]}>
+                ? <TouchableOpacity
+                  key={deck.timeStamp}
+                  onPress={() => this.props.navigation.navigate(
+                    'Deck',
+                    { currentDeck: deck }
+                  )}>
+                  <View style={styles.item}>
+                    <View>
                       <Text style={{ fontSize: 20 }}>
                         {deck.title}
                       </Text>
-                      <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
-                        {deck.questions.length > 1
-                          ? deck.questions.length + ` Cards`
-                          : deck.questions.length + ` Card`}
-                      </Text>
                     </View>
-                    <View style={[styles.itemBox, { alignItems: 'center', flex: 4 }]}>
-                      <Score style={{ margin: 10 }} percent={deck.recentScore} width={3} size={45} />
+                    <View style={styles.bottomCardContent}>
+                      <View style={[styles.itemBox, { alignItems: 'flex-start', flex: 3 }]}>
+                        <Text style={{ fontSize: 16, color: black, fontWeight: 'bold', marginTop: 10 }}>
+                          {deck.questions.length > 1
+                            ? deck.questions.length + ` Cards`
+                            : deck.questions.length + ` Card`}
+                        </Text>
+                      </View>
+                      <View style={[styles.itemBox, { alignItems: 'center', flex: 3 }]}>
+                        <CircleScore style={{ marginTop: 10 }} percent={deck.recentScore} width={2} size={45} textSize={{ fontSize: 10 }} />
+                      </View>
+                      <View style={[styles.itemBox, { alignItems: 'flex-end', flex: 4 }]}>
+                        <Text style={[styles.text, { fontSize: 15, marginTop: 10 }]}>{timeToString(deck.timeStamp)}</Text>
+                      </View>
                     </View>
-                    <View style={[styles.itemBox, { alignItems: 'flex-end', flex: 3 }]}>
-                      <Text style={[styles.text, { fontSize: 15 }]}>{timeToString(deck.timeStamp)}</Text>
-                    </View>
-                </View>
+                  </View>
+                </TouchableOpacity>
                 : null
             );
           })}
@@ -94,18 +111,19 @@ const styles = StyleSheet.create({
   cameraIcon: {
     flex: 1,
     alignSelf: 'center',
-    marginTop: 50,
+    marginTop: 45,
+    marginLeft: 9,
   },
-  profileHeader: {
+  profileAvatar: {
     alignItems: 'center'
   },
   img: {
     width: 140,
     height: 140,
     backgroundColor: white,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: queenBlue,
+    borderRadius: 70,
+    borderWidth: 5,
+    borderColor: white,
     marginTop: -70,
   },
   text: {
@@ -133,15 +151,18 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginTop: 17,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center',
     shadowOpacity: 0.8,
     shadowColor: 'rgba(0,0,0,0.24)',
     shadowOffset: {
       width: 0,
       height: 3,
     },
+  },
+  bottomCardContent: {
+    flexDirection: 'row',
+    marginTop: 10,
   },
   itemBox: {
     width: 50,

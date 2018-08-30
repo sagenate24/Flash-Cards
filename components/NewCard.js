@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet, TouchableOpacity, Platform, KeyboardAvoidingView } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { connect } from 'react-redux';
-import { white, black, red, honeydew } from '../utils/colors';
+import { white, black } from '../utils/colors';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
 
-// TODO: addSubmit button Animation
-// TODO: add TextInput Bottom Border Animation
+import CreateBtn from './CreateBtn';
 
 class NewCard extends Component {
   state = {
@@ -21,29 +26,28 @@ class NewCard extends Component {
     if (chosenInput === 'question') {
       this.setState(() => ({
         underColorQ: true,
-        underColorA: false
+        underColorA: false,
       }));
     } else {
       this.setState(() => ({
         underColorA: true,
-        underColorQ: false
+        underColorQ: false,
       }));
     };
   };
 
   submit = () => {
-    const { currentDeck } = this.props;
+    const { currentDeck, dispatch } = this.props;
     const deckTitle = currentDeck.title;
     const { question, answer } = this.state;
-    const card = { ['question']: question, ['answer']: answer };
 
-    this.props.dispatch(addCard({
-      card,
-      deckTitle
-    }));
+    const card = {
+      ['question']: question,
+      ['answer']: answer,
+    };
 
+    dispatch(addCard({ card, deckTitle }));
     this.toHome();
-
     addCardToDeck(card, deckTitle);
   };
 
@@ -67,26 +71,20 @@ class NewCard extends Component {
             underlineColorAndroid='rgba(0,0,0,0)'
             onFocus={() => this.changeUderlineColor('question')}
             onChangeText={(question) => this.setState({ question })}
-            style={underColorQ === true ? styles.inputActive : styles.input}/>
-          <Text>TERM</Text>
+            style={underColorQ === true ? styles.inputActive : styles.input} />
+          <Text>QUESTION</Text>
           <TextInput
             selectionColor={black}
             value={this.state.answer}
             underlineColorAndroid='rgba(0,0,0,0)'
             onFocus={() => this.changeUderlineColor('answer')}
             onChangeText={(answer) => this.setState({ answer })}
-            style={underColorA === true ? styles.inputActive : styles.input}/>
-          <Text>DEFINITION</Text>
+            style={underColorA === true ? styles.inputActive : styles.input} />
+          <Text>ANSWER</Text>
         </View>
-        {question === '' || answer === ''
-          ? null
-          : <TouchableOpacity
-            onPress={this.submit}
-            disabled={question === '' || answer === ''}
-            style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
-            <Text style={styles.submitBtnText}>Submit</Text>
-          </TouchableOpacity>
-        }
+        <CreateBtn disabled={question === '' || answer === ''} onPress={this.submit}>
+          Create Card
+        </CreateBtn>
       </KeyboardAvoidingView>
     );
   };
@@ -99,6 +97,7 @@ const styles = StyleSheet.create({
   },
   input: {
     fontSize: 20,
+    paddingBottom: 2,
     borderBottomWidth: 2,
     borderColor: black,
   },
@@ -106,30 +105,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     borderBottomWidth: 4,
     borderColor: '#e6b800',
-  },
-  iosSubmitBtn: {
-    backgroundColor: red,
-    padding: 10,
-    height: 45,
-    marginTop: 40,
-    marginLeft: 40,
-    marginRight: 40,
-  },
-  androidSubmitBtn: {
-    backgroundColor: red,
-    padding: 10,
-    marginTop: 40,
-    marginLeft: 40,
-    marginRight: 40,
-    height: 45,
-    borderRadius: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center',
   },
   item: {
     backgroundColor: white,

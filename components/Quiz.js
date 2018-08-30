@@ -1,45 +1,101 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity, Animated } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Easing,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Animated,
+  Platform
+} from 'react-native';
 import { connect } from 'react-redux';
-import { white, black, red } from '../utils/colors';
+import { white, black, red, lightBlue } from '../utils/colors';
 
 class Quiz extends Component {
   state = {
     questionIndex: 0,
     correctAnswers: 0,
-    showAnswer: false,
+    bounceValue: new Animated.Value(0.1)
   };
 
   componentWillMount() {
+    this.animateBounce()
+
     this.animatedValue = new Animated.Value(0);
     this.value = 0;
     this.animatedValue.addListener(({ value }) => {
       this.value = value;
     });
-    this.frontScreen = this.animatedValue.interpolate({
-      inputRange: [0, 180],
-      outputRange: ['0deg', '180deg'],
-    });
-    this.backScreen = this.animatedValue.interpolate({
-      inputRange: [0, 180],
-      outputRange: ['180deg', '360deg'],
-    });
+    if (Platform.OS === 'ios') {
+      this.frontScreen = this.animatedValue.interpolate({
+        inputRange: [0, 180],
+        outputRange: ['0deg', '180deg'],
+      });
+      this.backScreen = this.animatedValue.interpolate({
+        inputRange: [0, 180],
+        outputRange: ['180deg', '0deg'],
+      });
+    } else {
+      this.frontScreen = this.animatedValue.interpolate({
+        inputRange: [0, 180],
+        outputRange: ['0deg', '180deg'],
+      });
+      this.backScreen = this.animatedValue.interpolate({
+        inputRange: [0, 180],
+        outputRange: ['180deg', '360deg'],
+      });
+      this.frontOpacity = this.animatedValue.interpolate({
+        inputRange: [89, 90],
+        outputRange: [1, 0]
+      })
+      this.backOpacity = this.animatedValue.interpolate({
+        inputRange: [89, 90],
+        outputRange: [0, 1]
+      })
+    }
+
+  };
+
+  componentDidUpdate() {
+    this.flipBack()
   }
 
   flipCard() {
     if (this.value >= 90) {
-      Animated.spring(this.animatedValue, {
-        toValue: 0,
-        speed: 20,
-        bounciness: 2
-      }).start();
+      this.flipBack()
     } else {
-      Animated.spring(this.animatedValue, {
+      Animated.timing(this.animatedValue, {
         toValue: 180,
-        speed: 20,
-        bounciness: 2
+        easing: Easing.linear,
+        useNativeDriver: true
       }).start();
     }
+  }
+
+  flipBack() {
+    Animated.timing(this.animatedValue, {
+      toValue: 0,
+      easing: Easing.linear,
+      useNativeDriver: true
+    }).start();
+  }
+
+  animateBounce() {
+    const { bounceValue } = this.state;
+
+    Animated.sequence([
+      Animated.timing(bounceValue, {
+        duration: 200,
+        toValue: .1,
+        useNativeDriver: true
+      }),
+      Animated.spring(bounceValue, {
+        toValue: 1,
+        friction: 4,
+        useNativeDriver: true
+      }),
+    ]).start();
   }
 
   correctAnswer = () => {
@@ -49,10 +105,11 @@ class Quiz extends Component {
     if (questionIndex + 1 === questions.length) {
       this.goToResults('correct');
     } else {
+      this.animateBounce();
+      this.flipBack();
       this.setState(() => ({
         correctAnswers: correctAnswers + 1,
         questionIndex: questionIndex + 1,
-        showAnswer: false
       }));
     };
   };
@@ -64,60 +121,37 @@ class Quiz extends Component {
     if (questionIndex + 1 === questions.length) {
       this.goToResults('incorrect');
     } else {
-      this.setState(() => ({
-        questionIndex: questionIndex + 1,
-        showAnswer: false,
-      }));
-    };
-  };
-
-  showAnswer = () => {
-    const { showAnswer } = this.state;
-    if (showAnswer === false) {
-      this.setState(() => ({
-        showAnswer: true
-      }));
-    } else {
-      this.setState(() => ({
-        showAnswer: false
-      }));
+      this.animateBounce();
+      this.flipBack();
+      this.setState(() => ({ questionIndex: questionIndex + 1 }));
     };
   };
 
   goToResults = (lastAnswer) => {
-    if (lastAnswer === 'correct') {
-      this.props.navigation.navigate(
-        'Results',
-        {
-          correctAnswers: this.state.correctAnswers + 1,
-          currentDeck: this.props.currentDeck
-        }
-      );
-    } else {
-      this.props.navigation.navigate(
-        'Results',
-        {
-          correctAnswers: this.state.correctAnswers,
-          currentDeck: this.props.currentDeck
-        }
-      );
-    };
+    const { correctAnswers } = this.state;
+
+    this.props.navigation.navigate(
+      'Results',
+      {
+        correctAnswers: lastAnswer === 'correct' ? correctAnswers + 1 : correctAnswers,
+        currentDeck: this.props.currentDeck,
+      }
+    );
 
     this.setState(() => ({
       questionIndex: 0,
       correctAnswers: 0,
-      showAnswer: false,
     }));
   };
 
   render() {
     const { questions } = this.props.currentDeck;
-    const { questionIndex, showAnswer } = this.state;
+    const { questionIndex, bounceValue } = this.state;
     const questionsRemaining = questions.length - questionIndex;
 
     const frontAnimatedStyle = {
       transform: [
-        { rotateX: this.frontScreen }
+        { rotateY: this.frontScreen }
       ]
     }
     const backAnimatedStyle = {
@@ -125,47 +159,49 @@ class Quiz extends Component {
         { rotateY: this.backScreen }
       ]
     }
-    const cardsLeft = <Text style={questionsRemaining === 1 ? styles.lastCard : styles.cardsRemaining}>{questionsRemaining} Left</Text>;
 
-    const buttons = (
+    const cardsLeft = (
       <View>
-        <Button
-          onPress={this.correctAnswer}
-          title='Correct'
-          color='green'
-        />
-        <Button
-          onPress={this.wrongAnswer}
-          title='Incorrect'
-          color='red'
-        />
+        <Animated.Text
+          style={[
+            questionsRemaining === 1 ? styles.lastCard : styles.cardsRemaining,
+            { transform: [{ scale: bounceValue }] }
+          ]}>
+          {questionsRemaining} Left
+      </Animated.Text>
       </View>
     )
 
     return (
-      <TouchableOpacity
-        style={styles.container}
-        onPress={() => this.flipCard()}
-      >
-        {/* <View style={[mirrorText, styles.card]}> */}
-
-        <Animated.View style={[styles.card, frontAnimatedStyle]}>
-          {cardsLeft}
-          <View style={styles.content}>
-            <Text style={[styles.cardText, { textAlign: 'center' }]}>{questions[questionIndex].question}</Text>
+      <TouchableWithoutFeedback
+        onPress={() => this.flipCard()}>
+        <View style={styles.container}>
+          <Animated.View style={[styles.card, frontAnimatedStyle, {opacity: this.frontOpacity}]}>
+            {cardsLeft}<Text style={styles.cardHeader}>Question</Text>
+            <View style={styles.content}>
+              <Text style={[styles.cardText, { textAlign: 'center' }]}>{questions[questionIndex].question}</Text>
+            </View>
+          </Animated.View>
+          <Animated.View style={[backAnimatedStyle, styles.card, styles.flipCardBack, {opacity: this.backOpacity}]}>
+            {cardsLeft}<Text style={styles.cardHeader}>Answer</Text>
+            <View style={styles.content}>
+              <Text style={[styles.cardText, { textAlign: 'center' }]}>{questions[questionIndex].answer}</Text>
+            </View>
+          </Animated.View>
+          <View style={styles.bottomContent}>
+            <TouchableOpacity
+              style={styles.correctBtn}
+              onPress={this.correctAnswer}>
+              <Text style={styles.btnText}>Correct</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.incorrectBtn}
+              onPress={this.wrongAnswer}>
+              <Text style={styles.btnText}>Incorrect</Text>
+            </TouchableOpacity>
           </View>
-          {buttons}
-        </Animated.View>
-        <Animated.View style={[backAnimatedStyle, styles.card, styles.flipCardBack ]}>
-          {cardsLeft}
-          <View style={styles.content}>
-            <Text style={[styles.cardText, { textAlign: 'center' }]}>{questions[questionIndex].answer}</Text>
-          </View>
-          {buttons}
-        </Animated.View>
-
-        {/* </View> */}
-      </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
     );
   };
 };
@@ -179,14 +215,25 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: white,
     padding: 20,
-    height: '100%',
-    backfaceVisibility: 'hidden'
+    height: '80%',
+    backfaceVisibility: 'hidden',
+    shadowOpacity: 0.8,
+    shadowColor: 'rgba(0,0,0,0.24)',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
   },
   content: {
     flex: 1,
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  cardHeader: {
+    alignSelf: 'center',
+    opacity: .6,
+    fontSize: 16,
   },
   flipCardBack: {
     position: 'absolute',
@@ -207,13 +254,37 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     color: red,
   },
+  bottomContent: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  correctBtn: {
+    backgroundColor: lightBlue,
+    padding: 10,
+    marginTop: 20,
+    borderRadius: 2,
+  },
+  incorrectBtn: {
+    backgroundColor: red,
+    padding: 10,
+    marginTop: 20,
+    borderRadius: 2,
+  },
+  btnText: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: white,
+    textAlign: 'center',
+  }
 });
 
 function mapStateToProps(state, { navigation }) {
   const { currentDeck } = navigation.state.params;
 
   return {
-    currentDeck
+    currentDeck,
   };
 };
 

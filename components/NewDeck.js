@@ -1,30 +1,40 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  StyleSheet,
+} from 'react-native';
 import { connect } from 'react-redux';
 import { addDeckTitle, getDeck } from '../utils/api';
-import { white, black, red, honeydew } from '../utils/colors';
+import { white, black, red } from '../utils/colors';
 import { addDeck } from '../actions/decks';
+
+import CreateBtn from './CreateBtn';
 
 class NewDeck extends Component {
   state = {
     title: '',
+    underColorT: false,
   };
 
-  onSubmit = () => {
+  submit = () => {
     const { title } = this.state;
 
     addDeckTitle(title).then(() => getDeck(title).then((deck) => {
-      console.log(deck);
-      this.props.dispatch(addDeck(deck))
-        this.props.navigation.navigate(
-          'Deck',
-          { currentDeck: deck }
-        );
+      this.props.dispatch(addDeck({
+        [deck.title]: deck,
+      }))
+      this.props.navigation.navigate(
+        'Deck',
+        { currentDeck: deck, }
+      );
     }));
   };
 
   render() {
-    const { title } = this.state;
+    const { title, underColorT } = this.state;
+    const charactersLeft = 27 - title.length;
 
     return (
       <View style={styles.container}>
@@ -32,19 +42,19 @@ class NewDeck extends Component {
           <TextInput
             value={title}
             selectionColor={black}
-            style={styles.textInput}
             underlineColorAndroid='rgba(0,0,0,0)'
+            maxLength={27}
             onChangeText={(title) => this.setState({ title })}
-          />
+            onFocus={() => this.setState({ underColorT: true })}
+            style={underColorT === true ? styles.inputActive : styles.input} />
           <Text>TITLE</Text>
+          {charactersLeft <= 22 && (
+            <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
+          )}
         </View>
-        <TouchableOpacity
-          disabled={title === ''}
-          onPress={this.onSubmit}
-          style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-        >
-          <Text style={styles.btnText}>CREATE DECK</Text>
-        </TouchableOpacity>
+        <CreateBtn disabled={title === ''} onPress={this.submit}>
+          Create Deck
+        </CreateBtn>
       </View>
     );
   };
@@ -69,35 +79,22 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
-  textInput: {
+  input: {
     fontSize: 20,
+    paddingBottom: 2,
     borderBottomWidth: 2,
     borderColor: black,
   },
-  iosSubmitBtn: {
-    backgroundColor: red,
-    padding: 10,
-    height: 45,
-    marginTop: 40,
-    marginLeft: 40,
-    marginRight: 40,
+  inputActive: {
+    fontSize: 20,
+    borderBottomWidth: 4,
+    borderColor: '#e6b800',
   },
-  androidSubmitBtn: {
-    backgroundColor: red,
-    padding: 10,
-    marginTop: 40,
-    marginLeft: 40,
-    marginRight: 40,
-    height: 45,
-    borderRadius: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
+  inputIsGettingFull: {
+    color: red,
+    fontSize: 16,
+    opacity: .9,
   },
-  btnText: {
-    color: white,
-    fontSize: 22,
-    textAlign: 'center',
-  }
 });
 
 export default connect()(NewDeck);

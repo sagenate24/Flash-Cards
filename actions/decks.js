@@ -8,28 +8,28 @@ export function receiveDecks(decks) {
     type: RECEIVE_DECKS,
     decks,
   };
-};
+}
 
 export function addDeck(deck) {
   return {
     type: ADD_DECK,
     deck,
   };
-};
+}
 
 export function addCard({ card, deckTitle }) {
   return {
     type: ADD_CARD,
     card,
-    deckTitle
+    deckTitle,
   };
-};
+}
 
 export function addScore(deckTitle, score, timeStamp) {
   return {
     type: ADD_SCORE,
     deckTitle,
     score,
-    timeStamp
+    timeStamp,
   };
-};
+}

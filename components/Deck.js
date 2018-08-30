@@ -1,68 +1,92 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { black, white, lightBlue } from '../utils/colors';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
+import { removeDeck } from '../utils/api';
+import {
+  black,
+  white,
+  lightBlue,
+  red,
+  queenBlue,
+} from '../utils/colors';
+import { addDeck } from '../actions/decks';
 
-// TODO: Get decks from AsnyStorage
+import DeckOption from './DeckOption';
 
 class Deck extends Component {
+
+  handleRemoveDeck = () => {
+    const {
+      remove,
+      goBack,
+      deck,
+    } = this.props;
+
+    remove();
+    goBack();
+    removeDeck(deck.title)
+  }
   render() {
+    if (this.props.deck === null) {
+      return null
+    }
     const { title, questions } = this.props.deck;
+
     return (
       <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.cardCount}>
+        {this.props.deck !== null
+          ? <View style={styles.container}>
+            <View style={styles.deckTitleAndDelete}>
+              <Text style={styles.cardCount}>
+                {questions && questions.length
+                  ? questions.length > 1
+                    ? questions.length + ' Cards  |'
+                    : questions.length + ' Card  |'
+                  : '0 Cards'}
+              </Text>
+              <TouchableOpacity onPress={this.handleRemoveDeck}>
+                <Text style={[styles.removeText, { marginRight: 10 }]}>DELETE</Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.title}>{title}</Text>
+            <View style={styles.optionsContainer}>
+              <TouchableOpacity disabled={questions.length === 0} style={styles.navOption} onPress={() => this.props.navigation.navigate(
+                'Quiz',
+                { currentDeck: this.props.deck })}>
+                <DeckOption
+                  size={34}
+                  name={'pencil-box-outline'}
+                  iconStyle={{ color: queenBlue }}
+                  subHeaderColor={{ color: lightBlue}}>TAKE QUIZ</DeckOption>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.navOption} onPress={() => this.props.navigation.navigate(
+                'NewCard',
+                { currentDeck: this.props.deck })}>
+                <DeckOption
+                  size={34}
+                  name={'cards-outline'}
+                  iconStyle={{ color: queenBlue }}
+                  subHeaderColor={{ color: lightBlue}}>ADD CARD</DeckOption>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.title}>Cards</Text>
             {questions && questions.length
-              ? questions.length > 1
-                ? questions.length + ' Cards'
-                : questions.length + ' Card'
-              : '0 Cards'
-            }
-          </Text>
-          <Text style={styles.title}>{title}</Text>
-          <View style={styles.optionsContainer}>
-            <TouchableOpacity disabled={questions.length === 0} style={styles.metric} onPress={() => this.props.navigation.navigate(
-              'Quiz',
-              { currentDeck: this.props.deck }
-            )}>
-              <Text style={styles.header}>
-                <MaterialCommunityIcons
-                  size={34}
-                  name='pencil-box-outline'
-                  style={{ color: '#262673' }} />
-              </Text>
-              <Text style={[styles.subHeader, { color: lightBlue }]}>
-                QUIZ
-            </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.metric} onPress={() => this.props.navigation.navigate(
-              'NewCard',
-              { currentDeck: this.props.deck }
-            )}>
-              <Text style={styles.header}>
-                <MaterialCommunityIcons
-                  size={34}
-                  name='cards-outline'
-                  style={{ color: '#262673' }} />
-              </Text>
-              <Text style={[styles.subHeader, { color: lightBlue }]}>
-                ADD CARD
-            </Text>
-            </TouchableOpacity>
+              ? questions.map((item) => {
+                return (
+                  <View style={styles.item} key={item.question}>
+                    <Text>{item.question}</Text>
+                  </View>
+                );
+              })
+              : <Text style={styles.empty}>No Cards</Text>}
           </View>
-          <Text style={styles.title}>Cards</Text>
-          {questions && questions.length
-            ? questions.map((item) => {
-              return (
-                <View style={styles.item} key={item.question}>
-                  <Text>{item.question}</Text>
-                </View>
-              );
-            })
-            : <Text>No Cards</Text>
-          }
-        </View>
+          : null}
       </ScrollView>
     );
   };
@@ -73,15 +97,21 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 26,
   },
+  deckTitleAndDelete: {
+    flex: 1,
+    flexDirection: 'row'
+  },
   title: {
     fontSize: 20,
     color: black,
     fontWeight: 'bold',
   },
-  header: {
-    textAlign: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
+  removeText: {
+    fontSize: 14,
+    color: red,
+    opacity: .8,
+    marginLeft: 7,
+    marginTop: .5,
   },
   cardCount: {
     fontSize: 14,
@@ -92,7 +122,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 30,
   },
-  metric: {
+  navOption: {
     flex: 1,
     marginTop: 10,
     marginBottom: 20,
@@ -109,11 +139,6 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
-  subHeader: {
-    fontSize: 14,
-    textAlign: 'center',
-    marginBottom: 5,
-  },
   item: {
     backgroundColor: white,
     borderRadius: 2,
@@ -129,6 +154,14 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
+  empty: {
+    color: '#C0C0C0',
+    flex: 1,
+    fontWeight: 'bold',
+    fontSize: 24,
+    alignSelf: 'center',
+    marginTop: 100,
+  },
 });
 
 function mapStateToProps(state, { navigation }) {
@@ -137,6 +170,19 @@ function mapStateToProps(state, { navigation }) {
   return {
     deck: state.decks[currentDeck.title],
   };
+
 };
 
-export default connect(mapStateToProps)(Deck);
+function mapDispatchToProps(dispatch, { navigation }) {
+  const { currentDeck } = navigation.state.params;
+  return {
+    remove: () => dispatch(addDeck({
+      [currentDeck.title]: null
+    })),
+    goBack: () => navigation.navigate(
+      'DeckList',
+    )
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Deck);

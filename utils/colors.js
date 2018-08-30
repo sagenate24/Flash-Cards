@@ -7,3 +7,4 @@ export const honeydew = '#f1faee';
 export const lightBlue = '#a8dadc';
 export const queenBlue = '#457b9d';
 export const spaceCadet = '#1d3557';
+export const yellow = '#e3b505';

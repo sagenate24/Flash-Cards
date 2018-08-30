@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, View, StyleSheet, TouchableOpacity, ScrollView, Modal } from 'react-native';
-import { handleInitialData } from '../actions/shared';
-import { gray, white, lightBlue, black, honeydew, red } from '../utils/colors';
-import OnLoad from './OnLoad';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Modal
+} from 'react-native';
+import { receiveDecks } from '../actions/decks';
+import { receiveProfile } from '../actions/profile';
+import { gray, white, black, red } from '../utils/colors';
+import { getInitialData } from '../utils/helpers';
 
+import OnLoad from './OnLoad';
 
 class DeckList extends Component {
   state = {
@@ -14,18 +23,23 @@ class DeckList extends Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
+
+    getInitialData().then(({ decks, profile }) => {
+      dispatch(receiveDecks(decks));
+      dispatch(receiveProfile(profile));
+    }).then(() => {
+      setTimeout(() => {
+        this.setState(() => ({
+          ready: true,
+        }))
+      }, 2500);
+    });
+
     setTimeout(() => {
       this.setState(() => ({
         modalType: 'slide',
       }));
     }, 1000);
-
-    dispatch(handleInitialData()).then(() =>
-      setTimeout(() => {
-        this.setState(() => ({
-          ready: true,
-        }));
-      }, 4000));
   };
 
   render() {
@@ -50,36 +64,44 @@ class DeckList extends Component {
             'NewDeck'
           )}>
             <Text style={styles.btnText}>
-              Create a new study deck
+              Create a new deck
             </Text>
           </TouchableOpacity>
         </View>
         <Text style={styles.deckListTitle}>Your Decks</Text>
-        {Object.keys(decks).map((deck) => {
-
-          return (
-            <View style={styles.item} key={deck}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate(
-                'Deck',
-                { currentDeck: decks[deck] }
-              )}>
-                <Text style={{ fontSize: 20 }}>
-                  {decks[deck].title}
-                </Text>
-                {decks[deck].questions && decks[deck].questions.length
-                  ?
-                  <Text style={{ fontSize: 16, color: lightBlue }}>
-                    {decks[deck].questions.length > 1
-                      ? decks[deck].questions.length + ` Cards`
-                      : decks[deck].questions.length + ` Card`}
-                  </Text>
-                  :
-                  <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
-                }
-              </TouchableOpacity>
-            </View>
-          );
-        })}
+        <View style={{ marginBottom: 57 }}>
+          {this.props && this.props.decks
+            ? Object.values(decks).map((deck) => {
+              if (!deck.title) {
+                return null;
+              } else {
+                return (
+                  <View style={styles.item} key={deck.title}>
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate(
+                        'Deck',
+                        { currentDeck: deck }
+                      )}>
+                      <Text style={{ fontSize: 20 }}>
+                        {deck.title}
+                      </Text>
+                      {deck.questions && deck.questions.length
+                        ? <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
+                          {deck.questions.length > 1
+                            ? deck.questions.length + ` Cards`
+                            : deck.questions.length + ` Card`}
+                        </Text>
+                        :
+                        <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
+                      }
+                    </TouchableOpacity>
+                  </View>
+                )
+              }
+            })
+            : <Text style={styles.noCards}>You have no decks</Text>
+          }
+        </View>
       </ScrollView>
     );
   };
@@ -131,12 +153,28 @@ const styles = StyleSheet.create({
     color: white,
     fontSize: 22,
     textAlign: 'center',
+  },
+  noCards: {
+    fontSize: 22,
+    alignSelf: 'center',
+    marginTop: 20,
+    opacity: .5,
+  },
+  remove: {
+    alignSelf: 'flex-end',
+    fontSize: 16,
+    color: red,
   }
 });
 
 function mapStateToProps({ decks }) {
   return {
-    decks,
+    decks: Object.values(decks).map((deck) => {
+
+      return {
+        ...deck,
+      };
+    }).sort((a, b) => b.timeStamp - a.timeStamp)
   };
 };
 

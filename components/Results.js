@@ -1,43 +1,46 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Platform
+} from 'react-native';
 import { connect } from 'react-redux';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 import { white, black, red } from '../utils/colors';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { recentActivityScore } from '../utils/api';
 import { addScore } from '../actions/decks';
-import Score from './Score';
+
+import CircleScore from './CircleScore';
 
 class Results extends Component {
   componentDidMount() {
     const { currentDeck, correctAnswers } = this.props;
-    let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
-    let timeStamp = Date.now();
+    const correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
+    const timeStamp = Date.now();
 
     recentActivityScore(currentDeck.title, correctPercent, timeStamp);
 
     this.props.dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
-  };
+
+      clearLocalNotification().then(() => {
+        setLocalNotification()
+      });
+  }
 
   handlePercent = () => {
     const { currentDeck, correctAnswers } = this.props;
-    let correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
-
+    const correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
     return correctPercent;
-  };
+  }
 
-  studyMore = () => {
+  goTo = (view) => {
     this.props.navigation.navigate(
-      'Deck',
+      view,
       {currentDeck: this.props.currentDeck}
     );
-  };
-
-  quizRetake = () => {
-    this.props.navigation.navigate(
-      'Quiz',
-      {currentDeck: this.props.currentDeck}
-    );
-  };
+  }
 
   render() {
     const { currentDeck, correctAnswers } = this.props;
@@ -46,15 +49,12 @@ class Results extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.card}>
-          <Score
+          <Text style={styles.header}>Quiz Results</Text>
+          <CircleScore
             percent={percent}
-            width={10}
-            size={150}
-            textSize={{
-              fontSize: 34,
-              fontWeight: 'bold'
-            }} />
-
+            width={5}
+            size={130}
+            textSize={{fontSize: 34}} />
           <View style={{ marginTop: 20 }}>
             {percent >= 80
               ? <Text style={styles.reviewText}>Great Job!</Text>
@@ -66,12 +66,12 @@ class Results extends Component {
           </View>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-            onPress={this.quizRetake}>
+            onPress={() => this.goTo('Quiz')}>
             <Text style={styles.submitBtnText}>Retake</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-            onPress={this.studyMore}>
+            onPress={() => this.goTo('Deck')}>
             <Text style={styles.submitBtnText}>Study More</Text>
           </TouchableOpacity>
         </View>
@@ -92,19 +92,12 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
   },
-  content: {
-    flex: 1,
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cardText: {
+  header: {
+    padding: 30,
+    fontSize: 26,
     color: black,
-    fontSize: 20,
-  },
-  percentText: {
-    fontSize: 34,
     fontWeight: 'bold',
+    justifyContent: 'flex-start'
   },
   reviewText: {
     fontSize: 34,
@@ -135,6 +128,7 @@ const styles = StyleSheet.create({
   submitBtnText: {
     color: white,
     fontSize: 22,
+    fontWeight: 'bold',
     textAlign: 'center',
   },
 });
@@ -144,7 +138,7 @@ function mapStateToProps(state, { navigation }) {
 
   return {
     correctAnswers: correctAnswers,
-    currentDeck
+    currentDeck,
   };
 };
 
