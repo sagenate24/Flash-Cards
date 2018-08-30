@@ -22,11 +22,7 @@ import DeckOption from './DeckOption';
 class Deck extends Component {
 
   handleRemoveDeck = () => {
-    const {
-      remove,
-      goBack,
-      deck,
-    } = this.props;
+    const { remove, goBack, deck } = this.props;
 
     remove();
     goBack();
