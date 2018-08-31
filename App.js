@@ -2,9 +2,9 @@ import React from 'react';
 import { createStore } from 'redux';
 import { Constants } from 'expo';
 import { Provider } from 'react-redux';
+import { View, StatusBar } from 'react-native';
 import reducer from './reducers';
 import middleware from './middleware';
-import { View, StatusBar } from 'react-native';
 import { queenBlue } from './utils/colors';
 import { setLocalNotification } from './utils/helpers';
 
@@ -22,16 +22,17 @@ class App extends React.Component {
   componentDidMount() {
     setLocalNotification();
   }
+
   render() {
     return (
       <Provider store={createStore(reducer, middleware)}>
         <View style={{ flex: 1 }}>
-          <CardsStatusBar backgroundColor={queenBlue} barStyle='light-content' />
+          <CardsStatusBar backgroundColor={queenBlue} barStyle="light-content" />
           <Stack />
         </View>
       </Provider>
     );
-  };
-};
+  }
+}
 
 export default App;

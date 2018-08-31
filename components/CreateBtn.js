@@ -12,7 +12,8 @@ export default function CreateBtn({ children, onPress, disabled }) {
     <TouchableOpacity
       disabled={disabled}
       onPress={onPress}
-      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}>
+      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
+    >
       <Text style={styles.btnText}>{children}</Text>
     </TouchableOpacity>
   );

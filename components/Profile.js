@@ -23,44 +23,58 @@ class Profile extends Component {
   render() {
     const { decks, profile } = this.props;
 
-    console.log(profile)
+    console.log(profile);
     return (
       <ScrollView style={styles.container}>
         <View>
           {profile.cover.length > 1
             ? <Image style={styles.topContent} source={{ uri: profile.cover }} />
-            : <TouchableOpacity style={styles.topContent} onPress={() => this.props.navigation.navigate('Settings')}>
-              <Text style={{ fontSize: 16, alignSelf: 'center', marginTop: 10, color: 'gray' }}>Choose cover photo</Text>
-            </TouchableOpacity>
+            : (
+              <TouchableOpacity style={styles.topContent} onPress={() => this.props.navigation.navigate('Settings')}>
+                <Text style={{
+                  fontSize: 16, alignSelf: 'center', marginTop: 10, color: 'gray',
+                }}
+                >
+                  Choose cover photo
+                </Text>
+              </TouchableOpacity>
+            )
           }
         </View>
         <View style={styles.profileAvatar}>
           {profile.avatar.length > 1
-            ? <View>
-              <ProfilePic borderColor={white} backUpSize={40} backUp={false} styles={styles.img} />
-            </View>
-            : <TouchableOpacity style={styles.img} onPress={() => this.props.navigation.navigate('Settings')}>
-              <Text style={styles.cameraIcon}><Entypo name='add-user' style={{ color: 'gray' }} size={40} /></Text>
-            </TouchableOpacity>
+            ? (
+              <View>
+                <ProfilePic borderColor={white} backUpSize={40} backUp={false} styles={styles.img} />
+              </View>
+            )
+            : (
+              <TouchableOpacity style={styles.img} onPress={() => this.props.navigation.navigate('Settings')}>
+                <Text style={styles.cameraIcon}><Entypo name="add-user" style={{ color: 'gray' }} size={40} /></Text>
+              </TouchableOpacity>
+            )
           }
           {profile.username.length > 1
             ? <Text style={[styles.text, { fontSize: 30, padding: 20 }]}>{profile.username}</Text>
-            : <TouchableOpacity onPress={() => this.props.navigation.navigate('Settings')}>
-              <Text style={[styles.text, { fontSize: 18, padding: 20, color: 'gray' }]}>Create Username</Text>
-            </TouchableOpacity>
+            : (
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Settings')}>
+                <Text style={[styles.text, { fontSize: 18, padding: 20, color: 'gray' }]}>Create Username</Text>
+              </TouchableOpacity>
+            )
           }
         </View>
         <View style={styles.itemContainer}>
           <Text style={[styles.text, { fontSize: 20, marginBottom: 10 }]}>Lastest Quiz Scores</Text>
-          {decks.map((deck) => {
-            return (
-              deck.recentScore || deck.recentScore === 0
-                ? <TouchableOpacity
+          {decks.map(deck => (
+            deck.recentScore || deck.recentScore === 0
+              ? (
+                <TouchableOpacity
                   key={deck.timeStamp}
                   onPress={() => this.props.navigation.navigate(
                     'Deck',
-                    { currentDeck: deck }
-                  )}>
+                    { currentDeck: deck },
+                  )}
+                >
                   <View style={styles.item}>
                     <View>
                       <Text style={{ fontSize: 20 }}>
@@ -69,10 +83,13 @@ class Profile extends Component {
                     </View>
                     <View style={styles.bottomCardContent}>
                       <View style={[styles.itemBox, { alignItems: 'flex-start', flex: 3 }]}>
-                        <Text style={{ fontSize: 16, color: black, fontWeight: 'bold', marginTop: 10 }}>
+                        <Text style={{
+                          fontSize: 16, color: black, fontWeight: 'bold', marginTop: 10,
+                        }}
+                        >
                           {deck.questions.length > 1
-                            ? deck.questions.length + ` Cards`
-                            : deck.questions.length + ` Card`}
+                            ? `${deck.questions.length} Cards`
+                            : `${deck.questions.length} Card`}
                         </Text>
                       </View>
                       <View style={[styles.itemBox, { alignItems: 'center', flex: 3 }]}>
@@ -84,14 +101,14 @@ class Profile extends Component {
                     </View>
                   </View>
                 </TouchableOpacity>
-                : null
-            );
-          })}
+              )
+              : null
+          ))}
         </View>
       </ScrollView>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -115,7 +132,7 @@ const styles = StyleSheet.create({
     marginLeft: 9,
   },
   profileAvatar: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   img: {
     width: 140,
@@ -166,7 +183,7 @@ const styles = StyleSheet.create({
   },
   itemBox: {
     width: 50,
-  }
+  },
 });
 
 function mapStateToProps({ decks, profile }) {
@@ -179,8 +196,8 @@ function mapStateToProps({ decks, profile }) {
         ...deck,
         timeStamp,
       };
-    }).sort((a, b) => b.timeStamp - a.timeStamp)
+    }).sort((a, b) => b.timeStamp - a.timeStamp),
   };
-};
+}
 
 export default connect(mapStateToProps)(Profile);

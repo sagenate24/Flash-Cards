@@ -12,13 +12,13 @@ function getDecks(deck) {
       questions: [
         {
           question: 'What is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is React?',
-          answer: 'A library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfaces'
+          answer: 'A library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfaces',
         },
         {
           question: 'Where do you make Ajax requests in React?',
-          answer: 'The componentDidMount lifecycle event'
-        }
-      ]
+          answer: 'The componentDidMount lifecycle event',
+        },
+      ],
     },
     JavaScript: {
       title: 'JavaScript',
@@ -27,9 +27,9 @@ function getDecks(deck) {
       questions: [
         {
           question: 'What is a closure?The combination of a function and the lexical enviornment with in which that function was declaredThe combination of a functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona function',
-          answer: 'The combination of a function and the lexical enviornment with in which that function was declared.The combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declared'
-        }
-      ]
+          answer: 'The combination of a function and the lexical enviornment with in which that function was declared.The combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declared',
+        },
+      ],
     },
     Blahhah: {
       title: 'Blahhah',
@@ -38,16 +38,16 @@ function getDecks(deck) {
       questions: [
         {
           question: 'Wha',
-          answer: 'The'
-        }
-      ]
-    }
-  }
+          answer: 'The',
+        },
+      ],
+    },
+  };
 
   return typeof deck === 'undefined'
     ? info
-    : info[deck]
-};
+    : info[deck];
+}
 
 function getProfile(profile) {
   const info = {
@@ -55,13 +55,13 @@ function getProfile(profile) {
       username: '',
       avatar: '',
       cover: '',
-    }
+    },
   };
 
   return typeof profile === 'undefined'
     ? info
-    : info[profile]
-};
+    : info[profile];
+}
 
 function setDummyData() {
   const {
@@ -80,13 +80,13 @@ function setDummyData() {
   AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dummyData));
 
   return dummyData;
-};
+}
 
 export function formatDeckResults(results) {
   return results === null
     ? setDummyData()
     : JSON.parse(results);
-};
+}
 
 export function formatNewDeck(deckTitle) {
   const timestamp = Date.now();
@@ -98,7 +98,7 @@ export function formatNewDeck(deckTitle) {
       questions: [],
     },
   });
-};
+}
 
 function setDummyProfile() {
   const { profile } = getProfile();
@@ -106,13 +106,13 @@ function setDummyProfile() {
   AsyncStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
 
   return profile;
-};
+}
 
 export function formatProfileResults(results) {
   return results === null
     ? setDummyProfile()
     : JSON.parse(results);
-};
+}
 
 export function formatNewProfileImage(image) {
   return JSON.stringify({
@@ -120,8 +120,8 @@ export function formatNewProfileImage(image) {
       avatar: image,
     },
   });
-};
+}
 
 export function formatNewProfile() {
-  return setDummyProfile()
-};
+  return setDummyProfile();
+}

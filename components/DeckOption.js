@@ -6,14 +6,17 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function DeckOption({ size, name, iconStyle, subHeaderColor, children }) {
+export default function DeckOption({
+  size, name, iconStyle, subHeaderColor, children,
+}) {
   return (
     <View>
       <Text style={styles.header}>
         <MaterialCommunityIcons
           size={size}
           name={name}
-          style={iconStyle} />
+          style={iconStyle}
+        />
       </Text>
       <Text style={[styles.subHeader, subHeaderColor]}>
         {children}

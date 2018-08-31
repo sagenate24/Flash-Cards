@@ -25,81 +25,73 @@ export const Stack = createStackNavigator({
         headerStyle: {
           backgroundColor: queenBlue,
         },
-      }
+      };
     },
   },
   Deck: {
     screen: Deck,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Home') }} />),
-        title: 'SET',
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: queenBlue,
-        }
-      }
-    }
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Home'); }} />),
+      title: 'SET',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: queenBlue,
+      },
+    }),
   },
   NewCard: {
     screen: NewCard,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Deck') }} />),
-        title: 'NEW CARD',
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: queenBlue,
-        }
-      }
-    }
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Deck'); }} />),
+      title: 'NEW CARD',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: queenBlue,
+      },
+    }),
   },
   NewDeck: {
     screen: NewDeck,
     mode: 'modal',
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Home') }} />),
-        title: 'NEW DECK',
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: queenBlue,
-        }
-      }
-    }
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Home'); }} />),
+      title: 'NEW DECK',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: queenBlue,
+      },
+    }),
   },
   Quiz: {
     screen: Quiz,
-    navigationOptions: ({ navigation }) => {
-      return {
-        headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Deck') }} />),
-        title: 'QUIZ',
-        headerTintColor: white,
-        headerStyle: {
-          backgroundColor: queenBlue,
-        }
-      }
-    }
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (<HeaderBackButton tintColor={white} onPress={() => { navigation.navigate('Deck'); }} />),
+      title: 'QUIZ',
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: queenBlue,
+      },
+    }),
   },
   Results: {
     screen: Results,
     mode: 'modal',
     navigationOptions: () => ({
       title: 'RESULTS',
-      header: null
-    })
+      header: null,
+    }),
   },
   OnLoad: {
     screen: OnLoad,
     mode: 'modal',
     navigationOptions: () => ({
-      header: null
-    })
+      header: null,
+    }),
   },
 }, {
-    initialRouteName: 'Home',
-    mode: 'card',
-    headerMode: 'float',
-    headerTransitionPreset: 'uikit',
-    headerLayoutPreset: 'center'
-  });
+  initialRouteName: 'Home',
+  mode: 'card',
+  headerMode: 'float',
+  headerTransitionPreset: 'uikit',
+  headerLayoutPreset: 'center',
+});

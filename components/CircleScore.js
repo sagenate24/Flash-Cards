@@ -17,10 +17,15 @@ const colorPicker = (percent) => {
   }
   if (percent === 100) {
     return lightBlue;
-  };
-}
+  }
+};
 
-export default function CircleScore({ textSize, size, width, percent }) {
+export default function CircleScore({
+  textSize,
+  size,
+  width,
+  percent,
+}) {
   return (
     <AnimatedCircularProgress
       size={size}
@@ -28,14 +33,16 @@ export default function CircleScore({ textSize, size, width, percent }) {
       width={width}
       prefill={0}
       arcSweepAngle={225}
-      lineCap={'round'}
+      lineCap="round"
       fill={percent}
       tintColor={colorPicker(percent)}
       rotation={247.5}
-      backgroundColor="#f2f2f2" >
+      backgroundColor="#f2f2f2"
+    >
       {
         () => (
           <Text style={[textSize, { color: black, fontWeight: 'bold' }]}>
+            {/* eslint-disable-next-line */}
             {percent}%
           </Text>
         )

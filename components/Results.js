@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Platform
+  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
@@ -13,6 +13,8 @@ import { recentActivityScore } from '../utils/api';
 import { addScore } from '../actions/decks';
 
 import CircleScore from './CircleScore';
+
+// buttons in andriod need to be fixed.
 
 class Results extends Component {
   componentDidMount() {
@@ -24,9 +26,9 @@ class Results extends Component {
 
     this.props.dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
 
-      clearLocalNotification().then(() => {
-        setLocalNotification()
-      });
+    clearLocalNotification().then(() => {
+      setLocalNotification();
+    });
   }
 
   handlePercent = () => {
@@ -38,7 +40,7 @@ class Results extends Component {
   goTo = (view) => {
     this.props.navigation.navigate(
       view,
-      {currentDeck: this.props.currentDeck}
+      { currentDeck: this.props.currentDeck },
     );
   }
 
@@ -54,7 +56,8 @@ class Results extends Component {
             percent={percent}
             width={5}
             size={130}
-            textSize={{fontSize: 34}} />
+            textSize={{ fontSize: 34 }}
+          />
           <View style={{ marginTop: 20 }}>
             {percent >= 80
               ? <Text style={styles.reviewText}>Great Job!</Text>
@@ -62,23 +65,33 @@ class Results extends Component {
             }
           </View>
           <View>
-            <Text>You got {correctAnswers} out of {currentDeck.questions.length} correct.</Text>
+            <Text>
+You got
+              {correctAnswers}
+              {' '}
+out of
+              {currentDeck.questions.length}
+              {' '}
+correct.
+            </Text>
           </View>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-            onPress={() => this.goTo('Quiz')}>
+            onPress={() => this.goTo('Quiz')}
+          >
             <Text style={styles.submitBtnText}>Retake</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-            onPress={() => this.goTo('Deck')}>
+            onPress={() => this.goTo('Deck')}
+          >
             <Text style={styles.submitBtnText}>Study More</Text>
           </TouchableOpacity>
         </View>
       </View>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -97,7 +110,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     color: black,
     fontWeight: 'bold',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   reviewText: {
     fontSize: 34,
@@ -137,9 +150,9 @@ function mapStateToProps(state, { navigation }) {
   const { correctAnswers, currentDeck } = navigation.state.params;
 
   return {
-    correctAnswers: correctAnswers,
+    correctAnswers,
     currentDeck,
   };
-};
+}
 
 export default connect(mapStateToProps)(Results);

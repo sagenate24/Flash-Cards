@@ -24,10 +24,10 @@ class NewDeck extends Component {
     addDeckTitle(title).then(() => getDeck(title).then((deck) => {
       this.props.dispatch(addDeck({
         [deck.title]: deck,
-      }))
+      }));
       this.props.navigation.navigate(
         'Deck',
-        { currentDeck: deck, }
+        { currentDeck: deck },
       );
     }));
   };
@@ -42,11 +42,12 @@ class NewDeck extends Component {
           <TextInput
             value={title}
             selectionColor={black}
-            underlineColorAndroid='rgba(0,0,0,0)'
+            underlineColorAndroid="rgba(0,0,0,0)"
             maxLength={27}
-            onChangeText={(title) => this.setState({ title })}
+            onChangeText={title => this.setState({ title })}
             onFocus={() => this.setState({ underColorT: true })}
-            style={underColorT === true ? styles.inputActive : styles.input} />
+            style={underColorT === true ? styles.inputActive : styles.input}
+          />
           <Text>TITLE</Text>
           {charactersLeft <= 22 && (
             <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
@@ -57,8 +58,8 @@ class NewDeck extends Component {
         </CreateBtn>
       </View>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   inputIsGettingFull: {
     color: red,
     fontSize: 16,
-    opacity: .9,
+    opacity: 0.9,
   },
 });
 

@@ -12,23 +12,23 @@ import {
 export const getDecks = async () => {
   try {
     const decks = await AsyncStorage.getItem(STORAGE_KEY)
-      .then((results) => formatDeckResults(results));
+      .then(results => formatDeckResults(results));
 
     return decks;
   } catch (error) {
     console.log(error.message);
-  };
+  }
 };
 
 export const getDeck = async (deckTitle) => {
   try {
     const decks = await AsyncStorage.getItem(STORAGE_KEY)
-      .then((results) => JSON.parse(results));
+      .then(results => JSON.parse(results));
 
     return decks[deckTitle];
   } catch (error) {
     console.log(error.message);
-  };
+  }
 };
 
 export function addCardToDeck(card, deckTitle) {
@@ -40,13 +40,13 @@ export function addCardToDeck(card, deckTitle) {
 
     AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
-        questions: questionsArr
+        questions: questionsArr,
       },
     }), () => {
-      AsyncStorage.getItem(STORAGE_KEY).then((results) => console.log(JSON.parse(results)));
+      AsyncStorage.getItem(STORAGE_KEY).then(results => console.log(JSON.parse(results)));
     });
   });
-};
+}
 
 export const addDeckTitle = async (title) => {
   try {
@@ -57,7 +57,7 @@ export const addDeckTitle = async (title) => {
     return JSON.parse(newDeck);
   } catch (error) {
     console.log(error.message);
-  };
+  }
 };
 
 export function removeDeck(key) {
@@ -67,35 +67,34 @@ export function removeDeck(key) {
       data[key] = undefined;
       delete data[key];
       AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data)), () => {
-        AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)))
-      }
-    })
+        AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
+      };
+    });
 }
 
 export function recentActivityScore(deckTitle, score, timeStamp) {
   AsyncStorage.getItem(STORAGE_KEY, () => {
-
     AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
-        'recentScore': score,
-        ['timeStamp']: timeStamp,
-      }
+        recentScore: score,
+        timeStamp,
+      },
     }), () => {
-      AsyncStorage.getItem(STORAGE_KEY).then((results) => console.log(JSON.parse(results)));
+      AsyncStorage.getItem(STORAGE_KEY).then(results => console.log(JSON.parse(results)));
     });
   });
-};
+}
 
 // Profile APIs.
 export const getProfile = async () => {
   try {
     const profile = await AsyncStorage.getItem(PROFILE_KEY)
-      .then((results) => formatProfileResults(results));
+      .then(results => formatProfileResults(results));
 
     return profile;
   } catch (error) {
     console.log(error.message);
-  };
+  }
 };
 
 export const deleteProfile = async () => {
@@ -106,38 +105,35 @@ export const deleteProfile = async () => {
     return profile;
   } catch (error) {
     console.log(error.message);
-  };
+  }
 };
 
 export function addProfileImg(image) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
-
     AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
-      'avatar': image
+      avatar: image,
     }), () => {
-      AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)));
+      AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
     });
   });
-};
+}
 
 export function addProfileCover(image) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
-
     AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
-      'cover': image
+      cover: image,
     }), () => {
-      AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)));
+      AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
     });
   });
-};
+}
 
 export function addProfileName(username) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
-
     AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
-      'username': username
+      username,
     }), () => {
-      AsyncStorage.getItem(PROFILE_KEY).then((results) => console.log(JSON.parse(results)));
+      AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
     });
   });
-};
+}

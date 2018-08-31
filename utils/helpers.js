@@ -1,30 +1,28 @@
-import { getDecks, getProfile } from './api';
 import { Notifications, Permissions } from 'expo';
 import { AsyncStorage } from 'react-native';
+import { getDecks, getProfile } from './api';
 
 const NOTIFICATION_KEY = 'FlashCards:notifications';
 
-export const getInitialData = () => {
-  return Promise.all([
-    getDecks(),
-    getProfile(),
-  ]).then(([decks, profile]) => ({
-    decks,
-    profile
-  }));
-};
+export const getInitialData = () => Promise.all([
+  getDecks(),
+  getProfile(),
+]).then(([decks, profile]) => ({
+  decks,
+  profile,
+}));
 
 export function timeToString(timestamp) {
   const date = new Date(timestamp);
   const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
 
   return todayUTC.toDateString().substring(4);
-};
+}
 
 export function clearLocalNotification() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
     .then(Notifications.cancelAllScheduledNotificationsAsync);
-};
+}
 
 export function createNotification() {
   return {
@@ -38,9 +36,9 @@ export function createNotification() {
       priority: 'high',
       sticky: false,
       vibrate: true,
-    }
+    },
   };
-};
+}
 
 export function setLocalNotification() {
   AsyncStorage.getItem(NOTIFICATION_KEY)
@@ -52,7 +50,7 @@ export function setLocalNotification() {
             if (status === 'granted') {
               Notifications.cancelAllScheduledNotificationsAsync();
 
-              let tomorrow = new Date();
+              const tomorrow = new Date();
               tomorrow.setDate(tomorrow.getDate() + 1);
               tomorrow.setHours(20);
               tomorrow.setMinutes(0);
@@ -62,12 +60,12 @@ export function setLocalNotification() {
                 {
                   time: tomorrow,
                   repeat: 'day',
-                }
+                },
               );
 
               AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
-            };
+            }
           });
-      };
+      }
     });
-};
+}

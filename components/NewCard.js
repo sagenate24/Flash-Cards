@@ -7,12 +7,14 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 import { white, black } from '../utils/colors';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
-import { NavigationActions } from 'react-navigation';
 
 import CreateBtn from './CreateBtn';
+
+// add keyboard avoiding view
 
 class NewCard extends Component {
   state = {
@@ -33,7 +35,7 @@ class NewCard extends Component {
         underColorA: true,
         underColorQ: false,
       }));
-    };
+    }
   };
 
   submit = () => {
@@ -42,8 +44,8 @@ class NewCard extends Component {
     const { question, answer } = this.state;
 
     const card = {
-      ['question']: question,
-      ['answer']: answer,
+      question,
+      answer,
     };
 
     dispatch(addCard({ card, deckTitle }));
@@ -60,7 +62,9 @@ class NewCard extends Component {
   };
 
   render() {
-    const { underColorA, underColorQ, question, answer } = this.state;
+    const {
+      underColorA, underColorQ, question, answer,
+    } = this.state;
 
     return (
       <KeyboardAvoidingView style={styles.container}>
@@ -68,18 +72,20 @@ class NewCard extends Component {
           <TextInput
             selectionColor={black}
             value={this.state.question}
-            underlineColorAndroid='rgba(0,0,0,0)'
+            underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('question')}
-            onChangeText={(question) => this.setState({ question })}
-            style={underColorQ === true ? styles.inputActive : styles.input} />
+            onChangeText={question => this.setState({ question })}
+            style={underColorQ === true ? styles.inputActive : styles.input}
+          />
           <Text>QUESTION</Text>
           <TextInput
             selectionColor={black}
             value={this.state.answer}
-            underlineColorAndroid='rgba(0,0,0,0)'
+            underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('answer')}
-            onChangeText={(answer) => this.setState({ answer })}
-            style={underColorA === true ? styles.inputActive : styles.input} />
+            onChangeText={answer => this.setState({ answer })}
+            style={underColorA === true ? styles.inputActive : styles.input}
+          />
           <Text>ANSWER</Text>
         </View>
         <CreateBtn disabled={question === '' || answer === ''} onPress={this.submit}>
@@ -87,8 +93,8 @@ class NewCard extends Component {
         </CreateBtn>
       </KeyboardAvoidingView>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -126,8 +132,8 @@ function mapStateToProps(state, { navigation }) {
   const { currentDeck } = navigation.state.params;
 
   return {
-    currentDeck
+    currentDeck,
   };
-};
+}
 
 export default connect(mapStateToProps)(NewCard);

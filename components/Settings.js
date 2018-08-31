@@ -9,22 +9,26 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
+import { ImagePicker, Permissions } from 'expo';
 import {
   deleteProfile,
   addProfileImg,
   addProfileName,
   addProfileCover,
 } from '../utils/api';
-import { ImagePicker, Permissions } from 'expo';
-import { white, black, gray, red } from '../utils/colors';
-import { editCover, editAvatar, editUsername, receiveProfile } from '../actions/profile';
+import {
+  white, black, gray, red,
+} from '../utils/colors';
+import {
+  editCover, editAvatar, editUsername, receiveProfile,
+} from '../actions/profile';
 
 class Settings extends Component {
   state = {
     status: null,
     userName: '',
     showInput: false,
-    underColorU: false
+    underColorU: false,
   };
 
   componentDidMount() {
@@ -39,7 +43,7 @@ class Settings extends Component {
         console.warn('Error getting Location permission: ', error);
         this.setState(() => ({ status: 'undetermined' }));
       });
-  };
+  }
 
   askPermission = (type) => {
     Permissions.askAsync(Permissions.CAMERA_ROLL)
@@ -57,11 +61,11 @@ class Settings extends Component {
   pickImage = (type) => {
     ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [2, 1]
+      aspect: [2, 1],
     }).then((result) => {
       if (result.cancelled) {
         return;
-      };
+      }
       ImageEditor.cropImage(result.uri, {
         offset: { x: 0, y: 0 },
         size: { width: result.width, height: result.height },
@@ -76,7 +80,7 @@ class Settings extends Component {
 
         this.props.navigation.navigate('Profile');
       },
-        () => console.log('Error'));
+      () => console.log('Error'));
     });
   };
 
@@ -88,7 +92,7 @@ class Settings extends Component {
 
     this.setState(() => ({
       userName: '',
-      showInput: false
+      showInput: false,
     }));
 
     this.goTo('Profile');
@@ -105,7 +109,7 @@ class Settings extends Component {
 
   goTo = (view) => {
     setTimeout(() => {
-      this.props.navigation.navigate(view)
+      this.props.navigation.navigate(view);
     }, 1000);
   };
 
@@ -114,32 +118,33 @@ class Settings extends Component {
       this.setState(() => ({
         showInput: true,
         underColorU: false,
-        userName: ''
+        userName: '',
       }));
     } else {
       this.setState(() => ({ showInput: false }));
     }
-
   }
 
   render() {
-    const { status, showInput, userName, underColorU } = this.state;
+    const {
+      status, showInput, userName, underColorU,
+    } = this.state;
 
     if (status === 'denied') {
       return (
         <View style={styles.center}>
-          <Foundation name='alert' size={50} />
+          <Foundation name="alert" size={50} />
           <Text>
             You denied your location. You can fix this by visiting your settings and enableing location services for this app.
           </Text>
         </View>
       );
-    };
+    }
 
     if (status === 'undetermined') {
       return (
         <View style={styles.center}>
-          <Foundation name='alert' size={50} />
+          <Foundation name="alert" size={50} />
           <Text>
             You need to enable location services for this app.
           </Text>
@@ -150,30 +155,33 @@ class Settings extends Component {
           </TouchableOpacity>
         </View>
       );
-    };
+    }
 
     return (
       <View style={styles.container}>
         <TouchableOpacity style={styles.item} onPress={() => this.showOrHideInput()}>
           <Text style={styles.itemText}>Edit Username</Text>
           {showInput
-            ? <View>
-              <TextInput
-                value={userName}
-                selectionColor={'#000'}
-                maxLength={16}
-                style={underColorU === true ? styles.inputIsActive : styles.input}
-                onFocus={() => this.setState({ underColorU: true })}
-                underlineColorAndroid='rgba(0,0,0,0)'
-                onChangeText={(userName) => this.setState({ userName })}
-              />
-              <TouchableOpacity
-                style={styles.button}
-                disabled={userName === ''}
-                onPress={this.submitUserName}>
-                <Text style={styles.buttonText}>Submit</Text>
-              </TouchableOpacity>
-            </View>
+            ? (
+              <View>
+                <TextInput
+                  value={userName}
+                  selectionColor="#000"
+                  maxLength={16}
+                  style={underColorU === true ? styles.inputIsActive : styles.input}
+                  onFocus={() => this.setState({ underColorU: true })}
+                  underlineColorAndroid="rgba(0,0,0,0)"
+                  onChangeText={userName => this.setState({ userName })}
+                />
+                <TouchableOpacity
+                  style={styles.button}
+                  disabled={userName === ''}
+                  onPress={this.submitUserName}
+                >
+                  <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
+              </View>
+            )
             : null
           }
         </TouchableOpacity>
@@ -188,8 +196,8 @@ class Settings extends Component {
         </TouchableOpacity>
       </View>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -244,14 +252,14 @@ const styles = StyleSheet.create({
     fontSize: 18,
     alignSelf: 'center',
     color: white,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 });
 
 function mapStateToProps(decks) {
   return {
-    decks
+    decks,
   };
-};
+}
 
 export default connect(mapStateToProps)(Settings);

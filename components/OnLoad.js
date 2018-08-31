@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet,
   Animated,
-  StatusBar
+  StatusBar,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -30,43 +30,45 @@ class OnLoad extends Component {
       Animated.delay(300),
       Animated.timing(bounceValue, {
         duration: 200,
-        toValue: 1.04
+        toValue: 1.04,
       }),
       Animated.spring(bounceValue, {
         toValue: 1,
-        friction: 4
+        friction: 4,
       }),
     ]).start();
-  };
+  }
 
   render() {
     const {
       opacity,
-      bounceValue
+      bounceValue,
     } = this.state;
 
     return (
       <View style={styles.container}>
-        <StatusBar hidden={true}/>
+        <StatusBar hidden />
         <View>
           <AnimatedIcon
             size={100}
-            name='cards-outline'
-            style={[styles.logo, { opacity, transform: [{scale: bounceValue}] }]} />
+            name="cards-outline"
+            style={[styles.logo, { opacity, transform: [{ scale: bounceValue }] }]}
+          />
         </View>
         <View>
           <Animated.Text
             style={[styles.textLogo, {
               opacity,
-              transform: [{scale: bounceValue}],
-            }]}>
+              transform: [{ scale: bounceValue }],
+            }]}
+          >
             FlashCards
           </Animated.Text>
         </View>
       </View>
     );
-  };
-};
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     alignItems: 'center',
-    color: '#fff'
+    color: '#fff',
   },
   textLogo: {
     fontSize: 26,

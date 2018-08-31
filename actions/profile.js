@@ -8,25 +8,25 @@ export function receiveProfile(profile) {
     type: RECEIVE_PROFILE,
     profile,
   };
-};
+}
 
 export function editUsername(username) {
   return {
     type: EDIT_USERNAME,
     username,
   };
-};
+}
 
 export function editCover(image) {
   return {
     type: EDIT_COVER,
     image,
   };
-};
+}
 
 export function editAvatar(image) {
   return {
     type: EDIT_AVATAR,
     image,
   };
-};
+}
