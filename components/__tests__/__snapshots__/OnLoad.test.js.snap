@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OnLoad snapShot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#4e8098",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    />
+  </View>
+  <View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      collapsable={undefined}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "alignItems": "center",
+          "color": "#fff",
+          "fontSize": 26,
+          "fontWeight": "bold",
+          "opacity": 0,
+          "transform": Array [
+            Object {
+              "scale": 0.1,
+            },
+          ],
+        }
+      }
+    >
+      FlashCards
+    </Text>
+  </View>
+</View>
+`;

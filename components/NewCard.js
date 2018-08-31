@@ -4,7 +4,6 @@ import {
   View,
   TextInput,
   StyleSheet,
-  KeyboardAvoidingView,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
@@ -12,7 +11,7 @@ import { white, black } from '../utils/colors';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
 
-import CreateBtn from './CreateBtn';
+import NASBtn from './NASBtn';
 
 // add keyboard avoiding view
 
@@ -54,24 +53,23 @@ class NewCard extends Component {
   };
 
   toHome = () => {
-    backAction = NavigationActions.back({
+    const { navigation } = this.props;
+    const backAction = NavigationActions.back({
       key: null,
     });
 
-    this.props.navigation.dispatch(backAction);
+    navigation.dispatch(backAction);
   };
 
   render() {
-    const {
-      underColorA, underColorQ, question, answer,
-    } = this.state;
+    const { underColorA, underColorQ, question, answer } = this.state;
 
     return (
-      <KeyboardAvoidingView style={styles.container}>
+      <View style={styles.container}>
         <View style={styles.item}>
           <TextInput
             selectionColor={black}
-            value={this.state.question}
+            value={question}
             underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('question')}
             onChangeText={question => this.setState({ question })}
@@ -80,7 +78,7 @@ class NewCard extends Component {
           <Text>QUESTION</Text>
           <TextInput
             selectionColor={black}
-            value={this.state.answer}
+            value={answer}
             underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('answer')}
             onChangeText={answer => this.setState({ answer })}
@@ -88,10 +86,10 @@ class NewCard extends Component {
           />
           <Text>ANSWER</Text>
         </View>
-        <CreateBtn disabled={question === '' || answer === ''} onPress={this.submit}>
+        <NASBtn disabled={question === '' || answer === ''} onPress={this.submit}>
           Create Card
-        </CreateBtn>
-      </KeyboardAvoidingView>
+        </NASBtn>
+      </View>
     );
   }
 }

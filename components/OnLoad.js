@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Text,
   View,
   StyleSheet,
   Animated,
@@ -17,33 +16,30 @@ class OnLoad extends Component {
   };
 
   componentDidMount() {
-    const {
-      opacity,
-      bounceValue,
-    } = this.state;
+    const { opacity, bounceValue } = this.state;
 
     Animated.timing(opacity, {
       toValue: 1,
       duration: 800,
+      useNativeDriver: true,
     }).start();
     Animated.sequence([
       Animated.delay(300),
       Animated.timing(bounceValue, {
         duration: 200,
         toValue: 1.04,
+        useNativeDriver: true,
       }),
       Animated.spring(bounceValue, {
         toValue: 1,
         friction: 4,
+        useNativeDriver: true,
       }),
     ]).start();
   }
 
   render() {
-    const {
-      opacity,
-      bounceValue,
-    } = this.state;
+    const { opacity, bounceValue } = this.state;
 
     return (
       <View style={styles.container}>
@@ -52,18 +48,16 @@ class OnLoad extends Component {
           <AnimatedIcon
             size={100}
             name="cards-outline"
-            style={[styles.logo, { opacity, transform: [{ scale: bounceValue }] }]}
-          />
+            style={[styles.logo, { opacity, transform: [{ scale: bounceValue }] }]} />
         </View>
         <View>
           <Animated.Text
             style={[styles.textLogo, {
               opacity,
               transform: [{ scale: bounceValue }],
-            }]}
-          >
+            }]}>
             FlashCards
-          </Animated.Text>
+            </Animated.Text>
         </View>
       </View>
     );

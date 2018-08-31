@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewDeck snapShot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "padding": 20,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "borderRadius": 2,
+        "marginLeft": 10,
+        "marginRight": 10,
+        "marginTop": 17,
+        "padding": 20,
+        "shadowColor": "rgba(0,0,0,0.24)",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.8,
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      maxLength={27}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      selectionColor="#404040"
+      style={
+        Object {
+          "borderBottomWidth": 2,
+          "borderColor": "#404040",
+          "fontSize": 20,
+          "paddingBottom": 2,
+        }
+      }
+      underlineColorAndroid="rgba(0,0,0,0)"
+      value=""
+    />
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    >
+      TITLE
+    </Text>
+  </View>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#e63946",
+        "height": 45,
+        "marginLeft": 40,
+        "marginRight": 40,
+        "marginTop": 40,
+        "opacity": 1,
+        "padding": 10,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 22,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      Create Deck
+    </Text>
+  </View>
+</View>
+`;

@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeckList snapShot 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "flex": 1,
+      "padding": 20,
+    }
+  }
+>
+  <View>
+    <View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#e63946",
+            "borderRadius": 2,
+            "justifyContent": "center",
+            "marginLeft": 12,
+            "marginRight": 12,
+            "marginTop": 17,
+            "opacity": 1,
+            "padding": 24,
+            "shadowColor": "rgba(0,0,0,0.24)",
+            "shadowOffset": Object {
+              "height": 3,
+              "width": 0,
+            },
+            "shadowOpacity": 0.8,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 22,
+              "textAlign": "center",
+            }
+          }
+        >
+          Create a new deck
+        </Text>
+      </View>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#404040",
+          "fontSize": 20,
+          "fontWeight": "bold",
+          "paddingBottom": 30,
+          "paddingTop": 47,
+        }
+      }
+    >
+      Your Decks
+    </Text>
+    <View
+      style={
+        Object {
+          "marginBottom": 57,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderRadius": 2,
+            "justifyContent": "center",
+            "marginLeft": 10,
+            "marginRight": 10,
+            "marginTop": 17,
+            "padding": 20,
+            "shadowColor": "rgba(0,0,0,0.24)",
+            "shadowOffset": Object {
+              "height": 3,
+              "width": 0,
+            },
+            "shadowOpacity": 0.8,
+          }
+        }
+      >
+        <View
+          accessibilityComponentType={undefined}
+          accessibilityLabel={undefined}
+          accessibilityTraits={undefined}
+          accessible={true}
+          collapsable={undefined}
+          hasTVPreferredFocus={undefined}
+          hitSlop={undefined}
+          isTVSelectable={true}
+          nativeID={undefined}
+          onLayout={undefined}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID={undefined}
+          tvParallaxProperties={undefined}
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "fontSize": 20,
+              }
+            }
+          >
+            React
+          </Text>
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Object {
+                "color": "#6ed3cf",
+                "fontSize": 16,
+              }
+            }
+          >
+            2 Cards
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

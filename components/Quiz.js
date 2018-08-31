@@ -4,16 +4,10 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { white, red, lightBlue } from '../utils/colors';
-
-// import IOSCard from './IOSCard';
-// import AndriodCard from './AndriodCard';
 import Card from './Card';
-// import FlipTest from './FlipTest';
 
 class Quiz extends Component {
   state = {
@@ -50,13 +44,13 @@ class Quiz extends Component {
 
   goToResults = (lastAnswer) => {
     const { correctAnswers } = this.state;
-    const { navigation } = this.props;
+    const { navigation, currentDeck } = this.props;
 
     navigation.navigate(
       'Results',
       {
         correctAnswers: lastAnswer === 'correct' ? correctAnswers + 1 : correctAnswers,
-        currentDeck: this.props.currentDeck,
+        currentDeck: currentDeck,
       },
     );
 
@@ -75,19 +69,20 @@ class Quiz extends Component {
     return (
       <View style={styles.container}>
         <View style={{ flex: 4 }}>
-          <Card question={questions[questionIndex].question} answer={questions[questionIndex].answer} questionsRemaining={questionsRemaining} questionIndex={questionIndex} />
+          <Card
+            question={questions[questionIndex].question}
+            answer={questions[questionIndex].answer}
+            questionsRemaining={questionsRemaining} />
         </View>
         <View style={[styles.bottomContent, { flex: 1 }]}>
           <TouchableOpacity
             style={styles.correctBtn}
-            onPress={this.correctAnswer}
-          >
+            onPress={this.correctAnswer}>
             <Text style={styles.btnText}>Correct</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.incorrectBtn}
-            onPress={this.wrongAnswer}
-          >
+            onPress={this.wrongAnswer}>
             <Text style={styles.btnText}>Incorrect</Text>
           </TouchableOpacity>
         </View>
@@ -102,9 +97,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   bottomContent: {
-    marginTop: 20,
-    marginLeft: 20,
-    marginRight: 20,
+    padding: 20,
   },
   correctBtn: {
     backgroundColor: lightBlue,

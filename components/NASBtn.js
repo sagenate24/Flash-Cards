@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { white, red } from '../utils/colors';
 
-export default function CreateBtn({ children, onPress, disabled }) {
+export default function NASBtn({ children, onPress, disabled }) {
   return (
     <TouchableOpacity
       disabled={disabled}

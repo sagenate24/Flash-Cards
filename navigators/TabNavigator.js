@@ -1,4 +1,6 @@
+/* eslint-disable */
 import React from 'react';
+import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { queenBlue, white } from '../utils/colors';
@@ -13,7 +15,13 @@ export const Tabs = createBottomTabNavigator({
     screen: DeckList,
     animationEnabled: true,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Ionicons size={35} name="ios-home" color={tintColor} />,
+      tabBarIcon: ({ tintColor }) => {
+        return (
+          Platform.OS === 'ios'
+          ? <Ionicons size={35} name="ios-home" color={tintColor} />
+          : <Ionicons size={30} name="md-home" color={tintColor} />
+        )
+      }
     },
   },
   Profile: {
@@ -36,7 +44,13 @@ export const Tabs = createBottomTabNavigator({
     screen: Settings,
     animationEnabled: true,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => <Ionicons name="ios-settings" size={40} color={tintColor} />,
+      tabBarIcon: ({ tintColor }) => {
+        return (
+          Platform.OS === 'ios'
+          ? <Ionicons size={35} name="ios-settings" color={tintColor} />
+          : <Ionicons size={30} name="md-settings" color={tintColor} />
+        )
+      },
     },
   },
 }, {

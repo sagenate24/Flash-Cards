@@ -18,13 +18,12 @@ import CircleScore from './CircleScore';
 
 class Results extends Component {
   componentDidMount() {
-    const { currentDeck, correctAnswers } = this.props;
+    const { currentDeck, correctAnswers, dispatch } = this.props;
     const correctPercent = Math.round((correctAnswers / currentDeck.questions.length) * 100);
     const timeStamp = Date.now();
 
     recentActivityScore(currentDeck.title, correctPercent, timeStamp);
-
-    this.props.dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
+    dispatch(addScore(currentDeck.title, correctPercent, timeStamp));
 
     clearLocalNotification().then(() => {
       setLocalNotification();
@@ -38,9 +37,10 @@ class Results extends Component {
   }
 
   goTo = (view) => {
-    this.props.navigation.navigate(
+    const { navigation, currentDeck } = this.props;
+    navigation.navigate(
       view,
-      { currentDeck: this.props.currentDeck },
+      { currentDeck: currentDeck },
     );
   }
 
@@ -65,15 +65,7 @@ class Results extends Component {
             }
           </View>
           <View>
-            <Text>
-You got
-              {correctAnswers}
-              {' '}
-out of
-              {currentDeck.questions.length}
-              {' '}
-correct.
-            </Text>
+            <Text>You got {correctAnswers} out of {currentDeck.questions.length} correct.</Text>
           </View>
           <TouchableOpacity
             style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}

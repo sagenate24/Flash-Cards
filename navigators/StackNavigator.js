@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { createStackNavigator, HeaderBackButton } from 'react-navigation';
 import { white, queenBlue } from '../utils/colors';

@@ -21,6 +21,7 @@ class Card extends Component {
   }
 
   componentDidUpdate() {
+    this.animateBounce();
     this.flipBack();
   }
 

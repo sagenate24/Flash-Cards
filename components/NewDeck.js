@@ -10,7 +10,7 @@ import { addDeckTitle, getDeck } from '../utils/api';
 import { white, black, red } from '../utils/colors';
 import { addDeck } from '../actions/decks';
 
-import CreateBtn from './CreateBtn';
+import NASBtn from './NASBtn';
 
 class NewDeck extends Component {
   state = {
@@ -20,12 +20,13 @@ class NewDeck extends Component {
 
   submit = () => {
     const { title } = this.state;
+    const { dispatch, navigation } = this.props;
 
     addDeckTitle(title).then(() => getDeck(title).then((deck) => {
-      this.props.dispatch(addDeck({
+      dispatch(addDeck({
         [deck.title]: deck,
       }));
-      this.props.navigation.navigate(
+      navigation.navigate(
         'Deck',
         { currentDeck: deck },
       );
@@ -53,9 +54,9 @@ class NewDeck extends Component {
             <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
           )}
         </View>
-        <CreateBtn disabled={title === ''} onPress={this.submit}>
+        <NASBtn disabled={title === ''} onPress={this.submit}>
           Create Deck
-        </CreateBtn>
+        </NASBtn>
       </View>
     );
   }

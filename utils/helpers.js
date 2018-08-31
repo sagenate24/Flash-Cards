@@ -69,3 +69,10 @@ export function setLocalNotification() {
       }
     });
 }
+
+export const askPermissionsAsync = async () => {
+  const result = await Permissions.askAsync(Permissions.CAMERA_ROLL)
+    .then(({ status }) => status);
+
+  return result;
+};

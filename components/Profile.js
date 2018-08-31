@@ -6,31 +6,32 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Platform
 } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
-import {
-  black,
-  red,
-  white,
-} from '../utils/colors';
+import { black, red, white } from '../utils/colors';
 import { timeToString } from '../utils/helpers';
 
 import ProfilePic from './ProfilePic';
 import CircleScore from './CircleScore';
 
+
 class Profile extends Component {
   render() {
-    const { decks, profile } = this.props;
+    const { decks, profile, navigation } = this.props;
 
-    console.log(profile);
     return (
       <ScrollView style={styles.container}>
         <View>
           {profile.cover.length > 1
-            ? <Image style={styles.topContent} source={{ uri: profile.cover }} />
+            ? <Image
+                style={styles.topContent}
+                source={{ uri: profile.cover }} />
             : (
-              <TouchableOpacity style={styles.topContent} onPress={() => this.props.navigation.navigate('Settings')}>
+              <TouchableOpacity
+                style={styles.topContent}
+                onPress={() => navigation.navigate('Settings')}>
                 <Text style={{
                   fontSize: 16, alignSelf: 'center', marginTop: 10, color: 'gray',
                 }}
@@ -47,17 +48,21 @@ class Profile extends Component {
               <View>
                 <ProfilePic borderColor={white} backUpSize={40} backUp={false} styles={styles.img} />
               </View>
-            )
-            : (
-              <TouchableOpacity style={styles.img} onPress={() => this.props.navigation.navigate('Settings')}>
-                <Text style={styles.cameraIcon}><Entypo name="add-user" style={{ color: 'gray' }} size={40} /></Text>
-              </TouchableOpacity>
+            ) : (
+              Platform.OS === 'ios'
+                ? <TouchableOpacity style={[styles.img, { backgroundColor: white }]} onPress={() => navigation.navigate('Settings')}>
+                    <Text style={styles.cameraIcon}><Ionicons name='ios-person-add' style={{ color: 'gray' }} size={50} /></Text>
+                  </TouchableOpacity>
+                : <TouchableOpacity style={[styles.img, { backgroundColor: white }]} onPress={() => navigation.navigate('Settings')}>
+                    <Text style={styles.cameraIcon}><Ionicons name='md-person-add' style={{ color: 'gray' }} size={40} /></Text>
+                  </TouchableOpacity>
+
             )
           }
           {profile.username.length > 1
             ? <Text style={[styles.text, { fontSize: 30, padding: 20 }]}>{profile.username}</Text>
             : (
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Settings')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
                 <Text style={[styles.text, { fontSize: 18, padding: 20, color: 'gray' }]}>Create Username</Text>
               </TouchableOpacity>
             )
@@ -70,11 +75,9 @@ class Profile extends Component {
               ? (
                 <TouchableOpacity
                   key={deck.timeStamp}
-                  onPress={() => this.props.navigation.navigate(
+                  onPress={() => navigation.navigate(
                     'Deck',
-                    { currentDeck: deck },
-                  )}
-                >
+                    { currentDeck: deck })}>
                   <View style={styles.item}>
                     <View>
                       <Text style={{ fontSize: 20 }}>
@@ -116,7 +119,7 @@ const styles = StyleSheet.create({
   },
   topContent: {
     width: '100%',
-    height: 150,
+    height: Platform.OS === 'ios' ? 150 : 120,
     backgroundColor: white,
     shadowOpacity: 0.8,
     shadowColor: 'rgba(0,0,0,0.24)',
@@ -129,7 +132,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'center',
     marginTop: 45,
-    marginLeft: 9,
   },
   profileAvatar: {
     alignItems: 'center',
@@ -137,7 +139,6 @@ const styles = StyleSheet.create({
   img: {
     width: 140,
     height: 140,
-    backgroundColor: white,
     borderRadius: 70,
     borderWidth: 5,
     borderColor: white,

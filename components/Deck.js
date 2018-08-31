@@ -8,13 +8,7 @@ import {
   ScrollView,
 } from 'react-native';
 import { removeDeck } from '../utils/api';
-import {
-  black,
-  white,
-  lightBlue,
-  red,
-  queenBlue,
-} from '../utils/colors';
+import { black, white, lightBlue, red, queenBlue } from '../utils/colors';
 import { addDeck } from '../actions/decks';
 
 import DeckOption from './DeckOption';
@@ -68,7 +62,7 @@ class Deck extends Component {
                     iconStyle={{ color: queenBlue }}
                     subHeaderColor={{ color: lightBlue }}
                   >
-TAKE QUIZ
+                    TAKE QUIZ
                   </DeckOption>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -84,7 +78,7 @@ TAKE QUIZ
                     iconStyle={{ color: queenBlue }}
                     subHeaderColor={{ color: lightBlue }}
                   >
-ADD CARD
+                    ADD CARD
                   </DeckOption>
                 </TouchableOpacity>
               </View>
@@ -186,6 +180,7 @@ function mapStateToProps(state, { navigation }) {
 
 function mapDispatchToProps(dispatch, { navigation }) {
   const { currentDeck } = navigation.state.params;
+  console.log(currentDeck)
   return {
     remove: () => dispatch(addDeck({
       [currentDeck.title]: null,

@@ -1,0 +1,934 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile snapShot 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "height": 150,
+            "opacity": 1,
+            "shadowColor": "rgba(0,0,0,0.24)",
+            "shadowOffset": Object {
+              "height": 3,
+              "width": 0,
+            },
+            "shadowOpacity": 0.8,
+            "width": "100%",
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "center",
+              "color": "gray",
+              "fontSize": 16,
+              "marginTop": 10,
+            }
+          }
+        >
+          Choose cover photo
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+        }
+      }
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderColor": "#fff",
+            "borderRadius": 70,
+            "borderWidth": 5,
+            "height": 140,
+            "marginTop": -70,
+            "opacity": 1,
+            "width": 140,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "alignSelf": "center",
+              "flex": 1,
+              "marginTop": 45,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+          />
+        </Text>
+      </View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": "#404040",
+                "fontWeight": "bold",
+              },
+              Object {
+                "color": "gray",
+                "fontSize": 18,
+                "padding": 20,
+              },
+            ]
+          }
+        >
+          Create Username
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "padding": 20,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#404040",
+              "fontWeight": "bold",
+            },
+            Object {
+              "fontSize": 20,
+              "marginBottom": 10,
+            },
+          ]
+        }
+      >
+        Lastest Quiz Scores
+      </Text>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderRadius": 2,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 17,
+              "padding": 20,
+              "shadowColor": "rgba(0,0,0,0.24)",
+              "shadowOffset": Object {
+                "height": 3,
+                "width": 0,
+              },
+              "shadowOpacity": 0.8,
+            }
+          }
+        >
+          <View>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+            >
+              React
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "marginTop": 10,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": 50,
+                  },
+                  Object {
+                    "alignItems": "flex-start",
+                    "flex": 3,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#404040",
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "marginTop": 10,
+                  }
+                }
+              >
+                2 Cards
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": 50,
+                  },
+                  Object {
+                    "alignItems": "center",
+                    "flex": 3,
+                  },
+                ]
+              }
+            >
+              <View
+                style={undefined}
+              >
+                <RNSVGSvgView
+                  bbHeight="45"
+                  bbWidth="45"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      false,
+                      Object {
+                        "flex": 0,
+                        "height": 45,
+                        "width": 45,
+                      },
+                    ]
+                  }
+                >
+                  <RNSVGGroup
+                    fill={
+                      Array [
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                      ]
+                    }
+                    fillOpacity={1}
+                    fillRule={1}
+                    font={Object {}}
+                    matrix={
+                      Array [
+                        -0.3826834323650895,
+                        -0.9238795325112868,
+                        0.9238795325112868,
+                        -0.3826834323650895,
+                        10.32308774671056,
+                        51.897666709718465,
+                      ]
+                    }
+                    onLayout={undefined}
+                    opacity={1}
+                    originX={22.5}
+                    originY={22.5}
+                    propList={Array []}
+                    rotation={247.5}
+                    scaleX={1}
+                    scaleY={1}
+                    skewX={0}
+                    skewY={0}
+                    stroke={null}
+                    strokeDasharray={null}
+                    strokeDashoffset={null}
+                    strokeLinecap={0}
+                    strokeLinejoin={0}
+                    strokeMiterlimit={4}
+                    strokeOpacity={1}
+                    strokeWidth="1"
+                    x={0}
+                    y={0}
+                  >
+                    <RNSVGPath
+                      d="M 7.303175500515019 37.7087647470744 A 21.5 21.5 0 1 0 22.5 1"
+                      fill={
+                        Array [
+                          0,
+                          0,
+                          0,
+                          0,
+                          0,
+                        ]
+                      }
+                      fillOpacity={1}
+                      fillRule={1}
+                      matrix={
+                        Array [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      onLayout={undefined}
+                      opacity={1}
+                      originX={0}
+                      originY={0}
+                      propList={
+                        Array [
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "fill",
+                        ]
+                      }
+                      rotation={0}
+                      scaleX={1}
+                      scaleY={1}
+                      skewX={0}
+                      skewY={0}
+                      stroke={
+                        Array [
+                          0,
+                          0.9490196078431372,
+                          0.9490196078431372,
+                          0.9490196078431372,
+                          1,
+                        ]
+                      }
+                      strokeDasharray={null}
+                      strokeDashoffset={null}
+                      strokeLinecap={1}
+                      strokeLinejoin={0}
+                      strokeMiterlimit={4}
+                      strokeOpacity={1}
+                      strokeWidth="2"
+                      x={0}
+                      y={0}
+                    />
+                    <RNSVGPath
+                      d="M 22.5 1 A 21.5 21.5 0 0 0 22.5 1"
+                      fill={
+                        Array [
+                          0,
+                          0,
+                          0,
+                          0,
+                          0,
+                        ]
+                      }
+                      fillOpacity={1}
+                      fillRule={1}
+                      matrix={
+                        Array [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      onLayout={undefined}
+                      opacity={1}
+                      originX={0}
+                      originY={0}
+                      propList={
+                        Array [
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "fill",
+                        ]
+                      }
+                      rotation={0}
+                      scaleX={1}
+                      scaleY={1}
+                      skewX={0}
+                      skewY={0}
+                      stroke={
+                        Array [
+                          0,
+                          0.9019607843137255,
+                          0.2235294117647059,
+                          0.27450980392156865,
+                          1,
+                        ]
+                      }
+                      strokeDasharray={null}
+                      strokeDashoffset={null}
+                      strokeLinecap={1}
+                      strokeLinejoin={0}
+                      strokeMiterlimit={4}
+                      strokeOpacity={1}
+                      strokeWidth="2"
+                      x={0}
+                      y={0}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderRadius": 20.5,
+                      "height": 41,
+                      "justifyContent": "center",
+                      "left": 2,
+                      "position": "absolute",
+                      "top": 2,
+                      "width": 41,
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "fontSize": 10,
+                        },
+                        Object {
+                          "color": "#404040",
+                          "fontWeight": "bold",
+                        },
+                      ]
+                    }
+                  >
+                    35
+                    %
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": 50,
+                  },
+                  Object {
+                    "alignItems": "flex-end",
+                    "flex": 4,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#404040",
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "fontSize": 15,
+                      "marginTop": 10,
+                    },
+                  ]
+                }
+              >
+                Aug 13 2018
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "opacity": 1,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <View
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "borderRadius": 2,
+              "flexDirection": "column",
+              "justifyContent": "space-between",
+              "marginLeft": 10,
+              "marginRight": 10,
+              "marginTop": 17,
+              "padding": 20,
+              "shadowColor": "rgba(0,0,0,0.24)",
+              "shadowOffset": Object {
+                "height": 3,
+                "width": 0,
+              },
+              "shadowOpacity": 0.8,
+            }
+          }
+        >
+          <View>
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+            >
+              JavaScript
+            </Text>
+          </View>
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "marginTop": 10,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": 50,
+                  },
+                  Object {
+                    "alignItems": "flex-start",
+                    "flex": 3,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "color": "#404040",
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                    "marginTop": 10,
+                  }
+                }
+              >
+                1 Card
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": 50,
+                  },
+                  Object {
+                    "alignItems": "center",
+                    "flex": 3,
+                  },
+                ]
+              }
+            >
+              <View
+                style={undefined}
+              >
+                <RNSVGSvgView
+                  bbHeight="45"
+                  bbWidth="45"
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      Object {
+                        "backgroundColor": "transparent",
+                      },
+                      false,
+                      Object {
+                        "flex": 0,
+                        "height": 45,
+                        "width": 45,
+                      },
+                    ]
+                  }
+                >
+                  <RNSVGGroup
+                    fill={
+                      Array [
+                        0,
+                        0,
+                        0,
+                        0,
+                        1,
+                      ]
+                    }
+                    fillOpacity={1}
+                    fillRule={1}
+                    font={Object {}}
+                    matrix={
+                      Array [
+                        -0.3826834323650895,
+                        -0.9238795325112868,
+                        0.9238795325112868,
+                        -0.3826834323650895,
+                        10.32308774671056,
+                        51.897666709718465,
+                      ]
+                    }
+                    onLayout={undefined}
+                    opacity={1}
+                    originX={22.5}
+                    originY={22.5}
+                    propList={Array []}
+                    rotation={247.5}
+                    scaleX={1}
+                    scaleY={1}
+                    skewX={0}
+                    skewY={0}
+                    stroke={null}
+                    strokeDasharray={null}
+                    strokeDashoffset={null}
+                    strokeLinecap={0}
+                    strokeLinejoin={0}
+                    strokeMiterlimit={4}
+                    strokeOpacity={1}
+                    strokeWidth="1"
+                    x={0}
+                    y={0}
+                  >
+                    <RNSVGPath
+                      d="M 7.303175500515019 37.7087647470744 A 21.5 21.5 0 1 0 22.5 1"
+                      fill={
+                        Array [
+                          0,
+                          0,
+                          0,
+                          0,
+                          0,
+                        ]
+                      }
+                      fillOpacity={1}
+                      fillRule={1}
+                      matrix={
+                        Array [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      onLayout={undefined}
+                      opacity={1}
+                      originX={0}
+                      originY={0}
+                      propList={
+                        Array [
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "fill",
+                        ]
+                      }
+                      rotation={0}
+                      scaleX={1}
+                      scaleY={1}
+                      skewX={0}
+                      skewY={0}
+                      stroke={
+                        Array [
+                          0,
+                          0.9490196078431372,
+                          0.9490196078431372,
+                          0.9490196078431372,
+                          1,
+                        ]
+                      }
+                      strokeDasharray={null}
+                      strokeDashoffset={null}
+                      strokeLinecap={1}
+                      strokeLinejoin={0}
+                      strokeMiterlimit={4}
+                      strokeOpacity={1}
+                      strokeWidth="2"
+                      x={0}
+                      y={0}
+                    />
+                    <RNSVGPath
+                      d="M 22.5 1 A 21.5 21.5 0 0 0 22.5 1"
+                      fill={
+                        Array [
+                          0,
+                          0,
+                          0,
+                          0,
+                          0,
+                        ]
+                      }
+                      fillOpacity={1}
+                      fillRule={1}
+                      matrix={
+                        Array [
+                          1,
+                          0,
+                          0,
+                          1,
+                          0,
+                          0,
+                        ]
+                      }
+                      onLayout={undefined}
+                      opacity={1}
+                      originX={0}
+                      originY={0}
+                      propList={
+                        Array [
+                          "stroke",
+                          "strokeWidth",
+                          "strokeLinecap",
+                          "fill",
+                        ]
+                      }
+                      rotation={0}
+                      scaleX={1}
+                      scaleY={1}
+                      skewX={0}
+                      skewY={0}
+                      stroke={
+                        Array [
+                          0,
+                          0.6588235294117647,
+                          0.8549019607843137,
+                          0.8627450980392157,
+                          1,
+                        ]
+                      }
+                      strokeDasharray={null}
+                      strokeDashoffset={null}
+                      strokeLinecap={1}
+                      strokeLinejoin={0}
+                      strokeMiterlimit={4}
+                      strokeOpacity={1}
+                      strokeWidth="2"
+                      x={0}
+                      y={0}
+                    />
+                  </RNSVGGroup>
+                </RNSVGSvgView>
+                <View
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderRadius": 20.5,
+                      "height": 41,
+                      "justifyContent": "center",
+                      "left": 2,
+                      "position": "absolute",
+                      "top": 2,
+                      "width": 41,
+                    }
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "fontSize": 10,
+                        },
+                        Object {
+                          "color": "#404040",
+                          "fontWeight": "bold",
+                        },
+                      ]
+                    }
+                  >
+                    100
+                    %
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "width": 50,
+                  },
+                  Object {
+                    "alignItems": "flex-end",
+                    "flex": 4,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#404040",
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "fontSize": 15,
+                      "marginTop": 10,
+                    },
+                  ]
+                }
+              >
+                Aug 13 2018
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;

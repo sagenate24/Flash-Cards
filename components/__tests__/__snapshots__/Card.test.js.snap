@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card snapShot 1`] = `
+<View
+  accessibilityComponentType={undefined}
+  accessibilityLabel={undefined}
+  accessibilityTraits={undefined}
+  accessible={true}
+  hitSlop={undefined}
+  nativeID={undefined}
+  onLayout={undefined}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={undefined}
+  testID={undefined}
+>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backfaceVisibility": "hidden",
+        "backgroundColor": "#fff",
+        "height": "100%",
+        "opacity": 90,
+        "padding": 20,
+        "shadowColor": "rgba(0,0,0,0.24)",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.8,
+        "transform": Array [
+          Object {
+            "rotateY": "0deg",
+          },
+        ],
+      }
+    }
+  >
+    <View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        collapsable={undefined}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "flex-start",
+            "color": "#e63946",
+            "justifyContent": "flex-start",
+            "transform": Array [
+              Object {
+                "scale": 0.1,
+              },
+            ],
+          }
+        }
+      >
+        1
+         Left
+      </Text>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "alignSelf": "center",
+          "fontSize": 16,
+          "opacity": 0.6,
+        }
+      }
+    >
+      Question
+    </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": "90%",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#404040",
+            "fontSize": 20,
+            "textAlign": "center",
+          }
+        }
+      >
+        why?
+      </Text>
+    </View>
+  </View>
+  <View
+    collapsable={undefined}
+    style={
+      Object {
+        "backfaceVisibility": "hidden",
+        "backgroundColor": "#fff",
+        "height": "100%",
+        "left": 0,
+        "opacity": -89,
+        "padding": 20,
+        "position": "absolute",
+        "shadowColor": "rgba(0,0,0,0.24)",
+        "shadowOffset": Object {
+          "height": 3,
+          "width": 0,
+        },
+        "shadowOpacity": 0.8,
+        "top": 0,
+        "transform": Array [
+          Object {
+            "rotateY": "180deg",
+          },
+        ],
+        "width": "100%",
+      }
+    }
+  >
+    <View>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        collapsable={undefined}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "alignSelf": "flex-start",
+            "color": "#e63946",
+            "justifyContent": "flex-start",
+            "transform": Array [
+              Object {
+                "scale": 0.1,
+              },
+            ],
+          }
+        }
+      >
+        1
+         Left
+      </Text>
+    </View>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "alignSelf": "center",
+          "fontSize": 16,
+          "opacity": 0.6,
+        }
+      }
+    >
+      Answer
+    </Text>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": "90%",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#404040",
+            "fontSize": 20,
+            "textAlign": "center",
+          }
+        }
+      >
+        because
+      </Text>
+    </View>
+  </View>
+</View>
+`;

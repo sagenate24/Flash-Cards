@@ -10,9 +10,7 @@ import {
 } from 'react-native';
 import { receiveDecks } from '../actions/decks';
 import { receiveProfile } from '../actions/profile';
-import {
-  gray, white, black, red,
-} from '../utils/colors';
+import { gray, white, black, red } from '../utils/colors';
 import { getInitialData } from '../utils/helpers';
 
 import OnLoad from './OnLoad';
@@ -53,8 +51,7 @@ class DeckList extends Component {
         <Modal
           animationType={this.state.modalType}
           transparent={false}
-          visible={!ready}
-        >
+          visible={!ready}>
           <OnLoad />
         </Modal>
       );
@@ -78,34 +75,34 @@ class DeckList extends Component {
         <View style={{ marginBottom: 57 }}>
           {this.props && this.props.decks
             ? Object.values(decks).map((deck) => {
-              if (!deck.title) {
-                return null;
-              }
-              return (
-                <View style={styles.item} key={deck.title}>
-                  <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate(
-                      'Deck',
-                      { currentDeck: deck },
-                    )}
-                  >
-                    <Text style={{ fontSize: 20 }}>
-                      {deck.title}
-                    </Text>
-                    {deck.questions && deck.questions.length
-                      ? (
-                        <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
-                          {deck.questions.length > 1
-                            ? `${deck.questions.length} Cards`
-                            : `${deck.questions.length} Card`}
-                        </Text>
-                      )
-                      : <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
+                if (!deck.title) {
+                  return null;
+                }
+                return (
+                  <View style={styles.item} key={deck.title}>
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate(
+                        'Deck',
+                        { currentDeck: deck },
+                      )}
+                    >
+                      <Text style={{ fontSize: 20 }}>
+                        {deck.title}
+                      </Text>
+                      {deck.questions && deck.questions.length
+                        ? (
+                          <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
+                            {deck.questions.length > 1
+                              ? `${deck.questions.length} Cards`
+                              : `${deck.questions.length} Card`}
+                          </Text>
+                        )
+                        : <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
                       }
-                  </TouchableOpacity>
-                </View>
-              );
-            })
+                    </TouchableOpacity>
+                  </View>
+                );
+              })
             : <Text style={styles.noCards}>You have no decks</Text>
           }
         </View>

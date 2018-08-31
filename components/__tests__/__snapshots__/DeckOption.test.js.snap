@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeckOption snapShot 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "paddingBottom": 10,
+        "paddingTop": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+    />
+  </Text>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "fontSize": 14,
+          "marginBottom": 5,
+          "textAlign": "center",
+        },
+        Object {
+          "color": "#fff",
+        },
+      ]
+    }
+  />
+</View>
+`;
