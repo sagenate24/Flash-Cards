@@ -25,12 +25,14 @@
     "test": "jest"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
     "expo": "^27.0.1",
     "react": "16.3.1",
+    "react-dom": "^16.4.2",
     "react-native": "~0.55.2",
     "react-native-circular-progress": "^1.0.1",
     "react-native-keyboard-manager": "^4.0.13-9",

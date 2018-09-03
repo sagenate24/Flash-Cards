@@ -1,5 +1,6 @@
 import 'react-native';
 import React from 'react';
+import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { lightBlue, yellow, red } from '../../utils/colors';
 import CircleScore, { colorPicker } from '../CircleScore';
