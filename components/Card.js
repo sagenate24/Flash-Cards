@@ -27,6 +27,7 @@ class Card extends Component {
 
   flipCard() {
     const { animatedValue } = this.state;
+
     if (this.value >= 90) {
       this.flipBack();
     } else {
@@ -40,6 +41,7 @@ class Card extends Component {
 
   flipBack() {
     const { animatedValue } = this.state;
+
     Animated.timing(animatedValue, {
       toValue: 0,
       easing: Easing.linear,
@@ -116,7 +118,8 @@ class Card extends Component {
           style={[
             questionsRemaining === 1 ? styles.lastCard : styles.cardsRemaining,
             { transform: [{ scale: bounceValue }] },
-          ]}>
+          ]}
+        >
           {questionsRemaining} Left
         </Animated.Text>
       </View>

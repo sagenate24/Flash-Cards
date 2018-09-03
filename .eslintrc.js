@@ -7,6 +7,11 @@ module.exports = {
         "react/prop-types": "off",
         "no-use-before-define": "off",
         "no-shadow": "off",
-        "react/jsx-one-expression-per-line": "off"
+        "react/jsx-one-expression-per-line": "off",
+        "no-plusplus": "off",
+        "max-len": "off",
+        "jsx-quotes": "off",
+        "import/prefer-default-export": "off",
+        "object-curly-newline": "off"
     }
 };

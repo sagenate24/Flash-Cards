@@ -92,7 +92,7 @@ exports[`Deck snapShot 1`] = `
           }
         }
       >
-        Bs
+        reactAndThings
       </Text>
       <View
         style={

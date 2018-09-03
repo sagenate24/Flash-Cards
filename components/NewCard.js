@@ -7,13 +7,14 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
-import { white, black } from '../utils/colors';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
+import { white, black, red } from '../utils/colors';
 
 import NASBtn from './NASBtn';
 
-// add keyboard avoiding view
+// add keyboard avoiding view.
+// with scroll view just incase.
 
 class NewCard extends Component {
   state = {
@@ -54,6 +55,7 @@ class NewCard extends Component {
 
   toHome = () => {
     const { navigation } = this.props;
+
     const backAction = NavigationActions.back({
       key: null,
     });
@@ -62,31 +64,41 @@ class NewCard extends Component {
   };
 
   render() {
-    const { underColorA, underColorQ, question, answer } = this.state;
+    const { underColorQ, underColorA, question, answer } = this.state;
+    const charactersLeftQ = 180 - question.length;
+    const charactersLeftA = 180 - answer.length;
 
     return (
       <View style={styles.container}>
         <View style={styles.item}>
           <TextInput
-            selectionColor={black}
             value={question}
+            maxLength={200}
+            selectionColor={black}
             underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('question')}
             onChangeText={question => this.setState({ question })}
             style={underColorQ === true ? styles.inputActive : styles.input}
           />
           <Text>QUESTION</Text>
+          {charactersLeftQ <= 22 && (
+            <Text style={styles.inputIsGettingFull}>{charactersLeftQ}</Text>
+          )}
           <TextInput
-            selectionColor={black}
             value={answer}
+            maxLength={200}
+            selectionColor={black}
             underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('answer')}
             onChangeText={answer => this.setState({ answer })}
             style={underColorA === true ? styles.inputActive : styles.input}
           />
           <Text>ANSWER</Text>
+          {charactersLeftA <= 22 && (
+            <Text style={styles.inputIsGettingFull}>{charactersLeftA}</Text>
+          )}
         </View>
-        <NASBtn disabled={question === '' || answer === ''} onPress={this.submit}>
+        <NASBtn tintColor={{ backgroundColor: red }} disabled={question === '' || answer === ''} onPress={this.submit}>
           Create Card
         </NASBtn>
       </View>
@@ -114,9 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderRadius: 2,
     padding: 20,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 17,
+    marginBottom: 10,
     shadowOpacity: 0.8,
     shadowColor: 'rgba(0,0,0,0.24)',
     shadowOffset: {
@@ -124,6 +134,12 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
+  inputIsGettingFull: {
+    color: red,
+    fontSize: 16,
+    opacity: 0.9,
+  },
+
 });
 
 function mapStateToProps(state, { navigation }) {

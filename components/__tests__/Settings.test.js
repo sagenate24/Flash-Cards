@@ -5,7 +5,7 @@ import Settings from '../Settings';
 
 test('Settings snapShot', () => {
   const snap = renderer.create(
-    <Settings.WrappedComponent />
+    <Settings.WrappedComponent />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();

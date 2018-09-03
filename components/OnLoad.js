@@ -48,16 +48,18 @@ class OnLoad extends Component {
           <AnimatedIcon
             size={100}
             name="cards-outline"
-            style={[styles.logo, { opacity, transform: [{ scale: bounceValue }] }]} />
+            style={[styles.logo, { opacity, transform: [{ scale: bounceValue }] }]}
+          />
         </View>
         <View>
           <Animated.Text
             style={[styles.textLogo, {
               opacity,
               transform: [{ scale: bounceValue }],
-            }]}>
+            }]}
+          >
             FlashCards
-            </Animated.Text>
+          </Animated.Text>
         </View>
       </View>
     );

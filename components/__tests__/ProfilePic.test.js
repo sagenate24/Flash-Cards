@@ -7,13 +7,12 @@ const mockProfile = {
   username: '',
   avatar: '',
   cover: '',
-}
+};
 
 test('ProfilePic snapshot', () => {
   const snap = renderer.create(
-    <ProfilePic.WrappedComponent backUpSize={30} styles={{width: 40, height: 40,}} borderColor='#fff' profile={mockProfile}/>
+    <ProfilePic.WrappedComponent backUpSize={30} styles={{ width: 40, height: 40 }} borderColor='#fff' profile={mockProfile} />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
-})
-
+});

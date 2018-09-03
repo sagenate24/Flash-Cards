@@ -14,9 +14,7 @@ exports[`NewCard snapShot 1`] = `
       Object {
         "backgroundColor": "#fff",
         "borderRadius": 2,
-        "marginLeft": 10,
-        "marginRight": 10,
-        "marginTop": 17,
+        "marginBottom": 10,
         "padding": 20,
         "shadowColor": "rgba(0,0,0,0.24)",
         "shadowOffset": Object {
@@ -29,6 +27,7 @@ exports[`NewCard snapShot 1`] = `
   >
     <TextInput
       allowFontScaling={true}
+      maxLength={200}
       onChangeText={[Function]}
       onFocus={[Function]}
       selectionColor="#404040"
@@ -52,6 +51,7 @@ exports[`NewCard snapShot 1`] = `
     </Text>
     <TextInput
       allowFontScaling={true}
+      maxLength={200}
       onChangeText={[Function]}
       onFocus={[Function]}
       selectionColor="#404040"
@@ -75,51 +75,58 @@ exports[`NewCard snapShot 1`] = `
     </Text>
   </View>
   <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    collapsable={undefined}
-    hasTVPreferredFocus={undefined}
-    hitSlop={undefined}
-    isTVSelectable={true}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#e63946",
-        "height": 45,
-        "marginLeft": 40,
-        "marginRight": 40,
-        "marginTop": 40,
-        "opacity": 1,
-        "padding": 10,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 10,
       }
     }
-    testID={undefined}
-    tvParallaxProperties={undefined}
   >
-    <Text
+    <View
+      accessibilityComponentType={undefined}
+      accessibilityLabel={undefined}
+      accessibilityTraits={undefined}
       accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
+      collapsable={undefined}
+      hasTVPreferredFocus={undefined}
+      hitSlop={undefined}
+      isTVSelectable={true}
+      nativeID={undefined}
+      onLayout={undefined}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "color": "#fff",
-          "fontSize": 22,
-          "fontWeight": "bold",
-          "textAlign": "center",
+          "backgroundColor": "#e63946",
+          "borderRadius": 0,
+          "opacity": 1,
+          "padding": 10,
         }
       }
+      testID={undefined}
+      tvParallaxProperties={undefined}
     >
-      Create Card
-    </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 22,
+            "fontWeight": "bold",
+            "textAlign": "center",
+          }
+        }
+      >
+        Create Card
+      </Text>
+    </View>
   </View>
 </View>
 `;

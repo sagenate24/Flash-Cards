@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { black, lightBlue, yellow, red } from '../utils/colors';
 
-const colorPicker = (percent) => {
+export const colorPicker = (percent) => {
   if (percent <= 40) {
     return red;
   }
@@ -16,10 +16,7 @@ const colorPicker = (percent) => {
 };
 
 export default function CircleScore({
-  textSize,
-  size,
-  width,
-  percent,
+  textSize, size, width, percent,
 }) {
   return (
     <AnimatedCircularProgress

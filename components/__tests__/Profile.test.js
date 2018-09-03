@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
-import Profile from '../Profile';
 import renderer from 'react-test-renderer';
+import Profile from '../Profile';
 
 const mockDecks = [
   {
@@ -33,15 +33,15 @@ const mockDecks = [
 ];
 
 const mockProfile = {
-    username: '',
-    avatar: '',
-    cover: '',
-}
+  username: '',
+  avatar: '',
+  cover: '',
+};
 // const { decks, profile, navigation } = this.props;
 
 test('Profile snapShot', () => {
   const snap = renderer.create(
-    <Profile.WrappedComponent decks={mockDecks} profile={mockProfile}/>
+    <Profile.WrappedComponent decks={mockDecks} profile={mockProfile} />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();

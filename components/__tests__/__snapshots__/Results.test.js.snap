@@ -5,8 +5,10 @@ exports[`Results snapShot 1`] = `
   style={
     Object {
       "alignItems": "stretch",
+      "backgroundColor": "#fff",
       "flex": 1,
-      "padding": 20,
+      "paddingLeft": 20,
+      "paddingRight": 20,
     }
   }
 >
@@ -14,9 +16,10 @@ exports[`Results snapShot 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#fff",
-        "height": "100%",
-        "padding": 20,
+        "paddingBottom": 50,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 50,
       }
     }
   >
@@ -30,11 +33,11 @@ exports[`Results snapShot 1`] = `
           "fontSize": 26,
           "fontWeight": "bold",
           "justifyContent": "flex-start",
-          "padding": 30,
+          "paddingBottom": 30,
         }
       }
     >
-      Quiz Results
+      Your Score
     </Text>
     <View
       style={undefined}
@@ -258,13 +261,7 @@ exports[`Results snapShot 1`] = `
         </Text>
       </View>
     </View>
-    <View
-      style={
-        Object {
-          "marginTop": 20,
-        }
-      }
-    >
+    <View>
       <Text
         accessible={true}
         allowFontScaling={true}
@@ -294,102 +291,116 @@ exports[`Results snapShot 1`] = `
       </Text>
     </View>
     <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      collapsable={undefined}
-      hasTVPreferredFocus={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "backgroundColor": "#e63946",
-          "borderRadius": 2,
-          "height": 45,
-          "marginLeft": 40,
-          "marginRight": 40,
-          "marginTop": 40,
-          "opacity": 1,
-          "padding": 10,
-          "width": 200,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 10,
         }
       }
-      testID={undefined}
-      tvParallaxProperties={undefined}
     >
-      <Text
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
         accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 22,
-            "fontWeight": "bold",
-            "textAlign": "center",
+            "backgroundColor": "#e63946",
+            "borderRadius": 0,
+            "marginTop": 20,
+            "opacity": 1,
+            "padding": 10,
+            "width": 200,
           }
         }
+        testID={undefined}
+        tvParallaxProperties={undefined}
       >
-        Retake
-      </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            }
+          }
+        >
+          Retake
+        </Text>
+      </View>
     </View>
     <View
-      accessibilityComponentType={undefined}
-      accessibilityLabel={undefined}
-      accessibilityTraits={undefined}
-      accessible={true}
-      collapsable={undefined}
-      hasTVPreferredFocus={undefined}
-      hitSlop={undefined}
-      isTVSelectable={true}
-      nativeID={undefined}
-      onLayout={undefined}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "backgroundColor": "#e63946",
-          "borderRadius": 2,
-          "height": 45,
-          "marginLeft": 40,
-          "marginRight": 40,
-          "marginTop": 40,
-          "opacity": 1,
-          "padding": 10,
-          "width": 200,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 10,
         }
       }
-      testID={undefined}
-      tvParallaxProperties={undefined}
     >
-      <Text
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
         accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "color": "#fff",
-            "fontSize": 22,
-            "fontWeight": "bold",
-            "textAlign": "center",
+            "backgroundColor": "#457b9d",
+            "borderRadius": 0,
+            "marginTop": 20,
+            "opacity": 1,
+            "padding": 10,
+            "width": 200,
           }
         }
+        testID={undefined}
+        tvParallaxProperties={undefined}
       >
-        Study More
-      </Text>
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#fff",
+              "fontSize": 22,
+              "fontWeight": "bold",
+              "textAlign": "center",
+            }
+          }
+        >
+          Study more
+        </Text>
+      </View>
     </View>
   </View>
 </View>

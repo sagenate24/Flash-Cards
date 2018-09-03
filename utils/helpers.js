@@ -14,8 +14,7 @@ export const getInitialData = () => Promise.all([
 
 export function timeToString(timestamp) {
   const date = new Date(timestamp);
-  const todayUTC = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-
+  const todayUTC = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   return todayUTC.toDateString().substring(4);
 }
 

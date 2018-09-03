@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
@@ -18,10 +17,10 @@ export const Tabs = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => {
         return (
           Platform.OS === 'ios'
-          ? <Ionicons size={35} name="ios-home" color={tintColor} />
-          : <Ionicons size={30} name="md-home" color={tintColor} />
-        )
-      }
+            ? <Ionicons size={35} name="ios-home" color={tintColor} />
+            : <Ionicons size={30} name="md-home" color={tintColor} />
+        );
+      },
     },
   },
   Profile: {
@@ -47,9 +46,9 @@ export const Tabs = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => {
         return (
           Platform.OS === 'ios'
-          ? <Ionicons size={35} name="ios-settings" color={tintColor} />
-          : <Ionicons size={30} name="md-settings" color={tintColor} />
-        )
+            ? <Ionicons size={35} name="ios-settings" color={tintColor} />
+            : <Ionicons size={30} name="md-settings" color={tintColor} />
+        );
       },
     },
   },
@@ -72,3 +71,5 @@ export const Tabs = createBottomTabNavigator({
     },
   },
 });
+
+// export default Tabs;

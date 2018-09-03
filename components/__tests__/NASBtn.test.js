@@ -5,8 +5,8 @@ import NASBtn from '../NASBtn';
 
 test('NASBtn snapshot', () => {
   const snap = renderer.create(
-    <NASBtn disabled={false} onPress={jest.fn()}>test this text</NASBtn>
+    <NASBtn disabled={false} onPress={jest.fn()}>test this text</NASBtn>,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
-})
+});

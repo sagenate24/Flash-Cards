@@ -2,46 +2,43 @@ import React from 'react';
 import {
   TouchableOpacity,
   StyleSheet,
+  View,
   Text,
   Platform,
 } from 'react-native';
-import { white, red } from '../utils/colors';
+import { white } from '../utils/colors';
 
-export default function NASBtn({ children, onPress, disabled }) {
+// The name is formed from my name just in case projects
+// That need to be shared between developers dont have simotanios names like Button
+export default function NASBtn({
+  children, onPress, disabled, tintColor,
+}) {
   return (
-    <TouchableOpacity
-      disabled={disabled}
-      onPress={onPress}
-      style={Platform.OS === 'ios' ? styles.iosSubmitBtn : styles.androidSubmitBtn}
-    >
-      <Text style={styles.btnText}>{children}</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity
+        disabled={disabled}
+        onPress={onPress}
+        style={[styles.button, tintColor]}
+      >
+        <Text style={styles.btnText}>{children}</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  iosSubmitBtn: {
-    backgroundColor: red,
-    padding: 10,
-    height: 45,
-    marginTop: 40,
-    marginLeft: 40,
-    marginRight: 40,
+  buttonContainer: {
+    paddingTop: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
-  androidSubmitBtn: {
-    backgroundColor: red,
+  button: {
     padding: 10,
-    marginTop: 40,
-    marginLeft: 40,
-    marginRight: 40,
-    height: 45,
-    borderRadius: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderRadius: Platform.OS === 'ios' ? 0 : 2,
   },
   btnText: {
     color: white,
-    fontSize: 22,
+    fontSize: Platform.OS === 'ios' ? 22 : 18,
     fontWeight: 'bold',
     textAlign: 'center',
   },

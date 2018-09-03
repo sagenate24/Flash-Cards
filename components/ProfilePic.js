@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Image, Platform } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 
-class ProfilePic extends React.Component {
+class ProfilePic extends PureComponent {
   render() {
     const { styles, borderColor, backUpSize, profile, backUp } = this.props;
 

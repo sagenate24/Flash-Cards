@@ -54,7 +54,7 @@ class NewDeck extends Component {
             <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
           )}
         </View>
-        <NASBtn disabled={title === ''} onPress={this.submit}>
+        <NASBtn tintColor={{ backgroundColor: red }} disabled={title === ''} onPress={this.submit}>
           Create Deck
         </NASBtn>
       </View>
@@ -71,10 +71,8 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderRadius: 2,
     padding: 20,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 17,
     shadowOpacity: 0.8,
+    marginBottom: 10,
     shadowColor: 'rgba(0,0,0,0.24)',
     shadowOffset: {
       width: 0,

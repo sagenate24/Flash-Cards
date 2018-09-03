@@ -1,6 +1,7 @@
-/* eslint-disable */
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { createStackNavigator, HeaderBackButton } from 'react-navigation';
+import { Feather } from '@expo/vector-icons';
 import { white, queenBlue } from '../utils/colors';
 
 import { Tabs } from './TabNavigator';
@@ -76,10 +77,18 @@ export const Stack = createStackNavigator({
   },
   Results: {
     screen: Results,
-    mode: 'modal',
-    navigationOptions: () => ({
-      title: 'RESULTS',
-      header: null,
+    navigationOptions: ({ navigation }) => ({
+      headerLeft: (
+        <TouchableOpacity onPress={() => { navigation.navigate('DeckList'); }}>
+          <Feather name='x' style={{ color: '#595959', marginLeft: 8, marginTop: -2 }} size={22} />
+        </TouchableOpacity>
+      ),
+      title: 'QUIZ RESULTS',
+      headerTintColor: '#595959',
+      headerStyle: {
+        backgroundColor: white,
+        borderBottomWidth: 0,
+      },
     }),
   },
   OnLoad: {
@@ -93,6 +102,6 @@ export const Stack = createStackNavigator({
   initialRouteName: 'Home',
   mode: 'card',
   headerMode: 'float',
-  headerTransitionPreset: 'uikit',
+  headerTransitionPreset: 'fade-in-place',
   headerLayoutPreset: 'center',
 });

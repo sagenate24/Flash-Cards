@@ -8,8 +8,9 @@ import {
   ScrollView,
 } from 'react-native';
 import { removeDeck } from '../utils/api';
-import { black, white, lightBlue, red, queenBlue } from '../utils/colors';
 import { addDeck } from '../actions/decks';
+import { black, white, lightBlue, red, queenBlue } from '../utils/colors';
+
 
 import DeckOption from './DeckOption';
 
@@ -22,8 +23,23 @@ class Deck extends Component {
     removeDeck(deck.title);
   }
 
+  generateKeyID = () => {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  }
+
+  cardLength = (questions) => {
+    if (questions && questions.length) {
+      if (questions.length > 1) {
+        return `${questions.length} Cards  |`;
+      }
+      return `${questions.length} Card  |`;
+    }
+    return '0 Cards  |';
+  }
+
   render() {
-    const { deck } = this.props;
+    const { deck, navigation } = this.props;
+
     if (deck === null) {
       return null;
     }
@@ -36,11 +52,7 @@ class Deck extends Component {
             <View style={styles.container}>
               <View style={styles.deckTitleAndDelete}>
                 <Text style={styles.cardCount}>
-                  {questions && questions.length
-                    ? questions.length > 1
-                      ? `${questions.length} Cards  |`
-                      : `${questions.length} Card  |`
-                    : '0 Cards'}
+                  {this.cardLength(questions)}
                 </Text>
                 <TouchableOpacity onPress={this.handleRemoveDeck}>
                   <Text style={[styles.removeText, { marginRight: 10 }]}>DELETE</Text>
@@ -51,9 +63,9 @@ class Deck extends Component {
                 <TouchableOpacity
                   disabled={questions.length === 0}
                   style={styles.navOption}
-                  onPress={() => this.props.navigation.navigate(
+                  onPress={() => navigation.navigate(
                     'Quiz',
-                    { currentDeck: this.props.deck },
+                    { currentDeck: deck },
                   )}
                 >
                   <DeckOption
@@ -67,9 +79,9 @@ class Deck extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={styles.navOption}
-                  onPress={() => this.props.navigation.navigate(
+                  onPress={() => navigation.navigate(
                     'NewCard',
-                    { currentDeck: this.props.deck },
+                    { currentDeck: deck },
                   )}
                 >
                   <DeckOption
@@ -85,7 +97,7 @@ class Deck extends Component {
               <Text style={styles.title}>Cards</Text>
               {questions && questions.length
                 ? questions.map(item => (
-                  <View style={styles.item} key={item.question}>
+                  <View style={styles.item} key={this.generateKeyID()}>
                     <Text>{item.question}</Text>
                   </View>
                 ))
@@ -164,7 +176,7 @@ const styles = StyleSheet.create({
     color: '#C0C0C0',
     flex: 1,
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 19,
     alignSelf: 'center',
     marginTop: 100,
   },
@@ -180,7 +192,7 @@ function mapStateToProps(state, { navigation }) {
 
 function mapDispatchToProps(dispatch, { navigation }) {
   const { currentDeck } = navigation.state.params;
-  console.log(currentDeck)
+
   return {
     remove: () => dispatch(addDeck({
       [currentDeck.title]: null,

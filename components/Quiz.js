@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { white, red, lightBlue } from '../utils/colors';
+import { red, queenBlue } from '../utils/colors';
+
 import Card from './Card';
+import NASBtn from './NASBtn';
 
 class Quiz extends Component {
   state = {
@@ -16,8 +13,8 @@ class Quiz extends Component {
   };
 
   correctAnswer = () => {
-    const { currentDeck } = this.props;
-    const { questions } = currentDeck;
+    const { deck } = this.props;
+    const { questions } = deck;
     const { questionIndex, correctAnswers } = this.state;
 
     if (questionIndex + 1 === questions.length) {
@@ -30,10 +27,10 @@ class Quiz extends Component {
     }
   };
 
-  wrongAnswer = () => {
-    const { currentDeck } = this.props;
+  incorrectAnswer = () => {
+    const { deck } = this.props;
+    const { questions } = deck;
     const { questionIndex } = this.state;
-    const { questions } = currentDeck;
 
     if (questionIndex + 1 === questions.length) {
       this.goToResults('incorrect');
@@ -44,13 +41,13 @@ class Quiz extends Component {
 
   goToResults = (lastAnswer) => {
     const { correctAnswers } = this.state;
-    const { navigation, currentDeck } = this.props;
+    const { navigation, deck } = this.props;
 
     navigation.navigate(
       'Results',
       {
         correctAnswers: lastAnswer === 'correct' ? correctAnswers + 1 : correctAnswers,
-        currentDeck: currentDeck,
+        currentDeck: deck,
       },
     );
 
@@ -61,68 +58,38 @@ class Quiz extends Component {
   };
 
   render() {
-    const { currentDeck } = this.props;
-    const { questions } = currentDeck;
+    const { deck } = this.props;
+    const { questions } = deck;
     const { questionIndex } = this.state;
     const questionsRemaining = questions.length - questionIndex;
 
     return (
-      <View style={styles.container}>
+      <View style={{ flex: 1, padding: 20 }}>
         <View style={{ flex: 4 }}>
           <Card
             question={questions[questionIndex].question}
             answer={questions[questionIndex].answer}
-            questionsRemaining={questionsRemaining} />
+            questionsRemaining={questionsRemaining}
+          />
         </View>
-        <View style={[styles.bottomContent, { flex: 1 }]}>
-          <TouchableOpacity
-            style={styles.correctBtn}
-            onPress={this.correctAnswer}>
-            <Text style={styles.btnText}>Correct</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.incorrectBtn}
-            onPress={this.wrongAnswer}>
-            <Text style={styles.btnText}>Incorrect</Text>
-          </TouchableOpacity>
+        <View style={{ flex: 1 }}>
+          <NASBtn tintColor={{ backgroundColor: queenBlue }} onPress={this.correctAnswer}>
+            Correct
+          </NASBtn>
+          <NASBtn tintColor={{ backgroundColor: red }} onPress={this.incorrectAnswer}>
+            Incorrect
+          </NASBtn>
         </View>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-  },
-  bottomContent: {
-    padding: 20,
-  },
-  correctBtn: {
-    backgroundColor: lightBlue,
-    padding: 10,
-    borderRadius: 2,
-  },
-  incorrectBtn: {
-    backgroundColor: red,
-    padding: 10,
-    marginTop: 20,
-    borderRadius: 2,
-  },
-  btnText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: white,
-    textAlign: 'center',
-  },
-});
-
 function mapStateToProps(state, { navigation }) {
   const { currentDeck } = navigation.state.params;
 
   return {
-    currentDeck,
+    deck: currentDeck,
   };
 }
 

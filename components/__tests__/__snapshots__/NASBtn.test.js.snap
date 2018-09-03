@@ -2,50 +2,56 @@
 
 exports[`NASBtn snapshot 1`] = `
 <View
-  accessibilityComponentType={undefined}
-  accessibilityLabel={undefined}
-  accessibilityTraits={undefined}
-  accessible={true}
-  collapsable={undefined}
-  hasTVPreferredFocus={undefined}
-  hitSlop={undefined}
-  isTVSelectable={true}
-  nativeID={undefined}
-  onLayout={undefined}
-  onResponderGrant={[Function]}
-  onResponderMove={[Function]}
-  onResponderRelease={[Function]}
-  onResponderTerminate={[Function]}
-  onResponderTerminationRequest={[Function]}
-  onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#e63946",
-      "height": 45,
-      "marginLeft": 40,
-      "marginRight": 40,
-      "marginTop": 40,
-      "opacity": 1,
-      "padding": 10,
+      "paddingLeft": 20,
+      "paddingRight": 20,
+      "paddingTop": 10,
     }
   }
-  testID={undefined}
-  tvParallaxProperties={undefined}
 >
-  <Text
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
     accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
+    collapsable={undefined}
+    hasTVPreferredFocus={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "color": "#fff",
-        "fontSize": 22,
-        "fontWeight": "bold",
-        "textAlign": "center",
+        "borderRadius": 0,
+        "opacity": 1,
+        "padding": 10,
       }
     }
+    testID={undefined}
+    tvParallaxProperties={undefined}
   >
-    test this text
-  </Text>
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 22,
+          "fontWeight": "bold",
+          "textAlign": "center",
+        }
+      }
+    >
+      test this text
+    </Text>
+  </View>
 </View>
 `;

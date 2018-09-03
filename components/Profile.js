@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   Text,
   View,
@@ -6,7 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Platform
+  Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
@@ -17,7 +17,7 @@ import ProfilePic from './ProfilePic';
 import CircleScore from './CircleScore';
 
 
-class Profile extends Component {
+class Profile extends PureComponent {
   render() {
     const { decks, profile, navigation } = this.props;
 
@@ -25,13 +25,16 @@ class Profile extends Component {
       <ScrollView style={styles.container}>
         <View>
           {profile.cover.length > 1
-            ? <Image
+            ? (
+              <Image
                 style={styles.topContent}
-                source={{ uri: profile.cover }} />
-            : (
+                source={{ uri: profile.cover }}
+              />
+            ) : (
               <TouchableOpacity
                 style={styles.topContent}
-                onPress={() => navigation.navigate('Settings')}>
+                onPress={() => navigation.navigate('Settings')}
+              >
                 <Text style={{
                   fontSize: 16, alignSelf: 'center', marginTop: 10, color: 'gray',
                 }}
@@ -49,14 +52,14 @@ class Profile extends Component {
                 <ProfilePic borderColor={white} backUpSize={40} backUp={false} styles={styles.img} />
               </View>
             ) : (
-              Platform.OS === 'ios'
-                ? <TouchableOpacity style={[styles.img, { backgroundColor: white }]} onPress={() => navigation.navigate('Settings')}>
-                    <Text style={styles.cameraIcon}><Ionicons name='ios-person-add' style={{ color: 'gray' }} size={50} /></Text>
-                  </TouchableOpacity>
-                : <TouchableOpacity style={[styles.img, { backgroundColor: white }]} onPress={() => navigation.navigate('Settings')}>
-                    <Text style={styles.cameraIcon}><Ionicons name='md-person-add' style={{ color: 'gray' }} size={40} /></Text>
-                  </TouchableOpacity>
-
+              <TouchableOpacity style={[styles.img, { backgroundColor: white }]} onPress={() => navigation.navigate('Settings')}>
+                <Text style={styles.cameraIcon}>
+                  {Platform.OS === 'ios'
+                    ? <Ionicons name='ios-person-add' style={{ color: 'gray' }} size={50} />
+                    : <Ionicons name='md-person-add' style={{ color: 'gray' }} size={40} />
+                  }
+                </Text>
+              </TouchableOpacity>
             )
           }
           {profile.username.length > 1
@@ -70,43 +73,48 @@ class Profile extends Component {
         </View>
         <View style={styles.itemContainer}>
           <Text style={[styles.text, { fontSize: 20, marginBottom: 10 }]}>Lastest Quiz Scores</Text>
-          {decks.map(deck => (
-            deck.recentScore || deck.recentScore === 0
-              ? (
-                <TouchableOpacity
-                  key={deck.timeStamp}
-                  onPress={() => navigation.navigate(
-                    'Deck',
-                    { currentDeck: deck })}>
-                  <View style={styles.item}>
-                    <View>
-                      <Text style={{ fontSize: 20 }}>
-                        {deck.title}
-                      </Text>
-                    </View>
-                    <View style={styles.bottomCardContent}>
-                      <View style={[styles.itemBox, { alignItems: 'flex-start', flex: 3 }]}>
-                        <Text style={{
-                          fontSize: 16, color: black, fontWeight: 'bold', marginTop: 10,
-                        }}
-                        >
-                          {deck.questions.length > 1
-                            ? `${deck.questions.length} Cards`
-                            : `${deck.questions.length} Card`}
+          {decks.length > 0
+            ? decks.map(deck => (
+
+              // Checks if the deck has a recent score.
+              deck.recentScore || deck.recentScore === 0
+                ? (
+                  <TouchableOpacity
+                    key={deck.timeStamp}
+                    onPress={() => navigation.navigate(
+                      'Deck',
+                      { currentDeck: deck },
+                    )}
+                  >
+                    <View style={styles.item}>
+                      <View>
+                        <Text style={{ fontSize: 20 }}>
+                          {deck.title}
                         </Text>
                       </View>
-                      <View style={[styles.itemBox, { alignItems: 'center', flex: 3 }]}>
-                        <CircleScore style={{ marginTop: 10 }} percent={deck.recentScore} width={2} size={45} textSize={{ fontSize: 10 }} />
-                      </View>
-                      <View style={[styles.itemBox, { alignItems: 'flex-end', flex: 4 }]}>
-                        <Text style={[styles.text, { fontSize: 15, marginTop: 10 }]}>{timeToString(deck.timeStamp)}</Text>
+                      <View style={styles.bottomCardContent}>
+                        <View style={[styles.itemBox, { alignItems: 'flex-start', flex: 3 }]}>
+                          <Text style={{
+                            fontSize: 16, color: black, fontWeight: 'bold', marginTop: 10,
+                          }}
+                          >
+                            {deck.questions.length > 1
+                              ? `${deck.questions.length} Cards`
+                              : `${deck.questions.length} Card`}
+                          </Text>
+                        </View>
+                        <View style={[styles.itemBox, { alignItems: 'center', flex: 3 }]}>
+                          <CircleScore style={{ marginTop: 10 }} percent={deck.recentScore} width={2} size={45} textSize={{ fontSize: 10 }} />
+                        </View>
+                        <View style={[styles.itemBox, { alignItems: 'flex-end', flex: 4 }]}>
+                          <Text style={[styles.text, { fontSize: 15, marginTop: 10 }]}>{timeToString(deck.timeStamp)}</Text>
+                        </View>
                       </View>
                     </View>
-                  </View>
-                </TouchableOpacity>
-              )
-              : null
-          ))}
+                  </TouchableOpacity>
+                ) : null
+            )) : <Text style={styles.empty}>You have no recent scores.</Text>
+          }
         </View>
       </ScrollView>
     );
@@ -185,12 +193,32 @@ const styles = StyleSheet.create({
   itemBox: {
     width: 50,
   },
+  empty: {
+    color: '#C0C0C0',
+    flex: 1,
+    fontWeight: 'bold',
+    fontSize: 19,
+    alignSelf: 'center',
+    marginTop: 100,
+  },
 });
 
 function mapStateToProps({ decks, profile }) {
+  const deckValuesArr = Object.values(decks);
+  const newDeckArr = [];
+
+  // only push objects that are not null and missing a recent score.
+  for (let i = 0; i < deckValuesArr.length; i++) {
+    if (deckValuesArr[i] !== null) {
+      if (deckValuesArr[i] && deckValuesArr[i].recentScore) {
+        newDeckArr.push(deckValuesArr[i]);
+      }
+    }
+  }
+
   return {
     profile,
-    decks: Object.values(decks).map((deck) => {
+    decks: Object.values(newDeckArr).map((deck) => {
       const { timeStamp } = deck;
 
       return {

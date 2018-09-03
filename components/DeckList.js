@@ -9,15 +9,15 @@ import {
   Modal,
 } from 'react-native';
 import { receiveDecks } from '../actions/decks';
+import { getInitialData } from '../utils/helpers';
 import { receiveProfile } from '../actions/profile';
 import { gray, white, black, red } from '../utils/colors';
-import { getInitialData } from '../utils/helpers';
 
 import OnLoad from './OnLoad';
 
 class DeckList extends Component {
   state = {
-    ready: true,
+    ready: false,
     modalType: 'none',
   };
 
@@ -32,7 +32,7 @@ class DeckList extends Component {
         this.setState(() => ({
           ready: true,
         }));
-      }, 2500);
+      }, 1500);
     });
 
     setTimeout(() => {
@@ -43,15 +43,16 @@ class DeckList extends Component {
   }
 
   render() {
-    const { decks } = this.props;
-    const { ready } = this.state;
+    const { decks, navigation } = this.props;
+    const { ready, modalType } = this.state;
 
     if (ready === false) {
       return (
         <Modal
-          animationType={this.state.modalType}
+          animationType={modalType}
           transparent={false}
-          visible={!ready}>
+          visible={!ready}
+        >
           <OnLoad />
         </Modal>
       );
@@ -62,48 +63,51 @@ class DeckList extends Component {
         <View>
           <TouchableOpacity
             style={styles.newDeck}
-            onPress={() => this.props.navigation.navigate(
-              'NewDeck',
-            )}
+            onPress={() => navigation.navigate('NewDeck')}
           >
             <Text style={styles.btnText}>
               Create a new deck
             </Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.deckListTitle}>Your Decks</Text>
+        {decks.length > 0
+          ? <Text style={styles.deckListTitle}>Your Decks</Text>
+          : null
+        }
         <View style={{ marginBottom: 57 }}>
-          {this.props && this.props.decks
+          {decks.length > 0
             ? Object.values(decks).map((deck) => {
-                if (!deck.title) {
-                  return null;
-                }
-                return (
-                  <View style={styles.item} key={deck.title}>
-                    <TouchableOpacity
-                      onPress={() => this.props.navigation.navigate(
-                        'Deck',
-                        { currentDeck: deck },
-                      )}
-                    >
-                      <Text style={{ fontSize: 20 }}>
-                        {deck.title}
-                      </Text>
-                      {deck.questions && deck.questions.length
-                        ? (
-                          <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
-                            {deck.questions.length > 1
-                              ? `${deck.questions.length} Cards`
-                              : `${deck.questions.length} Card`}
-                          </Text>
-                        )
-                        : <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
-                      }
-                    </TouchableOpacity>
-                  </View>
-                );
-              })
-            : <Text style={styles.noCards}>You have no decks</Text>
+              return (
+                <View style={styles.item} key={deck.title}>
+                  <TouchableOpacity
+                    onPress={() => navigation.navigate(
+                      'Deck',
+                      { currentDeck: deck },
+                    )}
+                  >
+                    <Text style={{ fontSize: 20 }}>
+                      {deck.title}
+                    </Text>
+                    {deck.questions && deck.questions.length
+                      ? (
+                        <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
+                          {deck.questions.length > 1
+                            ? `${deck.questions.length} Cards`
+                            : `${deck.questions.length} Card`}
+                        </Text>
+                      ) : <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
+                    }
+                  </TouchableOpacity>
+                </View>
+              );
+            }) : (
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                <View style={{ borderBottomColor: gray, borderBottomWidth: 1 }}>
+                  <Text style={[styles.emptyHeader]}>Welcome to FlashCards!</Text>
+                </View>
+                <Text style={[styles.emptyText]}>Get started by creating your own decks.</Text>
+              </View>
+            )
           }
         </View>
       </ScrollView>
@@ -158,11 +162,19 @@ const styles = StyleSheet.create({
     fontSize: 22,
     textAlign: 'center',
   },
-  noCards: {
-    fontSize: 22,
-    alignSelf: 'center',
+  emptyHeader: {
+    fontWeight: 'bold',
+    color: black,
+    fontSize: 23,
+    marginTop: 100,
+    textAlign: 'center',
+  },
+  emptyText: {
+    opacity: 0.6,
+    fontWeight: 'bold',
+    fontSize: 17,
     marginTop: 20,
-    opacity: 0.5,
+    textAlign: 'center',
   },
   remove: {
     alignSelf: 'flex-end',
@@ -172,8 +184,17 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps({ decks }) {
+  const deckValuesArr = Object.values(decks);
+  const newDeckArr = [];
+
+  for (let i = 0; i < deckValuesArr.length; i++) {
+    if (deckValuesArr[i] !== null) {
+      newDeckArr.push(deckValuesArr[i]);
+    }
+  }
+
   return {
-    decks: Object.values(decks).map(deck => ({
+    decks: Object.values(newDeckArr).map(deck => ({
       ...deck,
     })).sort((a, b) => b.timeStamp - a.timeStamp),
   };
