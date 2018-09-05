@@ -1,11 +1,11 @@
 import 'react-native';
 import React from 'react';
-import { mount } from 'enzyme';
 import renderer from 'react-test-renderer';
 import { lightBlue, yellow, red } from '../../utils/colors';
+
 import CircleScore, { colorPicker } from '../CircleScore';
 
-test('Deck snapShot', () => {
+it('should match Snapshot', () => {
   const snap = renderer.create(
     <CircleScore textSize={{ fontSize: 34 }} width={5} size={130} percent={50} />,
   ).toJSON();

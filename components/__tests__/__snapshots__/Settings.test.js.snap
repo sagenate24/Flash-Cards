@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Settings snapShot 1`] = `
+exports[`should match Snapshot 1`] = `
 <View
   style={
     Object {

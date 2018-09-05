@@ -1,6 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
+
 import Results from '../Results';
 
 const mockCurrentDeck = {
@@ -30,17 +31,21 @@ const mockCurrentDeck = {
   },
 };
 
-test('Results snapShot', () => {
+it('should match Snapshot', (done) => {
   const snap = renderer.create(
     <Results.WrappedComponent deck={mockCurrentDeck} correctAnswers={1} dispatch={jest.fn()} />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
+
+  done();
 });
 
-it('should flip card', () => {
+it('should flip card', (done) => {
   const wrapper = renderer.create(<Results.WrappedComponent deck={mockCurrentDeck} correctAnswers={1} dispatch={jest.fn()} />).getInstance();
   const handlePercent = wrapper.handlePercent();
 
   expect(handlePercent).toEqual(50);
+
+  done();
 });

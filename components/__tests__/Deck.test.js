@@ -2,8 +2,9 @@ import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
-import Deck from '../Deck';
 import { removeDeck } from '../../utils/api';
+
+import Deck from '../Deck';
 
 jest.mock('../../utils/api');
 
@@ -20,7 +21,7 @@ const mockDeck2 = {
   title: 'reactAndThings2',
 };
 
-test('Deck snapShot', () => {
+it('should match Snapshot', () => {
   const snap = renderer.create(
     <Deck.WrappedComponent deck={mockDeck} />,
   ).toJSON();
@@ -34,11 +35,13 @@ it('should return null if the deck is null', () => {
   expect(wrapper.render()).toEqual(null);
 });
 
-it('should return the correct string with one card', () => {
+it('should return the correct string with one card', (done) => {
   const wrapper = renderer.create(<Deck.WrappedComponent deck={mockDeck} />).getInstance();
   const cardLength = wrapper.cardLength(mockDeck.questions);
 
   expect(cardLength).toEqual('1 Card  |');
+
+  done();
 });
 
 it('should return the correct string with more than one card', () => {

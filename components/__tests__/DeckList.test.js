@@ -1,6 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
+
 import DeckList from '../DeckList';
 
 const mockDecks = {
@@ -21,10 +22,12 @@ const mockDecks = {
   },
 };
 
-test('DeckList snapShot', () => {
+it('should match Snapshot', (done) => {
   const snap = renderer.create(
     <DeckList.WrappedComponent decks={mockDecks} />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
+
+  done();
 });

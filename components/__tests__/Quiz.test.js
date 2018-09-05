@@ -1,6 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
+
 import Quiz from '../Quiz';
 
 const mockCurrentDeck = {
@@ -19,10 +20,12 @@ const mockCurrentDeck = {
   ],
 };
 
-test('Quiz snapShot', () => {
+it('should match Snapshot', (done) => {
   const snap = renderer.create(
     <Quiz.WrappedComponent deck={mockCurrentDeck} />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
+
+  done();
 });

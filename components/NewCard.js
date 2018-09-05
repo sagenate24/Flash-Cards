@@ -6,7 +6,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
 import { white, black, red } from '../utils/colors';
@@ -39,8 +38,8 @@ class NewCard extends Component {
   };
 
   submit = () => {
-    const { currentDeck, dispatch } = this.props;
-    const deckTitle = currentDeck.title;
+    const { deck, dispatch } = this.props;
+    const deckTitle = deck.title;
     const { question, answer } = this.state;
 
     const card = {
@@ -54,13 +53,12 @@ class NewCard extends Component {
   };
 
   toHome = () => {
-    const { navigation } = this.props;
+    const { navigation, deck } = this.props;
 
-    const backAction = NavigationActions.back({
-      key: null,
-    });
-
-    navigation.dispatch(backAction);
+    navigation.navigate(
+      'Deck',
+      { currentDeck: deck },
+    );
   };
 
   render() {
@@ -146,7 +144,7 @@ function mapStateToProps(state, { navigation }) {
   const { currentDeck } = navigation.state.params;
 
   return {
-    currentDeck,
+    deck: currentDeck,
   };
 }
 

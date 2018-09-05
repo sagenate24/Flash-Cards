@@ -11,8 +11,7 @@ import {
 // Deck APIs.
 export const getDecks = async () => {
   try {
-    const decks = await AsyncStorage.getItem(STORAGE_KEY)
-      .then(results => formatDeckResults(results));
+    const decks = formatDeckResults(await AsyncStorage.getItem(STORAGE_KEY));
 
     return decks;
   } catch (error) {
@@ -22,8 +21,7 @@ export const getDecks = async () => {
 
 export const getDeck = async (deckTitle) => {
   try {
-    const decks = await AsyncStorage.getItem(STORAGE_KEY)
-      .then(results => JSON.parse(results));
+    const decks = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
 
     return decks[deckTitle];
   } catch (error) {
@@ -31,22 +29,21 @@ export const getDeck = async (deckTitle) => {
   }
 };
 
-export function addCardToDeck(card, deckTitle) {
-  AsyncStorage.getItem(STORAGE_KEY, (err, data) => {
-    const newData = JSON.parse(data);
-
-    const questionsArr = newData[deckTitle].questions;
+export const addCardToDeck = async (card, deckTitle) => {
+  try {
+    const data = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
+    const questionsArr = data[deckTitle].questions;
     questionsArr.push(card);
 
     AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
         questions: questionsArr,
       },
-    }), () => {
-      AsyncStorage.getItem(STORAGE_KEY).then(results => console.log(JSON.parse(results)));
-    });
-  });
-}
+    }));
+  } catch (error) {
+    console.log('EERRRROORR OH MY GURD', error.message);
+  }
+};
 
 export const addDeckTitle = async (title) => {
   try {
@@ -60,30 +57,42 @@ export const addDeckTitle = async (title) => {
   }
 };
 
-export function removeDeck(key) {
-  return AsyncStorage.getItem(STORAGE_KEY)
-    .then((results) => {
-      const data = JSON.parse(results);
-      data[key] = undefined;
-      delete data[key];
-      AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data)), () => {
-        AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
-      };
-    });
-}
+export const removeDeck = async (key) => {
+  try {
+    const data = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
+    data[key] = undefined;
+    delete data[key];
 
-export function recentActivityScore(deckTitle, score, timeStamp) {
-  AsyncStorage.getItem(STORAGE_KEY, () => {
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const recentActivityScore = async (deckTitle, score, timeStamp) => {
+  try {
+    // const data = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
     AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
         recentScore: score,
         timeStamp,
       },
-    }), () => {
-      AsyncStorage.getItem(STORAGE_KEY).then(results => console.log(JSON.parse(results)));
-    });
-  });
+    }));
+  } catch (error) {
+    console.log(error.message);
+  }
 }
+//   AsyncStorage.getItem(STORAGE_KEY, () => {
+//     AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+//       [deckTitle]: {
+//         recentScore: score,
+//         timeStamp,
+//       },
+//     }), () => {
+//       AsyncStorage.getItem(STORAGE_KEY).then(results => console.log(JSON.parse(results)));
+//     });
+//   });
+// }
 
 // Profile APIs.
 export const getProfile = async () => {
@@ -108,15 +117,22 @@ export const deleteProfile = async () => {
   }
 };
 
-export function addProfileImg(image) {
-  AsyncStorage.getItem(PROFILE_KEY, () => {
+export const addProfileImg = async (image) => {
+  try {
     AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       avatar: image,
-    }), () => {
-      AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
-    });
-  });
-}
+    }));
+  } catch (error) {
+    console.log(error.message);
+  }
+  // AsyncStorage.getItem(PROFILE_KEY, () => {
+  //   AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+  //     avatar: image,
+  //   }), () => {
+  //     AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
+  //   });
+  // });
+};
 
 export function addProfileCover(image) {
   AsyncStorage.getItem(PROFILE_KEY, () => {
