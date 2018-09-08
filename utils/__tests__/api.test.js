@@ -44,11 +44,6 @@ jest.mock('react-native', () => ({
         resolve(JSON.stringify(mockStorage[key]));
       });
     }),
-    setItem: jest.fn(() => {
-      return new Promise((resolve) => {
-        resolve(null);
-      });
-    }),
   },
 }));
 
