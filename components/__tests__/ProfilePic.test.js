@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import ProfilePic from '../ProfilePic';
 
@@ -11,9 +11,7 @@ const mockProfile = {
 };
 
 it('should match Snapshot', (done) => {
-  const snap = renderer.create(
-    <ProfilePic.WrappedComponent backUpSize={30} styles={{ width: 40, height: 40 }} borderColor='#fff' profile={mockProfile} />,
-  ).toJSON();
+  const snap = shallow(<ProfilePic.WrappedComponent backUpSize={30} styles={{ width: 40, height: 40 }} borderColor='#fff' profile={mockProfile} />);
 
   expect(snap).toMatchSnapshot();
 

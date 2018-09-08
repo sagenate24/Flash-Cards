@@ -69,7 +69,7 @@ class Settings extends Component {
         }
 
         navigation.navigate('Profile');
-      });
+      }, () => console.log('error'));
     });
   };
 

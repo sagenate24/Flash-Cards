@@ -21,14 +21,6 @@ const mockDeck2 = {
   title: 'reactAndThings2',
 };
 
-it('should match Snapshot', () => {
-  const snap = renderer.create(
-    <Deck.WrappedComponent deck={mockDeck} />,
-  ).toJSON();
-
-  expect(snap).toMatchSnapshot();
-});
-
 it('should return null if the deck is null', () => {
   const wrapper = renderer.create(<Deck.WrappedComponent deck={null} />).getInstance();
 
@@ -63,7 +55,6 @@ it('should remove the deck', () => {
   const goBackMock = jest.fn();
 
   const wrapper = shallow(<Deck.WrappedComponent deck={mockDeck} remove={removeMock} goBack={goBackMock} />).instance();
-
   wrapper.handleRemoveDeck();
 
   expect(removeMock).toHaveBeenCalled();

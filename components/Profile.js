@@ -16,7 +16,6 @@ import { timeToString } from '../utils/helpers';
 import ProfilePic from './ProfilePic';
 import CircleScore from './CircleScore';
 
-
 class Profile extends PureComponent {
   render() {
     const { decks, profile, navigation } = this.props;
@@ -207,10 +206,10 @@ function mapStateToProps({ decks, profile }) {
   const deckValuesArr = Object.values(decks);
   const newDeckArr = [];
 
-  // only push objects that are not null and missing a recent score.
+  // only push objects that are not null and that have a recent score >= 0.
   for (let i = 0; i < deckValuesArr.length; i++) {
     if (deckValuesArr[i] !== null) {
-      if (deckValuesArr[i] && deckValuesArr[i].recentScore) {
+      if (deckValuesArr[i] && deckValuesArr[i].recentScore >= 0) {
         newDeckArr.push(deckValuesArr[i]);
       }
     }

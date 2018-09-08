@@ -102,15 +102,3 @@ export function formatProfileResults(results) {
     ? setDummyProfile()
     : JSON.parse(results);
 }
-
-export function formatNewProfileImage(image) {
-  return JSON.stringify({
-    userProfile: {
-      avatar: image,
-    },
-  });
-}
-
-export function formatNewProfile() {
-  return setDummyProfile();
-}

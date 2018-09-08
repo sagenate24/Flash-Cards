@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import Profile from '../Profile';
 
@@ -38,14 +38,13 @@ const mockProfile = {
   avatar: '',
   cover: '',
 };
-// const { decks, profile, navigation } = this.props;
 
-it('should match Snapshot', (done) => {
-  const snap = renderer.create(
-    <Profile.WrappedComponent decks={mockDecks} profile={mockProfile} />,
-  ).toJSON();
+it('should match Snapshot', () => {
+  const mockNavigation = {
+    navigate: jest.fn(),
+  };
+
+  const snap = shallow(<Profile.WrappedComponent decks={mockDecks} profile={mockProfile} navigation={mockNavigation} />);
 
   expect(snap).toMatchSnapshot();
-
-  done();
 });

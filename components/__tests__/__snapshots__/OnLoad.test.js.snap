@@ -1,46 +1,429 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should match Snapshot 1`] = `
-<View
-  style={
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <OnLoad />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <StatusBar
+          animated={false}
+          hidden={true}
+          showHideTransition="fade"
+        />,
+        <Component>
+          <UNDEFINED
+            name="cards-outline"
+            size={100}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "color": "#fff",
+                },
+                Object {
+                  "opacity": undefined,
+                  "transform": Array [
+                    Object {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ]
+            }
+          />
+        </Component>,
+        <Component>
+          <AnimatedComponent
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "color": "#fff",
+                  "fontSize": 26,
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "opacity": undefined,
+                  "transform": Array [
+                    Object {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ]
+            }
+          >
+            FlashCards
+          </AnimatedComponent>
+        </Component>,
+      ],
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "#4e8098",
+        "flex": 1,
+        "justifyContent": "center",
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "animated": false,
+          "hidden": true,
+          "showHideTransition": "fade",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <UNDEFINED
+            name="cards-outline"
+            size={100}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "color": "#fff",
+                },
+                Object {
+                  "opacity": undefined,
+                  "transform": Array [
+                    Object {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ]
+            }
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "name": "cards-outline",
+            "size": 100,
+            "style": Array [
+              Object {
+                "alignItems": "center",
+                "color": "#fff",
+              },
+              Object {
+                "opacity": undefined,
+                "transform": Array [
+                  Object {
+                    "scale": undefined,
+                  },
+                ],
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": undefined,
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <AnimatedComponent
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "color": "#fff",
+                  "fontSize": 26,
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "opacity": undefined,
+                  "transform": Array [
+                    Object {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ]
+            }
+          >
+            FlashCards
+          </AnimatedComponent>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "FlashCards",
+            "style": Array [
+              Object {
+                "alignItems": "center",
+                "color": "#fff",
+                "fontSize": 26,
+                "fontWeight": "bold",
+              },
+              Object {
+                "opacity": undefined,
+                "transform": Array [
+                  Object {
+                    "scale": undefined,
+                  },
+                ],
+              },
+            ],
+          },
+          "ref": null,
+          "rendered": "FlashCards",
+          "type": [MockFunction],
+        },
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#4e8098",
-      "flex": 1,
-      "justifyContent": "center",
-    }
-  }
->
-  <View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    />
-  </View>
-  <View>
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      collapsable={undefined}
-      ellipsizeMode="tail"
-      style={
-        Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <StatusBar
+            animated={false}
+            hidden={true}
+            showHideTransition="fade"
+          />,
+          <Component>
+            <UNDEFINED
+              name="cards-outline"
+              size={100}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "color": "#fff",
+                  },
+                  Object {
+                    "opacity": undefined,
+                    "transform": Array [
+                      Object {
+                        "scale": undefined,
+                      },
+                    ],
+                  },
+                ]
+              }
+            />
+          </Component>,
+          <Component>
+            <AnimatedComponent
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "color": "#fff",
+                    "fontSize": 26,
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "opacity": undefined,
+                    "transform": Array [
+                      Object {
+                        "scale": undefined,
+                      },
+                    ],
+                  },
+                ]
+              }
+            >
+              FlashCards
+            </AnimatedComponent>
+          </Component>,
+        ],
+        "style": Object {
           "alignItems": "center",
-          "color": "#fff",
-          "fontSize": 26,
-          "fontWeight": "bold",
-          "opacity": 0,
-          "transform": Array [
-            Object {
-              "scale": 0.1,
+          "backgroundColor": "#4e8098",
+          "flex": 1,
+          "justifyContent": "center",
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "animated": false,
+            "hidden": true,
+            "showHideTransition": "fade",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <UNDEFINED
+              name="cards-outline"
+              size={100}
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "color": "#fff",
+                  },
+                  Object {
+                    "opacity": undefined,
+                    "transform": Array [
+                      Object {
+                        "scale": undefined,
+                      },
+                    ],
+                  },
+                ]
+              }
+            />,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "name": "cards-outline",
+              "size": 100,
+              "style": Array [
+                Object {
+                  "alignItems": "center",
+                  "color": "#fff",
+                },
+                Object {
+                  "opacity": undefined,
+                  "transform": Array [
+                    Object {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ],
             },
-          ],
-        }
-      }
-    >
-      FlashCards
-    </Text>
-  </View>
-</View>
+            "ref": null,
+            "rendered": null,
+            "type": undefined,
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <AnimatedComponent
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "color": "#fff",
+                    "fontSize": 26,
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "opacity": undefined,
+                    "transform": Array [
+                      Object {
+                        "scale": undefined,
+                      },
+                    ],
+                  },
+                ]
+              }
+            >
+              FlashCards
+            </AnimatedComponent>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "FlashCards",
+              "style": Array [
+                Object {
+                  "alignItems": "center",
+                  "color": "#fff",
+                  "fontSize": 26,
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "opacity": undefined,
+                  "transform": Array [
+                    Object {
+                      "scale": undefined,
+                    },
+                  ],
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": "FlashCards",
+            "type": [MockFunction],
+          },
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
 `;

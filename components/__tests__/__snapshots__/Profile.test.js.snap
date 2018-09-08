@@ -1,114 +1,181 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should match Snapshot 1`] = `
-<RCTScrollView
-  style={
-    Object {
-      "flex": 1,
-    }
-  }
->
-  <View>
-    <View>
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        collapsable={undefined}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#fff",
-            "height": 150,
-            "opacity": 1,
-            "shadowColor": "rgba(0,0,0,0.24)",
-            "shadowOffset": Object {
-              "height": 3,
-              "width": 0,
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Profile
+    decks={
+      Array [
+        Object {
+          "questions": Array [
+            Object {
+              "answer": "A library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfaces",
+              "question": "What is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is React?",
             },
-            "shadowOpacity": 0.8,
-            "width": "100%",
-          }
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+            Object {
+              "answer": "The componentDidMount lifecycle event",
+              "question": "Where do you make Ajax requests in React?",
+            },
+          ],
+          "recentScore": 35,
+          "timeStamp": 1534284894237,
+          "title": "React",
+        },
+        Object {
+          "questions": Array [
+            Object {
+              "answer": "The combination of a function and the lexical enviornment with in which that function was declared.The combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declaredThe combination of a function and the lexical enviornment with in which that function was declared",
+              "question": "What is a closure?The combination of a function and the lexical enviornment with in which that function was declaredThe combination of a functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona functiona function",
+            },
+          ],
+          "recentScore": 100,
+          "timeStamp": 1534284869329,
+          "title": "JavaScript",
+        },
+      ]
+    }
+    navigation={
+      Object {
+        "navigate": [MockFunction],
+      }
+    }
+    profile={
+      Object {
+        "avatar": "",
+        "cover": "",
+        "username": "",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Component>
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
+              Object {
+                "backgroundColor": "#fff",
+                "height": 150,
+                "shadowColor": "rgba(0,0,0,0.24)",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.8,
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "color": "gray",
+                  "fontSize": 16,
+                  "marginTop": 10,
+                }
+              }
+            >
+              Choose cover photo
+            </Text>
+          </TouchableOpacity>
+        </Component>,
+        <Component
           style={
             Object {
-              "alignSelf": "center",
-              "color": "gray",
-              "fontSize": 16,
-              "marginTop": 10,
+              "alignItems": "center",
             }
           }
         >
-          Choose cover photo
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        Object {
-          "alignItems": "center",
-        }
-      }
-    >
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        collapsable={undefined}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "backgroundColor": "#fff",
-            "borderColor": "#fff",
-            "borderRadius": 70,
-            "borderWidth": 5,
-            "height": 140,
-            "marginTop": -70,
-            "opacity": 1,
-            "width": 140,
-          }
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
+              Array [
+                Object {
+                  "borderColor": "#fff",
+                  "borderRadius": 70,
+                  "borderWidth": 5,
+                  "height": 140,
+                  "marginTop": -70,
+                  "width": 140,
+                },
+                Object {
+                  "backgroundColor": "#fff",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "flex": 1,
+                  "marginTop": 45,
+                }
+              }
+            >
+              <Icon
+                allowFontScaling={false}
+                name="ios-person-add"
+                size={50}
+                style={
+                  Object {
+                    "color": "gray",
+                  }
+                }
+              />
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "#404040",
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "color": "gray",
+                    "fontSize": 18,
+                    "padding": 20,
+                  },
+                ]
+              }
+            >
+              Create Username
+            </Text>
+          </TouchableOpacity>
+        </Component>,
+        <Component
           style={
             Object {
-              "alignSelf": "center",
-              "flex": 1,
-              "marginTop": 45,
+              "padding": 20,
             }
           }
         >
@@ -116,160 +183,2636 @@ exports[`should match Snapshot 1`] = `
             accessible={true}
             allowFontScaling={true}
             ellipsizeMode="tail"
-          />
-        </Text>
-      </View>
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        collapsable={undefined}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          ellipsizeMode="tail"
-          style={
-            Array [
+            style={
+              Array [
+                Object {
+                  "color": "#404040",
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "fontSize": 20,
+                  "marginBottom": 10,
+                },
+              ]
+            }
+          >
+            Lastest Quiz Scores
+          </Text>
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+          >
+            <Component
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 17,
+                  "padding": 20,
+                  "shadowColor": "rgba(0,0,0,0.24)",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.8,
+                }
+              }
+            >
+              <Component>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontSize": 20,
+                    }
+                  }
+                >
+                  React
+                </Text>
+              </Component>
+              <Component
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "marginTop": 10,
+                  }
+                }
+              >
+                <Component
+                  style={
+                    Array [
+                      Object {
+                        "width": 50,
+                      },
+                      Object {
+                        "alignItems": "flex-start",
+                        "flex": 3,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#404040",
+                        "fontSize": 16,
+                        "fontWeight": "bold",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    2 Cards
+                  </Text>
+                </Component>
+                <Component
+                  style={
+                    Array [
+                      Object {
+                        "width": 50,
+                      },
+                      Object {
+                        "alignItems": "center",
+                        "flex": 3,
+                      },
+                    ]
+                  }
+                >
+                  <CircleScore
+                    percent={35}
+                    size={45}
+                    style={
+                      Object {
+                        "marginTop": 10,
+                      }
+                    }
+                    textSize={
+                      Object {
+                        "fontSize": 10,
+                      }
+                    }
+                    width={2}
+                  />
+                </Component>
+                <Component
+                  style={
+                    Array [
+                      Object {
+                        "width": 50,
+                      },
+                      Object {
+                        "alignItems": "flex-end",
+                        "flex": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#404040",
+                          "fontWeight": "bold",
+                        },
+                        Object {
+                          "fontSize": 15,
+                          "marginTop": 10,
+                        },
+                      ]
+                    }
+                  >
+                    Aug 14 2018
+                  </Text>
+                </Component>
+              </Component>
+            </Component>
+          </TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+          >
+            <Component
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 17,
+                  "padding": 20,
+                  "shadowColor": "rgba(0,0,0,0.24)",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.8,
+                }
+              }
+            >
+              <Component>
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "fontSize": 20,
+                    }
+                  }
+                >
+                  JavaScript
+                </Text>
+              </Component>
+              <Component
+                style={
+                  Object {
+                    "flexDirection": "row",
+                    "marginTop": 10,
+                  }
+                }
+              >
+                <Component
+                  style={
+                    Array [
+                      Object {
+                        "width": 50,
+                      },
+                      Object {
+                        "alignItems": "flex-start",
+                        "flex": 3,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "color": "#404040",
+                        "fontSize": 16,
+                        "fontWeight": "bold",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    1 Card
+                  </Text>
+                </Component>
+                <Component
+                  style={
+                    Array [
+                      Object {
+                        "width": 50,
+                      },
+                      Object {
+                        "alignItems": "center",
+                        "flex": 3,
+                      },
+                    ]
+                  }
+                >
+                  <CircleScore
+                    percent={100}
+                    size={45}
+                    style={
+                      Object {
+                        "marginTop": 10,
+                      }
+                    }
+                    textSize={
+                      Object {
+                        "fontSize": 10,
+                      }
+                    }
+                    width={2}
+                  />
+                </Component>
+                <Component
+                  style={
+                    Array [
+                      Object {
+                        "width": 50,
+                      },
+                      Object {
+                        "alignItems": "flex-end",
+                        "flex": 4,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#404040",
+                          "fontWeight": "bold",
+                        },
+                        Object {
+                          "fontSize": 15,
+                          "marginTop": 10,
+                        },
+                      ]
+                    }
+                  >
+                    Aug 14 2018
+                  </Text>
+                </Component>
+              </Component>
+            </Component>
+          </TouchableOpacity>
+        </Component>,
+      ],
+      "style": Object {
+        "flex": 1,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <TouchableOpacity
+            activeOpacity={0.2}
+            onPress={[Function]}
+            style={
               Object {
-                "color": "#404040",
-                "fontWeight": "bold",
+                "backgroundColor": "#fff",
+                "height": 150,
+                "shadowColor": "rgba(0,0,0,0.24)",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.8,
+                "width": "100%",
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "color": "gray",
+                  "fontSize": 16,
+                  "marginTop": 10,
+                }
+              }
+            >
+              Choose cover photo
+            </Text>
+          </TouchableOpacity>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "activeOpacity": 0.2,
+            "children": <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "color": "gray",
+                  "fontSize": 16,
+                  "marginTop": 10,
+                }
+              }
+            >
+              Choose cover photo
+            </Text>,
+            "onPress": [Function],
+            "style": Object {
+              "backgroundColor": "#fff",
+              "height": 150,
+              "shadowColor": "rgba(0,0,0,0.24)",
+              "shadowOffset": Object {
+                "height": 3,
+                "width": 0,
               },
-              Object {
+              "shadowOpacity": 0.8,
+              "width": "100%",
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Choose cover photo",
+              "ellipsizeMode": "tail",
+              "style": Object {
+                "alignSelf": "center",
                 "color": "gray",
-                "fontSize": 18,
+                "fontSize": 16,
+                "marginTop": 10,
+              },
+            },
+            "ref": null,
+            "rendered": "Choose cover photo",
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "borderColor": "#fff",
+                    "borderRadius": 70,
+                    "borderWidth": 5,
+                    "height": 140,
+                    "marginTop": -70,
+                    "width": 140,
+                  },
+                  Object {
+                    "backgroundColor": "#fff",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "flex": 1,
+                    "marginTop": 45,
+                  }
+                }
+              >
+                <Icon
+                  allowFontScaling={false}
+                  name="ios-person-add"
+                  size={50}
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
+                />
+              </Text>
+            </TouchableOpacity>,
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#404040",
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "color": "gray",
+                      "fontSize": 18,
+                      "padding": 20,
+                    },
+                  ]
+                }
+              >
+                Create Username
+              </Text>
+            </TouchableOpacity>,
+          ],
+          "style": Object {
+            "alignItems": "center",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.2,
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "flex": 1,
+                    "marginTop": 45,
+                  }
+                }
+              >
+                <Icon
+                  allowFontScaling={false}
+                  name="ios-person-add"
+                  size={50}
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
+                />
+              </Text>,
+              "onPress": [Function],
+              "style": Array [
+                Object {
+                  "borderColor": "#fff",
+                  "borderRadius": 70,
+                  "borderWidth": 5,
+                  "height": 140,
+                  "marginTop": -70,
+                  "width": 140,
+                },
+                Object {
+                  "backgroundColor": "#fff",
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": <Icon
+                  allowFontScaling={false}
+                  name="ios-person-add"
+                  size={50}
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
+                />,
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "alignSelf": "center",
+                  "flex": 1,
+                  "marginTop": 45,
+                },
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "allowFontScaling": false,
+                  "name": "ios-person-add",
+                  "size": 50,
+                  "style": Object {
+                    "color": "gray",
+                  },
+                },
+                "ref": null,
+                "rendered": null,
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.2,
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#404040",
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "color": "gray",
+                      "fontSize": 18,
+                      "padding": 20,
+                    },
+                  ]
+                }
+              >
+                Create Username
+              </Text>,
+              "onPress": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Create Username",
+                "ellipsizeMode": "tail",
+                "style": Array [
+                  Object {
+                    "color": "#404040",
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "color": "gray",
+                    "fontSize": 18,
+                    "padding": 20,
+                  },
+                ],
+              },
+              "ref": null,
+              "rendered": "Create Username",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "#404040",
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "fontSize": 20,
+                    "marginBottom": 10,
+                  },
+                ]
+              }
+            >
+              Lastest Quiz Scores
+            </Text>,
+            Array [
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+              >
+                <Component
+                  style={
+                    Object {
+                      "backgroundColor": "#fff",
+                      "borderRadius": 2,
+                      "flexDirection": "column",
+                      "justifyContent": "space-between",
+                      "marginLeft": 10,
+                      "marginRight": 10,
+                      "marginTop": 17,
+                      "padding": 20,
+                      "shadowColor": "rgba(0,0,0,0.24)",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.8,
+                    }
+                  }
+                >
+                  <Component>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      React
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          }
+                        }
+                      >
+                        2 Cards
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <CircleScore
+                        percent={35}
+                        size={45}
+                        style={
+                          Object {
+                            "marginTop": 10,
+                          }
+                        }
+                        textSize={
+                          Object {
+                            "fontSize": 10,
+                          }
+                        }
+                        width={2}
+                      />
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        Aug 14 2018
+                      </Text>
+                    </Component>
+                  </Component>
+                </Component>
+              </TouchableOpacity>,
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+              >
+                <Component
+                  style={
+                    Object {
+                      "backgroundColor": "#fff",
+                      "borderRadius": 2,
+                      "flexDirection": "column",
+                      "justifyContent": "space-between",
+                      "marginLeft": 10,
+                      "marginRight": 10,
+                      "marginTop": 17,
+                      "padding": 20,
+                      "shadowColor": "rgba(0,0,0,0.24)",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.8,
+                    }
+                  }
+                >
+                  <Component>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      JavaScript
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          }
+                        }
+                      >
+                        1 Card
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <CircleScore
+                        percent={100}
+                        size={45}
+                        style={
+                          Object {
+                            "marginTop": 10,
+                          }
+                        }
+                        textSize={
+                          Object {
+                            "fontSize": 10,
+                          }
+                        }
+                        width={2}
+                      />
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        Aug 14 2018
+                      </Text>
+                    </Component>
+                  </Component>
+                </Component>
+              </TouchableOpacity>,
+            ],
+          ],
+          "style": Object {
+            "padding": 20,
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "accessible": true,
+              "allowFontScaling": true,
+              "children": "Lastest Quiz Scores",
+              "ellipsizeMode": "tail",
+              "style": Array [
+                Object {
+                  "color": "#404040",
+                  "fontWeight": "bold",
+                },
+                Object {
+                  "fontSize": 20,
+                  "marginBottom": 10,
+                },
+              ],
+            },
+            "ref": null,
+            "rendered": "Lastest Quiz Scores",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1534284894237",
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.2,
+              "children": <Component
+                style={
+                  Object {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 2,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 17,
+                    "padding": 20,
+                    "shadowColor": "rgba(0,0,0,0.24)",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.8,
+                  }
+                }
+              >
+                <Component>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    React
+                  </Text>
+                </Component>
+                <Component
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "marginTop": 10,
+                    }
+                  }
+                >
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-start",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "#404040",
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      2 Cards
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "center",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <CircleScore
+                      percent={35}
+                      size={45}
+                      style={
+                        Object {
+                          "marginTop": 10,
+                        }
+                      }
+                      textSize={
+                        Object {
+                          "fontSize": 10,
+                        }
+                      }
+                      width={2}
+                    />
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-end",
+                          "flex": 4,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#404040",
+                            "fontWeight": "bold",
+                          },
+                          Object {
+                            "fontSize": 15,
+                            "marginTop": 10,
+                          },
+                        ]
+                      }
+                    >
+                      Aug 14 2018
+                    </Text>
+                  </Component>
+                </Component>
+              </Component>,
+              "onPress": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Component>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      React
+                    </Text>
+                  </Component>,
+                  <Component
+                    style={
+                      Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          }
+                        }
+                      >
+                        2 Cards
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <CircleScore
+                        percent={35}
+                        size={45}
+                        style={
+                          Object {
+                            "marginTop": 10,
+                          }
+                        }
+                        textSize={
+                          Object {
+                            "fontSize": 10,
+                          }
+                        }
+                        width={2}
+                      />
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        Aug 14 2018
+                      </Text>
+                    </Component>
+                  </Component>,
+                ],
+                "style": Object {
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 17,
+                  "padding": 20,
+                  "shadowColor": "rgba(0,0,0,0.24)",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.8,
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      React
+                    </Text>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "accessible": true,
+                      "allowFontScaling": true,
+                      "children": "React",
+                      "ellipsizeMode": "tail",
+                      "style": Object {
+                        "fontSize": 20,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": "React",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          2 Cards
+                        </Text>
+                      </Component>,
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <CircleScore
+                          percent={35}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />
+                      </Component>,
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>
+                      </Component>,
+                    ],
+                    "style": Object {
+                      "flexDirection": "row",
+                      "marginTop": 10,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          2 Cards
+                        </Text>,
+                        "style": Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "accessible": true,
+                          "allowFontScaling": true,
+                          "children": "2 Cards",
+                          "ellipsizeMode": "tail",
+                          "style": Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          },
+                        },
+                        "ref": null,
+                        "rendered": "2 Cards",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <CircleScore
+                          percent={35}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />,
+                        "style": Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "percent": 35,
+                          "size": 45,
+                          "style": Object {
+                            "marginTop": 10,
+                          },
+                          "textSize": Object {
+                            "fontSize": 10,
+                          },
+                          "width": 2,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>,
+                        "style": Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "accessible": true,
+                          "allowFontScaling": true,
+                          "children": "Aug 14 2018",
+                          "ellipsizeMode": "tail",
+                          "style": Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": "Aug 14 2018",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": "1534284869329",
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.2,
+              "children": <Component
+                style={
+                  Object {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 2,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 17,
+                    "padding": 20,
+                    "shadowColor": "rgba(0,0,0,0.24)",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.8,
+                  }
+                }
+              >
+                <Component>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    JavaScript
+                  </Text>
+                </Component>
+                <Component
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "marginTop": 10,
+                    }
+                  }
+                >
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-start",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "#404040",
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      1 Card
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "center",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <CircleScore
+                      percent={100}
+                      size={45}
+                      style={
+                        Object {
+                          "marginTop": 10,
+                        }
+                      }
+                      textSize={
+                        Object {
+                          "fontSize": 10,
+                        }
+                      }
+                      width={2}
+                    />
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-end",
+                          "flex": 4,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#404040",
+                            "fontWeight": "bold",
+                          },
+                          Object {
+                            "fontSize": 15,
+                            "marginTop": 10,
+                          },
+                        ]
+                      }
+                    >
+                      Aug 14 2018
+                    </Text>
+                  </Component>
+                </Component>
+              </Component>,
+              "onPress": [Function],
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": Array [
+                  <Component>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      JavaScript
+                    </Text>
+                  </Component>,
+                  <Component
+                    style={
+                      Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          }
+                        }
+                      >
+                        1 Card
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <CircleScore
+                        percent={100}
+                        size={45}
+                        style={
+                          Object {
+                            "marginTop": 10,
+                          }
+                        }
+                        textSize={
+                          Object {
+                            "fontSize": 10,
+                          }
+                        }
+                        width={2}
+                      />
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        Aug 14 2018
+                      </Text>
+                    </Component>
+                  </Component>,
+                ],
+                "style": Object {
+                  "backgroundColor": "#fff",
+                  "borderRadius": 2,
+                  "flexDirection": "column",
+                  "justifyContent": "space-between",
+                  "marginLeft": 10,
+                  "marginRight": 10,
+                  "marginTop": 17,
+                  "padding": 20,
+                  "shadowColor": "rgba(0,0,0,0.24)",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.8,
+                },
+              },
+              "ref": null,
+              "rendered": Array [
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      JavaScript
+                    </Text>,
+                  },
+                  "ref": null,
+                  "rendered": Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "accessible": true,
+                      "allowFontScaling": true,
+                      "children": "JavaScript",
+                      "ellipsizeMode": "tail",
+                      "style": Object {
+                        "fontSize": 20,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": "JavaScript",
+                    "type": [Function],
+                  },
+                  "type": [Function],
+                },
+                Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "children": Array [
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          1 Card
+                        </Text>
+                      </Component>,
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <CircleScore
+                          percent={100}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />
+                      </Component>,
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>
+                      </Component>,
+                    ],
+                    "style": Object {
+                      "flexDirection": "row",
+                      "marginTop": 10,
+                    },
+                  },
+                  "ref": null,
+                  "rendered": Array [
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          1 Card
+                        </Text>,
+                        "style": Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "accessible": true,
+                          "allowFontScaling": true,
+                          "children": "1 Card",
+                          "ellipsizeMode": "tail",
+                          "style": Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          },
+                        },
+                        "ref": null,
+                        "rendered": "1 Card",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <CircleScore
+                          percent={100}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />,
+                        "style": Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "function",
+                        "props": Object {
+                          "percent": 100,
+                          "size": 45,
+                          "style": Object {
+                            "marginTop": 10,
+                          },
+                          "textSize": Object {
+                            "fontSize": 10,
+                          },
+                          "width": 2,
+                        },
+                        "ref": null,
+                        "rendered": null,
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                    Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "children": <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>,
+                        "style": Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ],
+                      },
+                      "ref": null,
+                      "rendered": Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "accessible": true,
+                          "allowFontScaling": true,
+                          "children": "Aug 14 2018",
+                          "ellipsizeMode": "tail",
+                          "style": Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": "Aug 14 2018",
+                        "type": [Function],
+                      },
+                      "type": [Function],
+                    },
+                  ],
+                  "type": [Function],
+                },
+              ],
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [MockFunction],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Component>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Object {
+                  "backgroundColor": "#fff",
+                  "height": 150,
+                  "shadowColor": "rgba(0,0,0,0.24)",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.8,
+                  "width": "100%",
+                }
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "color": "gray",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
+              >
+                Choose cover photo
+              </Text>
+            </TouchableOpacity>
+          </Component>,
+          <Component
+            style={
+              Object {
+                "alignItems": "center",
+              }
+            }
+          >
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "borderColor": "#fff",
+                    "borderRadius": 70,
+                    "borderWidth": 5,
+                    "height": 140,
+                    "marginTop": -70,
+                    "width": 140,
+                  },
+                  Object {
+                    "backgroundColor": "#fff",
+                  },
+                ]
+              }
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "flex": 1,
+                    "marginTop": 45,
+                  }
+                }
+              >
+                <Icon
+                  allowFontScaling={false}
+                  name="ios-person-add"
+                  size={50}
+                  style={
+                    Object {
+                      "color": "gray",
+                    }
+                  }
+                />
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Array [
+                    Object {
+                      "color": "#404040",
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "color": "gray",
+                      "fontSize": 18,
+                      "padding": 20,
+                    },
+                  ]
+                }
+              >
+                Create Username
+              </Text>
+            </TouchableOpacity>
+          </Component>,
+          <Component
+            style={
+              Object {
                 "padding": 20,
-              },
-            ]
-          }
-        >
-          Create Username
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
+              }
+            }
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "color": "#404040",
+                    "fontWeight": "bold",
+                  },
+                  Object {
+                    "fontSize": 20,
+                    "marginBottom": 10,
+                  },
+                ]
+              }
+            >
+              Lastest Quiz Scores
+            </Text>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+            >
+              <Component
+                style={
+                  Object {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 2,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 17,
+                    "padding": 20,
+                    "shadowColor": "rgba(0,0,0,0.24)",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.8,
+                  }
+                }
+              >
+                <Component>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    React
+                  </Text>
+                </Component>
+                <Component
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "marginTop": 10,
+                    }
+                  }
+                >
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-start",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "#404040",
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      2 Cards
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "center",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <CircleScore
+                      percent={35}
+                      size={45}
+                      style={
+                        Object {
+                          "marginTop": 10,
+                        }
+                      }
+                      textSize={
+                        Object {
+                          "fontSize": 10,
+                        }
+                      }
+                      width={2}
+                    />
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-end",
+                          "flex": 4,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#404040",
+                            "fontWeight": "bold",
+                          },
+                          Object {
+                            "fontSize": 15,
+                            "marginTop": 10,
+                          },
+                        ]
+                      }
+                    >
+                      Aug 14 2018
+                    </Text>
+                  </Component>
+                </Component>
+              </Component>
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
+            >
+              <Component
+                style={
+                  Object {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 2,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 17,
+                    "padding": 20,
+                    "shadowColor": "rgba(0,0,0,0.24)",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.8,
+                  }
+                }
+              >
+                <Component>
+                  <Text
+                    accessible={true}
+                    allowFontScaling={true}
+                    ellipsizeMode="tail"
+                    style={
+                      Object {
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    JavaScript
+                  </Text>
+                </Component>
+                <Component
+                  style={
+                    Object {
+                      "flexDirection": "row",
+                      "marginTop": 10,
+                    }
+                  }
+                >
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-start",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "color": "#404040",
+                          "fontSize": 16,
+                          "fontWeight": "bold",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      1 Card
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "center",
+                          "flex": 3,
+                        },
+                      ]
+                    }
+                  >
+                    <CircleScore
+                      percent={100}
+                      size={45}
+                      style={
+                        Object {
+                          "marginTop": 10,
+                        }
+                      }
+                      textSize={
+                        Object {
+                          "fontSize": 10,
+                        }
+                      }
+                      width={2}
+                    />
+                  </Component>
+                  <Component
+                    style={
+                      Array [
+                        Object {
+                          "width": 50,
+                        },
+                        Object {
+                          "alignItems": "flex-end",
+                          "flex": 4,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#404040",
+                            "fontWeight": "bold",
+                          },
+                          Object {
+                            "fontSize": 15,
+                            "marginTop": 10,
+                          },
+                        ]
+                      }
+                    >
+                      Aug 14 2018
+                    </Text>
+                  </Component>
+                </Component>
+              </Component>
+            </TouchableOpacity>
+          </Component>,
+        ],
+        "style": Object {
+          "flex": 1,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
         Object {
-          "padding": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        ellipsizeMode="tail"
-        style={
-          Array [
-            Object {
-              "color": "#404040",
-              "fontWeight": "bold",
-            },
-            Object {
-              "fontSize": 20,
-              "marginBottom": 10,
-            },
-          ]
-        }
-      >
-        Lastest Quiz Scores
-      </Text>
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        collapsable={undefined}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#fff",
-              "borderRadius": 2,
-              "flexDirection": "column",
-              "justifyContent": "space-between",
-              "marginLeft": 10,
-              "marginRight": 10,
-              "marginTop": 17,
-              "padding": 20,
-              "shadowColor": "rgba(0,0,0,0.24)",
-              "shadowOffset": Object {
-                "height": 3,
-                "width": 0,
-              },
-              "shadowOpacity": 0.8,
-            }
-          }
-        >
-          <View>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": <TouchableOpacity
+              activeOpacity={0.2}
+              onPress={[Function]}
               style={
                 Object {
-                  "fontSize": 20,
+                  "backgroundColor": "#fff",
+                  "height": 150,
+                  "shadowColor": "rgba(0,0,0,0.24)",
+                  "shadowOffset": Object {
+                    "height": 3,
+                    "width": 0,
+                  },
+                  "shadowOpacity": 0.8,
+                  "width": "100%",
                 }
-              }
-            >
-              React
-            </Text>
-          </View>
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-                "marginTop": 10,
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "width": 50,
-                  },
-                  Object {
-                    "alignItems": "flex-start",
-                    "flex": 3,
-                  },
-                ]
               }
             >
               <Text
@@ -278,265 +2821,313 @@ exports[`should match Snapshot 1`] = `
                 ellipsizeMode="tail"
                 style={
                   Object {
-                    "color": "#404040",
+                    "alignSelf": "center",
+                    "color": "gray",
                     "fontSize": 16,
-                    "fontWeight": "bold",
                     "marginTop": 10,
                   }
                 }
               >
-                2 Cards
+                Choose cover photo
               </Text>
-            </View>
-            <View
-              style={
-                Array [
+            </TouchableOpacity>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "activeOpacity": 0.2,
+              "children": <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
                   Object {
-                    "width": 50,
-                  },
-                  Object {
-                    "alignItems": "center",
-                    "flex": 3,
-                  },
-                ]
-              }
-            >
-              <View
-                style={undefined}
+                    "alignSelf": "center",
+                    "color": "gray",
+                    "fontSize": 16,
+                    "marginTop": 10,
+                  }
+                }
               >
-                <RNSVGSvgView
-                  bbHeight="45"
-                  bbWidth="45"
+                Choose cover photo
+              </Text>,
+              "onPress": [Function],
+              "style": Object {
+                "backgroundColor": "#fff",
+                "height": 150,
+                "shadowColor": "rgba(0,0,0,0.24)",
+                "shadowOffset": Object {
+                  "height": 3,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.8,
+                "width": "100%",
+              },
+            },
+            "ref": null,
+            "rendered": Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Choose cover photo",
+                "ellipsizeMode": "tail",
+                "style": Object {
+                  "alignSelf": "center",
+                  "color": "gray",
+                  "fontSize": 16,
+                  "marginTop": 10,
+                },
+              },
+              "ref": null,
+              "rendered": "Choose cover photo",
+              "type": [Function],
+            },
+            "type": [Function],
+          },
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+                style={
+                  Array [
+                    Object {
+                      "borderColor": "#fff",
+                      "borderRadius": 70,
+                      "borderWidth": 5,
+                      "height": 140,
+                      "marginTop": -70,
+                      "width": 140,
+                    },
+                    Object {
+                      "backgroundColor": "#fff",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Object {
+                      "alignSelf": "center",
+                      "flex": 1,
+                      "marginTop": 45,
+                    }
+                  }
+                >
+                  <Icon
+                    allowFontScaling={false}
+                    name="ios-person-add"
+                    size={50}
+                    style={
+                      Object {
+                        "color": "gray",
+                      }
+                    }
+                  />
+                </Text>
+              </TouchableOpacity>,
+              <TouchableOpacity
+                activeOpacity={0.2}
+                onPress={[Function]}
+              >
+                <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
                   style={
                     Array [
                       Object {
-                        "backgroundColor": "transparent",
+                        "color": "#404040",
+                        "fontWeight": "bold",
                       },
                       Object {
-                        "backgroundColor": "transparent",
-                      },
-                      false,
-                      Object {
-                        "flex": 0,
-                        "height": 45,
-                        "width": 45,
+                        "color": "gray",
+                        "fontSize": 18,
+                        "padding": 20,
                       },
                     ]
                   }
                 >
-                  <RNSVGGroup
-                    fill={
-                      Array [
-                        0,
-                        0,
-                        0,
-                        0,
-                        1,
-                      ]
-                    }
-                    fillOpacity={1}
-                    fillRule={1}
-                    font={Object {}}
-                    matrix={
-                      Array [
-                        -0.3826834323650895,
-                        -0.9238795325112868,
-                        0.9238795325112868,
-                        -0.3826834323650895,
-                        10.32308774671056,
-                        51.897666709718465,
-                      ]
-                    }
-                    onLayout={undefined}
-                    opacity={1}
-                    originX={22.5}
-                    originY={22.5}
-                    propList={Array []}
-                    rotation={247.5}
-                    scaleX={1}
-                    scaleY={1}
-                    skewX={0}
-                    skewY={0}
-                    stroke={null}
-                    strokeDasharray={null}
-                    strokeDashoffset={null}
-                    strokeLinecap={0}
-                    strokeLinejoin={0}
-                    strokeMiterlimit={4}
-                    strokeOpacity={1}
-                    strokeWidth="1"
-                    x={0}
-                    y={0}
-                  >
-                    <RNSVGPath
-                      d="M 7.303175500515019 37.7087647470744 A 21.5 21.5 0 1 0 22.5 1"
-                      fill={
-                        Array [
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                        ]
-                      }
-                      fillOpacity={1}
-                      fillRule={1}
-                      matrix={
-                        Array [
-                          1,
-                          0,
-                          0,
-                          1,
-                          0,
-                          0,
-                        ]
-                      }
-                      onLayout={undefined}
-                      opacity={1}
-                      originX={0}
-                      originY={0}
-                      propList={
-                        Array [
-                          "stroke",
-                          "strokeWidth",
-                          "strokeLinecap",
-                          "fill",
-                        ]
-                      }
-                      rotation={0}
-                      scaleX={1}
-                      scaleY={1}
-                      skewX={0}
-                      skewY={0}
-                      stroke={
-                        Array [
-                          0,
-                          0.9490196078431372,
-                          0.9490196078431372,
-                          0.9490196078431372,
-                          1,
-                        ]
-                      }
-                      strokeDasharray={null}
-                      strokeDashoffset={null}
-                      strokeLinecap={1}
-                      strokeLinejoin={0}
-                      strokeMiterlimit={4}
-                      strokeOpacity={1}
-                      strokeWidth="2"
-                      x={0}
-                      y={0}
-                    />
-                    <RNSVGPath
-                      d="M 22.5 1 A 21.5 21.5 0 0 0 22.5 1"
-                      fill={
-                        Array [
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                        ]
-                      }
-                      fillOpacity={1}
-                      fillRule={1}
-                      matrix={
-                        Array [
-                          1,
-                          0,
-                          0,
-                          1,
-                          0,
-                          0,
-                        ]
-                      }
-                      onLayout={undefined}
-                      opacity={1}
-                      originX={0}
-                      originY={0}
-                      propList={
-                        Array [
-                          "stroke",
-                          "strokeWidth",
-                          "strokeLinecap",
-                          "fill",
-                        ]
-                      }
-                      rotation={0}
-                      scaleX={1}
-                      scaleY={1}
-                      skewX={0}
-                      skewY={0}
-                      stroke={
-                        Array [
-                          0,
-                          0.9019607843137255,
-                          0.2235294117647059,
-                          0.27450980392156865,
-                          1,
-                        ]
-                      }
-                      strokeDasharray={null}
-                      strokeDashoffset={null}
-                      strokeLinecap={1}
-                      strokeLinejoin={0}
-                      strokeMiterlimit={4}
-                      strokeOpacity={1}
-                      strokeWidth="2"
-                      x={0}
-                      y={0}
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-                <View
+                  Create Username
+                </Text>
+              </TouchableOpacity>,
+            ],
+            "style": Object {
+              "alignItems": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activeOpacity": 0.2,
+                "children": <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
                   style={
                     Object {
-                      "alignItems": "center",
-                      "borderRadius": 20.5,
-                      "height": 41,
-                      "justifyContent": "center",
-                      "left": 2,
-                      "position": "absolute",
-                      "top": 2,
-                      "width": 41,
+                      "alignSelf": "center",
+                      "flex": 1,
+                      "marginTop": 45,
                     }
                   }
                 >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
+                  <Icon
+                    allowFontScaling={false}
+                    name="ios-person-add"
+                    size={50}
                     style={
-                      Array [
-                        Object {
-                          "fontSize": 10,
-                        },
-                        Object {
-                          "color": "#404040",
-                          "fontWeight": "bold",
-                        },
-                      ]
+                      Object {
+                        "color": "gray",
+                      }
                     }
-                  >
-                    35
-                    %
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                  />
+                </Text>,
+                "onPress": [Function],
+                "style": Array [
                   Object {
-                    "width": 50,
+                    "borderColor": "#fff",
+                    "borderRadius": 70,
+                    "borderWidth": 5,
+                    "height": 140,
+                    "marginTop": -70,
+                    "width": 140,
                   },
                   Object {
-                    "alignItems": "flex-end",
-                    "flex": 4,
+                    "backgroundColor": "#fff",
                   },
-                ]
-              }
-            >
+                ],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": <Icon
+                    allowFontScaling={false}
+                    name="ios-person-add"
+                    size={50}
+                    style={
+                      Object {
+                        "color": "gray",
+                      }
+                    }
+                  />,
+                  "ellipsizeMode": "tail",
+                  "style": Object {
+                    "alignSelf": "center",
+                    "flex": 1,
+                    "marginTop": 45,
+                  },
+                },
+                "ref": null,
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "class",
+                  "props": Object {
+                    "allowFontScaling": false,
+                    "name": "ios-person-add",
+                    "size": 50,
+                    "style": Object {
+                      "color": "gray",
+                    },
+                  },
+                  "ref": null,
+                  "rendered": null,
+                  "type": [Function],
+                },
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "activeOpacity": 0.2,
+                "children": <Text
+                  accessible={true}
+                  allowFontScaling={true}
+                  ellipsizeMode="tail"
+                  style={
+                    Array [
+                      Object {
+                        "color": "#404040",
+                        "fontWeight": "bold",
+                      },
+                      Object {
+                        "color": "gray",
+                        "fontSize": 18,
+                        "padding": 20,
+                      },
+                    ]
+                  }
+                >
+                  Create Username
+                </Text>,
+                "onPress": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "accessible": true,
+                  "allowFontScaling": true,
+                  "children": "Create Username",
+                  "ellipsizeMode": "tail",
+                  "style": Array [
+                    Object {
+                      "color": "#404040",
+                      "fontWeight": "bold",
+                    },
+                    Object {
+                      "color": "gray",
+                      "fontSize": 18,
+                      "padding": 20,
+                    },
+                  ],
+                },
+                "ref": null,
+                "rendered": "Create Username",
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
               <Text
                 accessible={true}
                 allowFontScaling={true}
@@ -548,387 +3139,1554 @@ exports[`should match Snapshot 1`] = `
                       "fontWeight": "bold",
                     },
                     Object {
-                      "fontSize": 15,
-                      "marginTop": 10,
+                      "fontSize": 20,
+                      "marginBottom": 10,
                     },
                   ]
                 }
               >
-                Aug 14 2018
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-      <View
-        accessibilityComponentType={undefined}
-        accessibilityLabel={undefined}
-        accessibilityTraits={undefined}
-        accessible={true}
-        collapsable={undefined}
-        hasTVPreferredFocus={undefined}
-        hitSlop={undefined}
-        isTVSelectable={true}
-        nativeID={undefined}
-        onLayout={undefined}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "opacity": 1,
-          }
-        }
-        testID={undefined}
-        tvParallaxProperties={undefined}
-      >
-        <View
-          style={
-            Object {
-              "backgroundColor": "#fff",
-              "borderRadius": 2,
-              "flexDirection": "column",
-              "justifyContent": "space-between",
-              "marginLeft": 10,
-              "marginRight": 10,
-              "marginTop": 17,
+                Lastest Quiz Scores
+              </Text>,
+              Array [
+                <TouchableOpacity
+                  activeOpacity={0.2}
+                  onPress={[Function]}
+                >
+                  <Component
+                    style={
+                      Object {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 2,
+                        "flexDirection": "column",
+                        "justifyContent": "space-between",
+                        "marginLeft": 10,
+                        "marginRight": 10,
+                        "marginTop": 17,
+                        "padding": 20,
+                        "shadowColor": "rgba(0,0,0,0.24)",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.8,
+                      }
+                    }
+                  >
+                    <Component>
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        React
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Object {
+                          "flexDirection": "row",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          2 Cards
+                        </Text>
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <CircleScore
+                          percent={35}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>
+                      </Component>
+                    </Component>
+                  </Component>
+                </TouchableOpacity>,
+                <TouchableOpacity
+                  activeOpacity={0.2}
+                  onPress={[Function]}
+                >
+                  <Component
+                    style={
+                      Object {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 2,
+                        "flexDirection": "column",
+                        "justifyContent": "space-between",
+                        "marginLeft": 10,
+                        "marginRight": 10,
+                        "marginTop": 17,
+                        "padding": 20,
+                        "shadowColor": "rgba(0,0,0,0.24)",
+                        "shadowOffset": Object {
+                          "height": 3,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.8,
+                      }
+                    }
+                  >
+                    <Component>
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        JavaScript
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Object {
+                          "flexDirection": "row",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          1 Card
+                        </Text>
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <CircleScore
+                          percent={100}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>
+                      </Component>
+                    </Component>
+                  </Component>
+                </TouchableOpacity>,
+              ],
+            ],
+            "style": Object {
               "padding": 20,
-              "shadowColor": "rgba(0,0,0,0.24)",
-              "shadowOffset": Object {
-                "height": 3,
-                "width": 0,
-              },
-              "shadowOpacity": 0.8,
-            }
-          }
-        >
-          <View>
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Object {
-                  "fontSize": 20,
-                }
-              }
-            >
-              JavaScript
-            </Text>
-          </View>
-          <View
-            style={
-              Object {
-                "flexDirection": "row",
-                "marginTop": 10,
-              }
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "width": 50,
-                  },
-                  Object {
-                    "alignItems": "flex-start",
-                    "flex": 3,
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "accessible": true,
+                "allowFontScaling": true,
+                "children": "Lastest Quiz Scores",
+                "ellipsizeMode": "tail",
+                "style": Array [
                   Object {
                     "color": "#404040",
-                    "fontSize": 16,
                     "fontWeight": "bold",
-                    "marginTop": 10,
-                  }
-                }
-              >
-                1 Card
-              </Text>
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "width": 50,
                   },
                   Object {
-                    "alignItems": "center",
-                    "flex": 3,
+                    "fontSize": 20,
+                    "marginBottom": 10,
                   },
-                ]
-              }
-            >
-              <View
-                style={undefined}
-              >
-                <RNSVGSvgView
-                  bbHeight="45"
-                  bbWidth="45"
-                  style={
-                    Array [
-                      Object {
-                        "backgroundColor": "transparent",
-                      },
-                      Object {
-                        "backgroundColor": "transparent",
-                      },
-                      false,
-                      Object {
-                        "flex": 0,
-                        "height": 45,
-                        "width": 45,
-                      },
-                    ]
-                  }
-                >
-                  <RNSVGGroup
-                    fill={
-                      Array [
-                        0,
-                        0,
-                        0,
-                        0,
-                        1,
-                      ]
-                    }
-                    fillOpacity={1}
-                    fillRule={1}
-                    font={Object {}}
-                    matrix={
-                      Array [
-                        -0.3826834323650895,
-                        -0.9238795325112868,
-                        0.9238795325112868,
-                        -0.3826834323650895,
-                        10.32308774671056,
-                        51.897666709718465,
-                      ]
-                    }
-                    onLayout={undefined}
-                    opacity={1}
-                    originX={22.5}
-                    originY={22.5}
-                    propList={Array []}
-                    rotation={247.5}
-                    scaleX={1}
-                    scaleY={1}
-                    skewX={0}
-                    skewY={0}
-                    stroke={null}
-                    strokeDasharray={null}
-                    strokeDashoffset={null}
-                    strokeLinecap={0}
-                    strokeLinejoin={0}
-                    strokeMiterlimit={4}
-                    strokeOpacity={1}
-                    strokeWidth="1"
-                    x={0}
-                    y={0}
-                  >
-                    <RNSVGPath
-                      d="M 7.303175500515019 37.7087647470744 A 21.5 21.5 0 1 0 22.5 1"
-                      fill={
-                        Array [
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                        ]
-                      }
-                      fillOpacity={1}
-                      fillRule={1}
-                      matrix={
-                        Array [
-                          1,
-                          0,
-                          0,
-                          1,
-                          0,
-                          0,
-                        ]
-                      }
-                      onLayout={undefined}
-                      opacity={1}
-                      originX={0}
-                      originY={0}
-                      propList={
-                        Array [
-                          "stroke",
-                          "strokeWidth",
-                          "strokeLinecap",
-                          "fill",
-                        ]
-                      }
-                      rotation={0}
-                      scaleX={1}
-                      scaleY={1}
-                      skewX={0}
-                      skewY={0}
-                      stroke={
-                        Array [
-                          0,
-                          0.9490196078431372,
-                          0.9490196078431372,
-                          0.9490196078431372,
-                          1,
-                        ]
-                      }
-                      strokeDasharray={null}
-                      strokeDashoffset={null}
-                      strokeLinecap={1}
-                      strokeLinejoin={0}
-                      strokeMiterlimit={4}
-                      strokeOpacity={1}
-                      strokeWidth="2"
-                      x={0}
-                      y={0}
-                    />
-                    <RNSVGPath
-                      d="M 22.5 1 A 21.5 21.5 0 0 0 22.5 1"
-                      fill={
-                        Array [
-                          0,
-                          0,
-                          0,
-                          0,
-                          0,
-                        ]
-                      }
-                      fillOpacity={1}
-                      fillRule={1}
-                      matrix={
-                        Array [
-                          1,
-                          0,
-                          0,
-                          1,
-                          0,
-                          0,
-                        ]
-                      }
-                      onLayout={undefined}
-                      opacity={1}
-                      originX={0}
-                      originY={0}
-                      propList={
-                        Array [
-                          "stroke",
-                          "strokeWidth",
-                          "strokeLinecap",
-                          "fill",
-                        ]
-                      }
-                      rotation={0}
-                      scaleX={1}
-                      scaleY={1}
-                      skewX={0}
-                      skewY={0}
-                      stroke={
-                        Array [
-                          0,
-                          0.6588235294117647,
-                          0.8549019607843137,
-                          0.8627450980392157,
-                          1,
-                        ]
-                      }
-                      strokeDasharray={null}
-                      strokeDashoffset={null}
-                      strokeLinecap={1}
-                      strokeLinejoin={0}
-                      strokeMiterlimit={4}
-                      strokeOpacity={1}
-                      strokeWidth="2"
-                      x={0}
-                      y={0}
-                    />
-                  </RNSVGGroup>
-                </RNSVGSvgView>
-                <View
+                ],
+              },
+              "ref": null,
+              "rendered": "Lastest Quiz Scores",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1534284894237",
+              "nodeType": "class",
+              "props": Object {
+                "activeOpacity": 0.2,
+                "children": <Component
                   style={
                     Object {
-                      "alignItems": "center",
-                      "borderRadius": 20.5,
-                      "height": 41,
-                      "justifyContent": "center",
-                      "left": 2,
-                      "position": "absolute",
-                      "top": 2,
-                      "width": 41,
+                      "backgroundColor": "#fff",
+                      "borderRadius": 2,
+                      "flexDirection": "column",
+                      "justifyContent": "space-between",
+                      "marginLeft": 10,
+                      "marginRight": 10,
+                      "marginTop": 17,
+                      "padding": 20,
+                      "shadowColor": "rgba(0,0,0,0.24)",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.8,
                     }
                   }
                 >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    ellipsizeMode="tail"
+                  <Component>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      React
+                    </Text>
+                  </Component>
+                  <Component
                     style={
-                      Array [
-                        Object {
-                          "fontSize": 10,
-                        },
-                        Object {
-                          "color": "#404040",
-                          "fontWeight": "bold",
-                        },
-                      ]
+                      Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      }
                     }
                   >
-                    100
-                    %
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                Array [
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          }
+                        }
+                      >
+                        2 Cards
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <CircleScore
+                        percent={35}
+                        size={45}
+                        style={
+                          Object {
+                            "marginTop": 10,
+                          }
+                        }
+                        textSize={
+                          Object {
+                            "fontSize": 10,
+                          }
+                        }
+                        width={2}
+                      />
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        Aug 14 2018
+                      </Text>
+                    </Component>
+                  </Component>
+                </Component>,
+                "onPress": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Component>
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        React
+                      </Text>
+                    </Component>,
+                    <Component
+                      style={
+                        Object {
+                          "flexDirection": "row",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          2 Cards
+                        </Text>
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <CircleScore
+                          percent={35}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>
+                      </Component>
+                    </Component>,
+                  ],
+                  "style": Object {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 2,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 17,
+                    "padding": 20,
+                    "shadowColor": "rgba(0,0,0,0.24)",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.8,
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
                   Object {
-                    "width": 50,
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        React
+                      </Text>,
+                    },
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "accessible": true,
+                        "allowFontScaling": true,
+                        "children": "React",
+                        "ellipsizeMode": "tail",
+                        "style": Object {
+                          "fontSize": 20,
+                        },
+                      },
+                      "ref": null,
+                      "rendered": "React",
+                      "type": [Function],
+                    },
+                    "type": [Function],
                   },
                   Object {
-                    "alignItems": "flex-end",
-                    "flex": 4,
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <Component
+                          style={
+                            Array [
+                              Object {
+                                "width": 50,
+                              },
+                              Object {
+                                "alignItems": "flex-start",
+                                "flex": 3,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Object {
+                                "color": "#404040",
+                                "fontSize": 16,
+                                "fontWeight": "bold",
+                                "marginTop": 10,
+                              }
+                            }
+                          >
+                            2 Cards
+                          </Text>
+                        </Component>,
+                        <Component
+                          style={
+                            Array [
+                              Object {
+                                "width": 50,
+                              },
+                              Object {
+                                "alignItems": "center",
+                                "flex": 3,
+                              },
+                            ]
+                          }
+                        >
+                          <CircleScore
+                            percent={35}
+                            size={45}
+                            style={
+                              Object {
+                                "marginTop": 10,
+                              }
+                            }
+                            textSize={
+                              Object {
+                                "fontSize": 10,
+                              }
+                            }
+                            width={2}
+                          />
+                        </Component>,
+                        <Component
+                          style={
+                            Array [
+                              Object {
+                                "width": 50,
+                              },
+                              Object {
+                                "alignItems": "flex-end",
+                                "flex": 4,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#404040",
+                                  "fontWeight": "bold",
+                                },
+                                Object {
+                                  "fontSize": 15,
+                                  "marginTop": 10,
+                                },
+                              ]
+                            }
+                          >
+                            Aug 14 2018
+                          </Text>
+                        </Component>,
+                      ],
+                      "style": Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Object {
+                                "color": "#404040",
+                                "fontSize": 16,
+                                "fontWeight": "bold",
+                                "marginTop": 10,
+                              }
+                            }
+                          >
+                            2 Cards
+                          </Text>,
+                          "style": Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "accessible": true,
+                            "allowFontScaling": true,
+                            "children": "2 Cards",
+                            "ellipsizeMode": "tail",
+                            "style": Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            },
+                          },
+                          "ref": null,
+                          "rendered": "2 Cards",
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <CircleScore
+                            percent={35}
+                            size={45}
+                            style={
+                              Object {
+                                "marginTop": 10,
+                              }
+                            }
+                            textSize={
+                              Object {
+                                "fontSize": 10,
+                              }
+                            }
+                            width={2}
+                          />,
+                          "style": Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "percent": 35,
+                            "size": 45,
+                            "style": Object {
+                              "marginTop": 10,
+                            },
+                            "textSize": Object {
+                              "fontSize": 10,
+                            },
+                            "width": 2,
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#404040",
+                                  "fontWeight": "bold",
+                                },
+                                Object {
+                                  "fontSize": 15,
+                                  "marginTop": 10,
+                                },
+                              ]
+                            }
+                          >
+                            Aug 14 2018
+                          </Text>,
+                          "style": Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "accessible": true,
+                            "allowFontScaling": true,
+                            "children": "Aug 14 2018",
+                            "ellipsizeMode": "tail",
+                            "style": Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ],
+                          },
+                          "ref": null,
+                          "rendered": "Aug 14 2018",
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
                   },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Array [
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": "1534284869329",
+              "nodeType": "class",
+              "props": Object {
+                "activeOpacity": 0.2,
+                "children": <Component
+                  style={
                     Object {
-                      "color": "#404040",
-                      "fontWeight": "bold",
+                      "backgroundColor": "#fff",
+                      "borderRadius": 2,
+                      "flexDirection": "column",
+                      "justifyContent": "space-between",
+                      "marginLeft": 10,
+                      "marginRight": 10,
+                      "marginTop": 17,
+                      "padding": 20,
+                      "shadowColor": "rgba(0,0,0,0.24)",
+                      "shadowOffset": Object {
+                        "height": 3,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.8,
+                    }
+                  }
+                >
+                  <Component>
+                    <Text
+                      accessible={true}
+                      allowFontScaling={true}
+                      ellipsizeMode="tail"
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      JavaScript
+                    </Text>
+                  </Component>
+                  <Component
+                    style={
+                      Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      }
+                    }
+                  >
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-start",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "color": "#404040",
+                            "fontSize": 16,
+                            "fontWeight": "bold",
+                            "marginTop": 10,
+                          }
+                        }
+                      >
+                        1 Card
+                      </Text>
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "center",
+                            "flex": 3,
+                          },
+                        ]
+                      }
+                    >
+                      <CircleScore
+                        percent={100}
+                        size={45}
+                        style={
+                          Object {
+                            "marginTop": 10,
+                          }
+                        }
+                        textSize={
+                          Object {
+                            "fontSize": 10,
+                          }
+                        }
+                        width={2}
+                      />
+                    </Component>
+                    <Component
+                      style={
+                        Array [
+                          Object {
+                            "width": 50,
+                          },
+                          Object {
+                            "alignItems": "flex-end",
+                            "flex": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Array [
+                            Object {
+                              "color": "#404040",
+                              "fontWeight": "bold",
+                            },
+                            Object {
+                              "fontSize": 15,
+                              "marginTop": 10,
+                            },
+                          ]
+                        }
+                      >
+                        Aug 14 2018
+                      </Text>
+                    </Component>
+                  </Component>
+                </Component>,
+                "onPress": [Function],
+              },
+              "ref": null,
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "class",
+                "props": Object {
+                  "children": Array [
+                    <Component>
+                      <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        JavaScript
+                      </Text>
+                    </Component>,
+                    <Component
+                      style={
+                        Object {
+                          "flexDirection": "row",
+                          "marginTop": 10,
+                        }
+                      }
+                    >
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            }
+                          }
+                        >
+                          1 Card
+                        </Text>
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ]
+                        }
+                      >
+                        <CircleScore
+                          percent={100}
+                          size={45}
+                          style={
+                            Object {
+                              "marginTop": 10,
+                            }
+                          }
+                          textSize={
+                            Object {
+                              "fontSize": 10,
+                            }
+                          }
+                          width={2}
+                        />
+                      </Component>
+                      <Component
+                        style={
+                          Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          accessible={true}
+                          allowFontScaling={true}
+                          ellipsizeMode="tail"
+                          style={
+                            Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ]
+                          }
+                        >
+                          Aug 14 2018
+                        </Text>
+                      </Component>
+                    </Component>,
+                  ],
+                  "style": Object {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 2,
+                    "flexDirection": "column",
+                    "justifyContent": "space-between",
+                    "marginLeft": 10,
+                    "marginRight": 10,
+                    "marginTop": 17,
+                    "padding": 20,
+                    "shadowColor": "rgba(0,0,0,0.24)",
+                    "shadowOffset": Object {
+                      "height": 3,
+                      "width": 0,
                     },
-                    Object {
-                      "fontSize": 15,
-                      "marginTop": 10,
+                    "shadowOpacity": 0.8,
+                  },
+                },
+                "ref": null,
+                "rendered": Array [
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": <Text
+                        accessible={true}
+                        allowFontScaling={true}
+                        ellipsizeMode="tail"
+                        style={
+                          Object {
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        JavaScript
+                      </Text>,
                     },
-                  ]
-                }
-              >
-                Aug 14 2018
-              </Text>
-            </View>
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</RCTScrollView>
+                    "ref": null,
+                    "rendered": Object {
+                      "instance": null,
+                      "key": undefined,
+                      "nodeType": "class",
+                      "props": Object {
+                        "accessible": true,
+                        "allowFontScaling": true,
+                        "children": "JavaScript",
+                        "ellipsizeMode": "tail",
+                        "style": Object {
+                          "fontSize": 20,
+                        },
+                      },
+                      "ref": null,
+                      "rendered": "JavaScript",
+                      "type": [Function],
+                    },
+                    "type": [Function],
+                  },
+                  Object {
+                    "instance": null,
+                    "key": undefined,
+                    "nodeType": "class",
+                    "props": Object {
+                      "children": Array [
+                        <Component
+                          style={
+                            Array [
+                              Object {
+                                "width": 50,
+                              },
+                              Object {
+                                "alignItems": "flex-start",
+                                "flex": 3,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Object {
+                                "color": "#404040",
+                                "fontSize": 16,
+                                "fontWeight": "bold",
+                                "marginTop": 10,
+                              }
+                            }
+                          >
+                            1 Card
+                          </Text>
+                        </Component>,
+                        <Component
+                          style={
+                            Array [
+                              Object {
+                                "width": 50,
+                              },
+                              Object {
+                                "alignItems": "center",
+                                "flex": 3,
+                              },
+                            ]
+                          }
+                        >
+                          <CircleScore
+                            percent={100}
+                            size={45}
+                            style={
+                              Object {
+                                "marginTop": 10,
+                              }
+                            }
+                            textSize={
+                              Object {
+                                "fontSize": 10,
+                              }
+                            }
+                            width={2}
+                          />
+                        </Component>,
+                        <Component
+                          style={
+                            Array [
+                              Object {
+                                "width": 50,
+                              },
+                              Object {
+                                "alignItems": "flex-end",
+                                "flex": 4,
+                              },
+                            ]
+                          }
+                        >
+                          <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#404040",
+                                  "fontWeight": "bold",
+                                },
+                                Object {
+                                  "fontSize": 15,
+                                  "marginTop": 10,
+                                },
+                              ]
+                            }
+                          >
+                            Aug 14 2018
+                          </Text>
+                        </Component>,
+                      ],
+                      "style": Object {
+                        "flexDirection": "row",
+                        "marginTop": 10,
+                      },
+                    },
+                    "ref": null,
+                    "rendered": Array [
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Object {
+                                "color": "#404040",
+                                "fontSize": 16,
+                                "fontWeight": "bold",
+                                "marginTop": 10,
+                              }
+                            }
+                          >
+                            1 Card
+                          </Text>,
+                          "style": Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-start",
+                              "flex": 3,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "accessible": true,
+                            "allowFontScaling": true,
+                            "children": "1 Card",
+                            "ellipsizeMode": "tail",
+                            "style": Object {
+                              "color": "#404040",
+                              "fontSize": 16,
+                              "fontWeight": "bold",
+                              "marginTop": 10,
+                            },
+                          },
+                          "ref": null,
+                          "rendered": "1 Card",
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <CircleScore
+                            percent={100}
+                            size={45}
+                            style={
+                              Object {
+                                "marginTop": 10,
+                              }
+                            }
+                            textSize={
+                              Object {
+                                "fontSize": 10,
+                              }
+                            }
+                            width={2}
+                          />,
+                          "style": Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "center",
+                              "flex": 3,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "function",
+                          "props": Object {
+                            "percent": 100,
+                            "size": 45,
+                            "style": Object {
+                              "marginTop": 10,
+                            },
+                            "textSize": Object {
+                              "fontSize": 10,
+                            },
+                            "width": 2,
+                          },
+                          "ref": null,
+                          "rendered": null,
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                      Object {
+                        "instance": null,
+                        "key": undefined,
+                        "nodeType": "class",
+                        "props": Object {
+                          "children": <Text
+                            accessible={true}
+                            allowFontScaling={true}
+                            ellipsizeMode="tail"
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#404040",
+                                  "fontWeight": "bold",
+                                },
+                                Object {
+                                  "fontSize": 15,
+                                  "marginTop": 10,
+                                },
+                              ]
+                            }
+                          >
+                            Aug 14 2018
+                          </Text>,
+                          "style": Array [
+                            Object {
+                              "width": 50,
+                            },
+                            Object {
+                              "alignItems": "flex-end",
+                              "flex": 4,
+                            },
+                          ],
+                        },
+                        "ref": null,
+                        "rendered": Object {
+                          "instance": null,
+                          "key": undefined,
+                          "nodeType": "class",
+                          "props": Object {
+                            "accessible": true,
+                            "allowFontScaling": true,
+                            "children": "Aug 14 2018",
+                            "ellipsizeMode": "tail",
+                            "style": Array [
+                              Object {
+                                "color": "#404040",
+                                "fontWeight": "bold",
+                              },
+                              Object {
+                                "fontSize": 15,
+                                "marginTop": 10,
+                              },
+                            ],
+                          },
+                          "ref": null,
+                          "rendered": "Aug 14 2018",
+                          "type": [Function],
+                        },
+                        "type": [Function],
+                      },
+                    ],
+                    "type": [Function],
+                  },
+                ],
+                "type": [Function],
+              },
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [MockFunction],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
 `;

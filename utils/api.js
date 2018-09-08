@@ -5,8 +5,7 @@ import {
   STORAGE_KEY,
   PROFILE_KEY,
   formatProfileResults,
-  formatNewProfile,
-} from './_data';
+} from './data';
 
 // Deck APIs.
 export const getDecks = async () => {
@@ -63,7 +62,7 @@ export const removeDeck = async (key) => {
     data[key] = undefined;
     delete data[key];
 
-    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (error) {
     console.log(error.message);
   }
@@ -71,28 +70,18 @@ export const removeDeck = async (key) => {
 
 export const recentActivityScore = async (deckTitle, score, timeStamp) => {
   try {
-    // const data = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
-    AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+    const data = await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
         recentScore: score,
         timeStamp,
       },
     }));
+
+    return data;
   } catch (error) {
     console.log(error.message);
   }
-}
-//   AsyncStorage.getItem(STORAGE_KEY, () => {
-//     AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-//       [deckTitle]: {
-//         recentScore: score,
-//         timeStamp,
-//       },
-//     }), () => {
-//       AsyncStorage.getItem(STORAGE_KEY).then(results => console.log(JSON.parse(results)));
-//     });
-//   });
-// }
+};
 
 // Profile APIs.
 export const getProfile = async () => {
@@ -109,7 +98,7 @@ export const getProfile = async () => {
 export const deleteProfile = async () => {
   try {
     const profile = await AsyncStorage.getItem(PROFILE_KEY)
-      .then(() => formatNewProfile());
+      .then(() => formatProfileResults(null));
 
     return profile;
   } catch (error) {
@@ -119,37 +108,36 @@ export const deleteProfile = async () => {
 
 export const addProfileImg = async (image) => {
   try {
-    AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+    const data = await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       avatar: image,
     }));
+
+    return data;
   } catch (error) {
     console.log(error.message);
   }
-  // AsyncStorage.getItem(PROFILE_KEY, () => {
-  //   AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
-  //     avatar: image,
-  //   }), () => {
-  //     AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
-  //   });
-  // });
 };
 
-export function addProfileCover(image) {
-  AsyncStorage.getItem(PROFILE_KEY, () => {
-    AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+export const addProfileCover = async (image) => {
+  try {
+    const data = await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       cover: image,
-    }), () => {
-      AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
-    });
-  });
-}
+    }));
 
-export function addProfileName(username) {
-  AsyncStorage.getItem(PROFILE_KEY, () => {
-    AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const addProfileName = async (username) => {
+  try {
+    const data = await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       username,
-    }), () => {
-      AsyncStorage.getItem(PROFILE_KEY).then(results => console.log(JSON.parse(results)));
-    });
-  });
-}
+    }));
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};

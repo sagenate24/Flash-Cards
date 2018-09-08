@@ -1,6 +1,6 @@
 import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 
 import DeckList from '../DeckList';
 
@@ -23,9 +23,7 @@ const mockDecks = {
 };
 
 it('should match Snapshot', (done) => {
-  const snap = renderer.create(
-    <DeckList.WrappedComponent decks={mockDecks} />,
-  ).toJSON();
+  const snap = shallow(<DeckList.WrappedComponent decks={mockDecks} />);
 
   expect(snap).toMatchSnapshot();
 

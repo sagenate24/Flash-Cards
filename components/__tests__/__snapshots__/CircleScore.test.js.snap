@@ -1,24 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match Snapshot 1`] = `
+exports[`should render snapshot 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <ProfilePic
-    backUpSize={30}
-    borderColor="#fff"
-    profile={
+  Symbol(enzyme.__unrendered__): <CircleScore
+    percent={50}
+    size={130}
+    textSize={
       Object {
-        "avatar": "",
-        "cover": "",
-        "username": "",
+        "fontSize": 34,
       }
     }
-    styles={
-      Object {
-        "height": 40,
-        "width": 40,
-      }
-    }
+    width={5}
   />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -33,13 +26,21 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "allowFontScaling": false,
-      "color": "#fff",
-      "name": "ios-person",
-      "size": 45,
+      "arcSweepAngle": 225,
+      "backgroundColor": "#f2f2f2",
+      "children": [Function],
+      "duration": 1000,
+      "easing": [Function],
+      "fill": 50,
+      "lineCap": "round",
+      "prefill": 0,
+      "rotation": 247.5,
+      "size": 130,
+      "tintColor": "#e3b505",
+      "width": 5,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -48,13 +49,21 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "allowFontScaling": false,
-        "color": "#fff",
-        "name": "ios-person",
-        "size": 45,
+        "arcSweepAngle": 225,
+        "backgroundColor": "#f2f2f2",
+        "children": [Function],
+        "duration": 1000,
+        "easing": [Function],
+        "fill": 50,
+        "lineCap": "round",
+        "prefill": 0,
+        "rotation": 247.5,
+        "size": 130,
+        "tintColor": "#e3b505",
+        "width": 5,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": [Function],
       "type": [Function],
     },
   ],

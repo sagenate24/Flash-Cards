@@ -21,19 +21,19 @@ class OnLoad extends Component {
     Animated.timing(opacity, {
       toValue: 1,
       duration: 800,
-      // useNativeDriver: true,
+      useNativeDriver: true,
     }).start();
     Animated.sequence([
       Animated.delay(300),
       Animated.timing(bounceValue, {
         duration: 200,
         toValue: 1.04,
-        // useNativeDriver: true,
+        useNativeDriver: true,
       }),
       Animated.spring(bounceValue, {
         toValue: 1,
         friction: 4,
-        // useNativeDriver: true,
+        useNativeDriver: true,
       }),
     ]).start();
   }

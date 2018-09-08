@@ -9,7 +9,7 @@ import {
 import { white } from '../utils/colors';
 
 // The name is formed from my name just in case projects
-// That need to be shared between developers dont have simotanios names like Button
+// That need to be shared between developers dont have matching names like Button
 export default function NASBtn({
   children, onPress, disabled, tintColor,
 }) {

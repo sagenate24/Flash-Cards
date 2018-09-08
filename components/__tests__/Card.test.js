@@ -1,25 +1,15 @@
-import 'react-native';
+import { Animated } from 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import { shallow } from 'enzyme';
 
 import Card from '../Card';
 
-// jest.mock('Animated', () => {
-//   return {
-//     createTimer: jest.fn(),
-//     timing: jest.fn(() => {
-//       return {
-//         start: jest.fn(),
-//       };
-//     }),
-//     Value: jest.fn(() => {
-//       return {
-//         interpolate: jest.fn(),
-//       };
-//     }),
-//   };
-// });
+jest.mock('Animated');
+
+beforeEach(() => {
+  Animated.timing.mockImplementation(() => ({ start: jest.fn(), stop: jest.fn() }));
+  Animated.sequence.mockImplementation(() => ({ start: jest.fn(), stop: jest.fn() }));
+});
 
 it('should match Snapshot', () => {
   const snap = renderer.create(
@@ -28,8 +18,3 @@ it('should match Snapshot', () => {
 
   expect(snap).toMatchSnapshot();
 });
-
-// it('should animate bounce in componentDidMount', () => {
-//   const wrapper = (<Card.wrappedComponent question='how?' answer='because' questionsRemaining={1} />).instance();
-//   wrapper.componentDidMount();
-// });

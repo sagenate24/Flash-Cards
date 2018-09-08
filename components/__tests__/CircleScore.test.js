@@ -1,16 +1,13 @@
 import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import { lightBlue, yellow, red } from '../../utils/colors';
 
 import CircleScore, { colorPicker } from '../CircleScore';
 
-it('should match Snapshot', () => {
-  const snap = renderer.create(
-    <CircleScore textSize={{ fontSize: 34 }} width={5} size={130} percent={50} />,
-  ).toJSON();
-
-  expect(snap).toMatchSnapshot();
+it('should render snapshot', () => {
+  const wrapper = shallow(<CircleScore textSize={{ fontSize: 34 }} width={5} size={130} percent={50} />);
+  expect(wrapper).toMatchSnapshot();
 });
 
 it('Should return the correct color', () => {
