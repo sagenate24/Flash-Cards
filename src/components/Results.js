@@ -9,8 +9,6 @@ import { white, black, red, queenBlue } from '../utils/colors';
 import CircleScore from './CircleScore';
 import NASBtn from './NASBtn';
 
-// buttons in andriod need to be fixed.
-
 class Results extends Component {
   componentDidMount() {
     const { deck, correctAnswers, dispatch } = this.props;

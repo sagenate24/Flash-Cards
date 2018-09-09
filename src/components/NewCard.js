@@ -12,9 +12,6 @@ import { white, black, red } from '../utils/colors';
 
 import NASBtn from './NASBtn';
 
-// add keyboard avoiding view.
-// with scroll view just incase.
-
 class NewCard extends Component {
   state = {
     question: '',

@@ -23,9 +23,7 @@ class Deck extends Component {
     removeDeck(deck.title);
   }
 
-  generateKeyID = () => {
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-  }
+  generateKeyID = () => Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
 
   cardLength = (questions) => {
     if (questions && questions.length) {
