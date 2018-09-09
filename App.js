@@ -3,12 +3,12 @@ import { View, StatusBar, Platform } from 'react-native';
 import { createStore } from 'redux';
 import { Constants, AppLoading } from 'expo';
 import { Provider } from 'react-redux';
-import reducer from '../reducers';
-import middleware from '../middleware';
-import { queenBlue } from '../utils/colors';
-import { setLocalNotification } from '../utils/helpers';
+import reducer from './src/reducers';
+import middleware from './src/middleware';
+import { queenBlue } from './src/utils/colors';
+import { setLocalNotification } from './src/utils/helpers';
 
-import { Stack } from '../navigators/StackNavigator';
+import { Stack } from './src/navigators/StackNavigator';
 
 function CardsStatusBar({ backgroundColor, ...props }) {
   return (
