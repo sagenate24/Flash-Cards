@@ -123,7 +123,7 @@ class Settings extends Component {
   render() {
     const { status, showInput, userName, underColorU } = this.state;
 
-    if (status === 'haha') {
+    if (status === 'denied') {
       return (
         <View style={styles.center}>
           <Foundation name="alert" size={50} />
@@ -134,7 +134,7 @@ class Settings extends Component {
       );
     }
 
-    if (status === 'denied') {
+    if (status === 'undetermined') {
       return (
         <View style={styles.center}>
           <Foundation name="alert" size={50} />

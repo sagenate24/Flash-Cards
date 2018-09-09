@@ -4,25 +4,29 @@ import { shallow } from 'enzyme';
 
 import Quiz from '../Quiz';
 
-const mockCurrentDeck = {
-  title: 'React',
-  timeStamp: 1534284894237,
-  recentScore: 35,
-  questions: [
-    {
-      question: 'What is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is React?',
-      answer: 'A library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfaces',
-    },
-    {
-      question: 'Where do you make Ajax requests in React?',
-      answer: 'The componentDidMount lifecycle event',
-    },
-  ],
-};
+let mockCurrentDeck;
+let mockNavigation;
 
-const mockNavigation = {
-  navigate: jest.fn(),
-};
+beforeEach(() => {
+  mockCurrentDeck = {
+    title: 'React',
+    timeStamp: 1534284894237,
+    recentScore: 35,
+    questions: [
+      {
+        question: 'What is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is ReactWhat is React?',
+        answer: 'A library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfacesA library for managing user interfaces',
+      },
+      {
+        question: 'Where do you make Ajax requests in React?',
+        answer: 'The componentDidMount lifecycle event',
+      },
+    ],
+  };
+  mockNavigation = {
+    navigate: jest.fn(),
+  };
+});
 
 it('should got to results after Correct answer if index + 1 equals the amount of cards', () => {
   const wrapper = shallow(<Quiz.WrappedComponent deck={mockCurrentDeck} navigation={mockNavigation} />).instance();

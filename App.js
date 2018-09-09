@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStore } from 'redux';
-import { Constants } from 'expo';
+import { Constants, AppLoading } from 'expo';
 import { Provider } from 'react-redux';
 import { View, StatusBar, Platform } from 'react-native';
 import reducer from './reducers';
@@ -19,11 +19,24 @@ function CardsStatusBar({ backgroundColor, ...props }) {
 }
 
 class App extends React.Component {
+  state = {
+    isLoading: true,
+  }
+
   componentDidMount() {
     setLocalNotification();
+    this.setState({ isLoading: false });
   }
 
   render() {
+    const { isLoading } = this.state;
+    if (isLoading) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <AppLoading />
+        </View>
+      );
+    }
     return (
       <Provider store={createStore(reducer, middleware)}>
         <View style={{ flex: 1 }}>

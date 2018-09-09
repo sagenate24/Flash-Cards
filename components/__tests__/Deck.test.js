@@ -8,18 +8,22 @@ import Deck from '../Deck';
 
 jest.mock('../../utils/api');
 
-const mockDeck = {
-  questions: [{ anser: 'a', question: 'b' }],
-  title: 'reactAndThings',
-};
+let mockDeck;
+let mockDeck2;
 
-const mockDeck2 = {
-  questions: [
-    { anser: 'a', question: 'b' },
-    { anser: 'c', question: 'd' },
-  ],
-  title: 'reactAndThings2',
-};
+beforeEach(() => {
+  mockDeck = {
+    questions: [{ anser: 'a', question: 'b' }],
+    title: 'reactAndThings',
+  };
+  mockDeck2 = {
+    questions: [
+      { anser: 'a', question: 'b' },
+      { anser: 'c', question: 'd' },
+    ],
+    title: 'reactAndThings2',
+  };
+});
 
 it('should return null if the deck is null', () => {
   const wrapper = renderer.create(<Deck.WrappedComponent deck={null} />).getInstance();

@@ -10,10 +10,8 @@ const mockProfile = {
   cover: '',
 };
 
-it('should match Snapshot', (done) => {
+it('should match Snapshot', () => {
   const snap = shallow(<ProfilePic.WrappedComponent backUpSize={30} styles={{ width: 40, height: 40 }} borderColor='#fff' profile={mockProfile} />);
 
   expect(snap).toMatchSnapshot();
-
-  done();
 });

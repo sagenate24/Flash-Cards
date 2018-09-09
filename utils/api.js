@@ -34,7 +34,7 @@ export const addCardToDeck = async (card, deckTitle) => {
     const questionsArr = data[deckTitle].questions;
     questionsArr.push(card);
 
-    AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+    await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
         questions: questionsArr,
       },
@@ -46,11 +46,7 @@ export const addCardToDeck = async (card, deckTitle) => {
 
 export const addDeckTitle = async (title) => {
   try {
-    const newDeck = await AsyncStorage.mergeItem(STORAGE_KEY, formatNewDeck(title), () => {
-      AsyncStorage.getItem(STORAGE_KEY);
-    });
-
-    return JSON.parse(newDeck);
+    await AsyncStorage.mergeItem(STORAGE_KEY, formatNewDeck(title));
   } catch (error) {
     console.log(error.message);
   }
@@ -70,14 +66,12 @@ export const removeDeck = async (key) => {
 
 export const recentActivityScore = async (deckTitle, score, timeStamp) => {
   try {
-    const data = await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+    await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
       [deckTitle]: {
         recentScore: score,
         timeStamp,
       },
     }));
-
-    return data;
   } catch (error) {
     console.log(error.message);
   }
@@ -108,11 +102,9 @@ export const deleteProfile = async () => {
 
 export const addProfileImg = async (image) => {
   try {
-    const data = await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+    await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       avatar: image,
     }));
-
-    return data;
   } catch (error) {
     console.log(error.message);
   }
@@ -120,11 +112,9 @@ export const addProfileImg = async (image) => {
 
 export const addProfileCover = async (image) => {
   try {
-    const data = await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+    await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       cover: image,
     }));
-
-    return data;
   } catch (error) {
     console.log(error.message);
   }
@@ -132,11 +122,9 @@ export const addProfileCover = async (image) => {
 
 export const addProfileName = async (username) => {
   try {
-    const data = await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+    await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       username,
     }));
-
-    return data;
   } catch (error) {
     console.log(error.message);
   }

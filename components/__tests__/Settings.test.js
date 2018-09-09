@@ -9,23 +9,28 @@ import Settings from '../Settings';
 
 jest.mock('../../utils/api');
 
-it('should match Snapshot', (done) => {
+let mockDispatch;
+let mockNavigation;
+
+beforeEach(() => {
+  mockDispatch = jest.fn();
+  mockNavigation = {
+    navigate: jest.fn(),
+  };
+  jest.useFakeTimers();
+});
+
+afterEach(() => {
+  jest.clearAllTimers();
+});
+
+it('should match Snapshot', () => {
   const snap = renderer.create(
     <Settings.WrappedComponent />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
-
-  done();
 });
-
-const mockDispatch = jest.fn();
-
-const mockNavigation = {
-  navigate: jest.fn(),
-};
-
-jest.useFakeTimers();
 
 it('should add profile name and navigate', () => {
   const wrapper = shallow(<Settings.WrappedComponent dispatch={mockDispatch} navigation={mockNavigation} />).instance();

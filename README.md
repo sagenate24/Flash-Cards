@@ -12,6 +12,8 @@ Both ios and andriod devices have been tested for this application.
 
 ## install and Launch
 
+To view app in development mode use the expo app.
+
 * To install this projects you can download or clone this repository. once finished run `npm install --save` to install and save all dependencies.
 * To launch the project run `npm start` or `yarn start` in your terminal.
 

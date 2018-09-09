@@ -1,8 +1,29 @@
 import { AsyncStorage } from 'react-native';
-import { formatDeckResults, formatProfileResults } from '../data';
+import { formatDeckResults, formatProfileResults, formatNewDeck } from '../data';
+import { getDecks, getDeck, addCardToDeck } from '../api';
+
+jest.mock('react-native', () => ({
+  AsyncStorage: {
+    getItem: jest.fn((key) => {
+      return new Promise((resolve) => {
+        resolve(JSON.stringify(mockStorage[key]));
+      });
+    }),
+    setItem: jest.fn(() => {
+      return new Promise((resolve) => {
+        resolve(null);
+      });
+    }),
+    mergeItem: jest.fn(() => {
+      return new Promise((resolve) => {
+        resolve(null);
+      });
+    }),
+  },
+}));
 
 const mockStorage = {
-  decks: {
+  'FlashCards:decks': {
     React: {
       title: 'React',
       timeStamp: 1534284894237,
@@ -30,59 +51,67 @@ const mockStorage = {
       ],
     },
   },
-  profile: {
+  'FlashCards:profile': {
     username: 'john doe',
     avatar: 'johnDoeAvatar.img',
     cover: 'johnDoeCover.img',
   },
 };
 
-jest.mock('react-native', () => ({
-  AsyncStorage: {
-    getItem: jest.fn((key) => {
-      return new Promise((resolve) => {
-        resolve(JSON.stringify(mockStorage[key]));
-      });
-    }),
-    setItem: jest.fn(() => {
-      return new Promise((resolve) => {
-        resolve(null);
-      });
-    }),
-  },
-}));
-
 it('should get decks', async () => {
-  const decks = formatDeckResults(await AsyncStorage.getItem('decks'));
-
-  expect(decks).toEqual(mockStorage.decks);
+  const decks = await getDecks();
+  expect(decks).toEqual(mockStorage['FlashCards:decks']);
 });
 
 it('should get a specific deck', async () => {
-  const decks = JSON.parse(await AsyncStorage.getItem('decks'));
-  const deck = decks[decks.React.title];
-
-  expect(deck).toEqual(mockStorage.decks.React);
+  const deck = await getDeck('React');
+  expect(deck).toEqual(mockStorage['FlashCards:decks'].React);
 });
 
-it('should remove a deck', async () => {
-  const decks = JSON.parse(await AsyncStorage.getItem('decks'));
-  decks.React = undefined;
-  delete decks.React;
+// export const addCardToDeck = async (card, deckTitle) => {
+//   try {
+//     const data = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
+//     const questionsArr = data[deckTitle].questions;
+//     questionsArr.push(card);
 
-  await AsyncStorage.setItem('decks', JSON.stringify(decks));
+//     await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+//       [deckTitle]: {
+//         questions: questionsArr,
+//       },
+//     }));
+//   } catch (error) {
+//     console.log('EERRRROORR OH MY GURD', error.message);
+//   }
+// };
 
-  expect(decks).toEqual({ JavaScript: mockStorage.decks.JavaScript });
+it('should add card to a deck', async () => {
+  const mockCard = {
+    questions: 'a',
+    answer: 'b',
+  };
+
+  const deck = await addCardToDeck(mockCard, 'React');
+  expect(deck).toEqual(mockStorage['FlashCards:decks'].React);
 });
 
-it('should get the profile', async () => {
-  const profile = formatProfileResults(await AsyncStorage.getItem('profile'));
+// it('should remove a deck', async () => {
+//   const decks = JSON.parse(await AsyncStorage.getItem('decks'));
+//   decks.React = undefined;
+//   delete decks.React;
 
-  expect(profile).toEqual(mockStorage.profile);
-});
+//   await AsyncStorage.setItem('decks', JSON.stringify(decks));
 
-it('should delete the profile', async () => {
-  const profile = formatProfileResults(null);
+//   expect(decks).toEqual({ JavaScript: mockStorage.decks.JavaScript });
+// });
 
-  expect(profile).toEqual({ username: '', avatar: '', cover: '' });
-});
+// it('should get the profile', async () => {
+//   const profile = formatProfileResults(await AsyncStorage.getItem('profile'));
+
+//   expect(profile).toEqual(mockStorage.profile);
+// });
+
+// it('should delete the profile', async () => {
+//   const profile = formatProfileResults(null);
+
+//   expect(profile).toEqual({ username: '', avatar: '', cover: '' });
+// });
