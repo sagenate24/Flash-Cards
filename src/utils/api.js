@@ -7,7 +7,7 @@ import {
   formatProfileResults,
 } from './data';
 
-// Deck APIs.
+// deck APIs.
 export const getDecks = async () => {
   try {
     const decks = formatDeckResults(await AsyncStorage.getItem(STORAGE_KEY));
@@ -77,7 +77,7 @@ export const recentActivityScore = async (deckTitle, score, timeStamp) => {
   }
 };
 
-// Profile APIs.
+// profile APIs.
 export const getProfile = async () => {
   try {
     const profile = await AsyncStorage.getItem(PROFILE_KEY)

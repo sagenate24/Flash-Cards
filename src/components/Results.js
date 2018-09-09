@@ -3,11 +3,11 @@ import { Text, View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { addScore } from '../actions/decks';
 import { recentActivityScore } from '../utils/api';
-import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 import { white, black, red, queenBlue } from '../utils/colors';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
-import CircleScore from './CircleScore';
 import NASBtn from './NASBtn';
+import CircleScore from './CircleScore';
 
 class Results extends Component {
   componentDidMount() {
@@ -48,9 +48,9 @@ class Results extends Component {
         <View style={styles.card}>
           <Text style={styles.header}>Your Score</Text>
           <CircleScore
-            percent={percent}
             width={5}
             size={130}
+            percent={percent}
             textSize={{ fontSize: 34 }}
           />
           <View>

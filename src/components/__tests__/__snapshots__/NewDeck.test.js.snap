@@ -80,7 +80,7 @@ exports[`should match Snapshot 1`] = `
         Object {
           "backgroundColor": "#e63946",
           "borderRadius": 0,
-          "opacity": 1,
+          "opacity": 0.8,
           "padding": 10,
         }
       }

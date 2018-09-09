@@ -4,7 +4,7 @@ App built using React, React Native and Redux similar to “Quizlet”. A User w
 
 At the home of this app there is list of all decks created by the user. Any changes the user makes will save to their phones AsyncStorage. upon clicking a deck on the homepage will navigate the user to that specific deck where they can choose to either add a new card, take a quiz or delete the deck entirely.
 
-Please note: In the quiz section to flip the card over all you do is tap anywhere on the cad itself.
+Please note: In the quiz section to flip the card over all you do is tap anywhere on the card itself.
 
 There is a `data.js` file that represents a fake database which contains two decks for review purposes. Once ready to publish this app will not have any cards initialy.
 

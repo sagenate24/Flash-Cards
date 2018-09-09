@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  TouchableOpacity,
-  StyleSheet,
   View,
   Text,
   Platform,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
 import { white } from '../utils/colors';
 
@@ -18,7 +18,7 @@ export default function NASBtn({
       <TouchableOpacity
         disabled={disabled}
         onPress={onPress}
-        style={[styles.button, tintColor]}
+        style={[styles.button, tintColor, disabled && { opacity: 0.8 }]}
       >
         <Text style={styles.btnText}>{children}</Text>
       </TouchableOpacity>

@@ -122,33 +122,7 @@ class Settings extends Component {
 
   render() {
     const { status, showInput, userName, underColorU } = this.state;
-
-    if (status === 'denied') {
-      return (
-        <View style={styles.center}>
-          <Foundation name="alert" size={50} />
-          <Text style={{ textAlign: 'center' }}>
-            You denied access to your camera roll. You can fix this by visiting your settings and enableing access to camera roll for this app.
-          </Text>
-        </View>
-      );
-    }
-
-    if (status === 'undetermined') {
-      return (
-        <View style={styles.center}>
-          <Foundation name="alert" size={50} />
-          <Text>
-            You need to enable access to your camera roll for this app.
-          </Text>
-          <TouchableOpacity onPress={this.askPermission} style={styles.button}>
-            <Text style={styles.buttonText}>
-              Enable
-            </Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
+    const { userDataLength } = this.props;
 
     return (
       <View style={styles.container}>
@@ -178,15 +152,40 @@ class Settings extends Component {
             : null
           }
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => this.askPermission('avatar')}>
-          <Text style={styles.itemText}>Edit Profile Photo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => this.askPermission('cover')}>
-          <Text style={styles.itemText}>Edit Cover Photo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.item} onPress={() => this.removeProfile()}>
-          <Text style={styles.deleteInfo}>Delete Profile</Text>
-        </TouchableOpacity>
+        {status === 'granted' && (
+          <View>
+            <TouchableOpacity style={styles.item} onPress={() => this.askPermission('avatar')}>
+              <Text style={styles.itemText}>Edit Profile Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} onPress={() => this.askPermission('cover')}>
+              <Text style={styles.itemText}>Edit Cover Photo</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.item} disabled={userDataLength === 0} onPress={() => this.removeProfile()}>
+              <Text style={[styles.deleteInfo, userDataLength === 0 && { opacity: 0.7 }]}>Delete Profile</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+        {status === 'denied' && (
+          <View style={styles.center}>
+            <Foundation name="alert" size={50} />
+            <Text style={{ textAlign: 'center' }}>
+              You denied access to your camera roll. You can fix this by visiting your settings and enableing access to camera roll for this app.
+            </Text>
+          </View>
+        )}
+        {status === 'undetermined' && (
+          <View style={styles.center}>
+            <Foundation name="alert" size={50} />
+            <Text style={{ textAlign: 'center' }}>
+              You need to enable access to your camera roll for this app.
+            </Text>
+            <TouchableOpacity onPress={this.askPermission} style={styles.button}>
+              <Text style={styles.buttonText}>
+                Enable
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
     );
   }
@@ -233,7 +232,26 @@ const styles = StyleSheet.create({
     borderColor: yellow,
     backgroundColor: white,
   },
+  button: {
+    padding: 10,
+    backgroundColor: red,
+    alignSelf: 'center',
+    borderRadius: 5,
+    margin: 20,
+  },
+  buttonText: {
+    color: white,
+    fontSize: 20,
+  },
 });
 
+function mapStateToProps({ profile }) {
+  const profileValues = Object.values(profile);
+  const nonEmptyProfileValues = profileValues.filter(i => i !== '');
 
-export default connect()(Settings);
+  return {
+    userDataLength: nonEmptyProfileValues.length,
+  };
+}
+
+export default connect(mapStateToProps)(Settings);

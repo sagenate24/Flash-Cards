@@ -60,7 +60,7 @@ class Deck extends Component {
               <View style={styles.optionsContainer}>
                 <TouchableOpacity
                   disabled={questions.length === 0}
-                  style={styles.navOption}
+                  style={[styles.navOption, questions.length === 0 && { opacity: 0.6 }]}
                   onPress={() => navigation.navigate(
                     'Quiz',
                     { currentDeck: deck },

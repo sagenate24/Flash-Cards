@@ -2,16 +2,16 @@ import React, { PureComponent } from 'react';
 import {
   Text,
   View,
-  StyleSheet,
   Image,
-  ScrollView,
-  TouchableOpacity,
   Platform,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
-import { black, red, white } from '../utils/colors';
+import { Ionicons } from '@expo/vector-icons';
 import { timeToString } from '../utils/helpers';
+import { black, red, white } from '../utils/colors';
 
 import ProfilePic from './ProfilePic';
 import CircleScore from './CircleScore';

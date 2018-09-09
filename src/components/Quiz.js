@@ -67,9 +67,9 @@ class Quiz extends Component {
       <View style={{ flex: 1, padding: 20 }}>
         <View style={{ flex: 4 }}>
           <Card
-            question={questions[questionIndex].question}
-            answer={questions[questionIndex].answer}
             questionsRemaining={questionsRemaining}
+            answer={questions[questionIndex].answer}
+            question={questions[questionIndex].question}
           />
         </View>
         <View style={{ flex: 1 }}>

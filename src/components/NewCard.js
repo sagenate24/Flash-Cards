@@ -47,6 +47,11 @@ class NewCard extends Component {
     dispatch(addCard({ card, deckTitle }));
     this.toHome();
     addCardToDeck(card, deckTitle);
+
+    this.setState(() => ({
+      question: '',
+      answer: '',
+    }));
   };
 
   toHome = () => {
@@ -68,7 +73,7 @@ class NewCard extends Component {
         <View style={styles.item}>
           <TextInput
             value={question}
-            maxLength={200}
+            maxLength={180}
             selectionColor={black}
             underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('question')}
@@ -81,7 +86,7 @@ class NewCard extends Component {
           )}
           <TextInput
             value={answer}
-            maxLength={200}
+            maxLength={180}
             selectionColor={black}
             underlineColorAndroid="rgba(0,0,0,0)"
             onFocus={() => this.changeUderlineColor('answer')}

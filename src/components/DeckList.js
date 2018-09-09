@@ -4,8 +4,8 @@ import {
   Text,
   View,
   StyleSheet,
-  TouchableOpacity,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import { receiveDecks } from '../actions/decks';
 import { getInitialData } from '../utils/helpers';

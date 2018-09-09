@@ -1,8 +1,8 @@
 import React from 'react';
+import { View, StatusBar, Platform } from 'react-native';
 import { createStore } from 'redux';
 import { Constants, AppLoading } from 'expo';
 import { Provider } from 'react-redux';
-import { View, StatusBar, Platform } from 'react-native';
 import reducer from '../reducers';
 import middleware from '../middleware';
 import { queenBlue } from '../utils/colors';

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {
   Text,
   View,
-  StyleSheet,
   Easing,
-  TouchableWithoutFeedback,
   Platform,
   Animated,
+  StyleSheet,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import { white, black, red } from '../utils/colors';
 
