@@ -43,31 +43,29 @@ class DeckList extends Component {
         }
         <View style={{ marginBottom: 57 }}>
           {decks.length > 0
-            ? Object.values(decks).map((deck) => {
-              return (
-                <View style={styles.item} key={deck.title}>
-                  <TouchableOpacity
-                    onPress={() => navigation.navigate(
-                      'Deck',
-                      { currentDeck: deck },
-                    )}
-                  >
-                    <Text style={{ fontSize: 20 }}>
-                      {deck.title}
-                    </Text>
-                    {deck.questions && deck.questions.length
-                      ? (
-                        <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
-                          {deck.questions.length > 1
-                            ? `${deck.questions.length} Cards`
-                            : `${deck.questions.length} Card`}
-                        </Text>
-                      ) : <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
-                    }
-                  </TouchableOpacity>
-                </View>
-              );
-            }) : (
+            ? Object.values(decks).map(deck => (
+              <View style={styles.item} key={deck.title}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(
+                    'Deck',
+                    { currentDeck: deck },
+                  )}
+                >
+                  <Text style={{ fontSize: 20 }}>
+                    {deck.title}
+                  </Text>
+                  {deck.questions && deck.questions.length
+                    ? (
+                      <Text style={{ fontSize: 16, color: '#6ed3cf' }}>
+                        {deck.questions.length > 1
+                          ? `${deck.questions.length} Cards`
+                          : `${deck.questions.length} Card`}
+                      </Text>
+                    ) : <Text style={{ color: gray, fontSize: 16 }}>EMPTY</Text>
+                  }
+                </TouchableOpacity>
+              </View>
+            )) : (
               <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <View style={{ borderBottomColor: gray, borderBottomWidth: 1 }}>
                   <Text style={[styles.emptyHeader]}>Welcome to FlashCards!</Text>

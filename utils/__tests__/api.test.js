@@ -1,24 +1,29 @@
 import { AsyncStorage } from 'react-native';
-import { formatDeckResults, formatProfileResults, formatNewDeck } from '../data';
-import { getDecks, getDeck, addCardToDeck } from '../api';
+import {
+  getDecks,
+  getDeck,
+  addCardToDeck,
+  addDeckTitle,
+  removeDeck,
+  recentActivityScore,
+  getProfile,
+  deleteProfile,
+  addProfileImg,
+  addProfileCover,
+  addProfileName,
+} from '../api';
 
 jest.mock('react-native', () => ({
   AsyncStorage: {
-    getItem: jest.fn((key) => {
-      return new Promise((resolve) => {
-        resolve(JSON.stringify(mockStorage[key]));
-      });
-    }),
-    setItem: jest.fn(() => {
-      return new Promise((resolve) => {
-        resolve(null);
-      });
-    }),
-    mergeItem: jest.fn(() => {
-      return new Promise((resolve) => {
-        resolve(null);
-      });
-    }),
+    getItem: jest.fn(key => new Promise((resolve) => {
+      resolve(JSON.stringify(mockStorage[key]));
+    })),
+    setItem: jest.fn(() => new Promise((resolve) => {
+      resolve(null);
+    })),
+    mergeItem: jest.fn(() => new Promise((resolve) => {
+      resolve(null);
+    })),
   },
 }));
 
@@ -58,6 +63,18 @@ const mockStorage = {
   },
 };
 
+let ogDateNow;
+
+beforeEach(() => {
+  ogDateNow = Date.now;
+  Date.now = jest.fn(() => 1244333);
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
+  Date.now = ogDateNow;
+});
+
 it('should get decks', async () => {
   const decks = await getDecks();
   expect(decks).toEqual(mockStorage['FlashCards:decks']);
@@ -68,50 +85,125 @@ it('should get a specific deck', async () => {
   expect(deck).toEqual(mockStorage['FlashCards:decks'].React);
 });
 
-// export const addCardToDeck = async (card, deckTitle) => {
-//   try {
-//     const data = JSON.parse(await AsyncStorage.getItem(STORAGE_KEY));
-//     const questionsArr = data[deckTitle].questions;
-//     questionsArr.push(card);
-
-//     await AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-//       [deckTitle]: {
-//         questions: questionsArr,
-//       },
-//     }));
-//   } catch (error) {
-//     console.log('EERRRROORR OH MY GURD', error.message);
-//   }
-// };
-
 it('should add card to a deck', async () => {
   const mockCard = {
-    questions: 'a',
+    question: 'a',
     answer: 'b',
   };
+  const mockQuestionsArr = [
+    {
+      question: 'What is React?',
+      answer: 'A library for managing user interfaces',
+    },
+    {
+      question: 'Where do you make Ajax requests in React?',
+      answer: 'The componentDidMount lifecycle event',
+    },
+    {
+      question: 'a',
+      answer: 'b',
+    },
+  ];
 
-  const deck = await addCardToDeck(mockCard, 'React');
-  expect(deck).toEqual(mockStorage['FlashCards:decks'].React);
+  await addCardToDeck(mockCard, 'React');
+
+  expect(AsyncStorage.getItem).toHaveBeenCalledWith('FlashCards:decks');
+  expect(AsyncStorage.getItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:decks', JSON.stringify({
+    React: {
+      questions: mockQuestionsArr,
+    },
+  }));
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
 });
 
-// it('should remove a deck', async () => {
-//   const decks = JSON.parse(await AsyncStorage.getItem('decks'));
-//   decks.React = undefined;
-//   delete decks.React;
+it('should add a new deck', async () => {
+  await addDeckTitle('HullaBullo');
+  const timestamp = Date.now();
 
-//   await AsyncStorage.setItem('decks', JSON.stringify(decks));
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:decks', JSON.stringify({
+    HullaBullo: {
+      title: 'HullaBullo',
+      timeStamp: timestamp,
+      questions: [],
+    },
+  }));
+});
 
-//   expect(decks).toEqual({ JavaScript: mockStorage.decks.JavaScript });
-// });
+it('should remove a specific deck', async () => {
+  await removeDeck('React');
 
-// it('should get the profile', async () => {
-//   const profile = formatProfileResults(await AsyncStorage.getItem('profile'));
+  expect(AsyncStorage.getItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.getItem).toHaveBeenCalledWith('FlashCards:decks');
+  expect(AsyncStorage.setItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.setItem).toHaveBeenCalledWith('FlashCards:decks', JSON.stringify({
+    JavaScript: {
+      title: 'JavaScript',
+      timeStamp: 1534284869329,
+      recentScore: 100,
+      questions: [
+        {
+          question: 'What is a closure?',
+          answer: 'The combination of a function and the lexical enviornment with in which that function was declared.',
+        },
+      ],
+    },
+  }));
+});
 
-//   expect(profile).toEqual(mockStorage.profile);
-// });
+it('should add a recent score to a specific deck', async () => {
+  const timestamp = Date.now();
 
-// it('should delete the profile', async () => {
-//   const profile = formatProfileResults(null);
+  await recentActivityScore('React', 50, timestamp);
 
-//   expect(profile).toEqual({ username: '', avatar: '', cover: '' });
-// });
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:decks', JSON.stringify({
+    React: {
+      recentScore: 50,
+      timeStamp: timestamp,
+    },
+  }));
+});
+
+it('should get profile', async () => {
+  const profile = await getProfile();
+  expect(profile).toEqual(mockStorage['FlashCards:profile']);
+});
+
+it('should delete profile', async () => {
+  const profile = await deleteProfile();
+
+  expect(profile).toEqual({
+    username: '',
+    avatar: '',
+    cover: '',
+  });
+});
+
+it('should add a profile image', async () => {
+  await addProfileImg('newImg.jpg');
+
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:profile', JSON.stringify({
+    avatar: 'newImg.jpg',
+  }));
+});
+
+it('should add a cover image', async () => {
+  await addProfileCover('newImg.jpg');
+
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:profile', JSON.stringify({
+    cover: 'newImg.jpg',
+  }));
+});
+
+it('should add a userName', async () => {
+  await addProfileName('Mr Coffe');
+
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:profile', JSON.stringify({
+    username: 'Mr Coffe',
+  }));
+});

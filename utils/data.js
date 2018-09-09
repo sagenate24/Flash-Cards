@@ -56,14 +56,12 @@ function setDummyData() {
   const {
     React,
     JavaScript,
-    Blahhah,
   } = getDecks();
   let dummyData = {};
 
   dummyData = {
     React,
     JavaScript,
-    Blahhah,
   };
 
   AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(dummyData));
