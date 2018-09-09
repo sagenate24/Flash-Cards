@@ -8,7 +8,7 @@ Please note: In the quiz section to flip the card over all you do is tap anywher
 
 There is a `data.js` file that represents a fake database which contains two decks for review purposes. Once ready to publish this app will not have any cards initialy.
 
-Both ios and andriod devices have been tested for this application.
+Both IOS and Andriod devices have been tested for this application.
 
 ## install and Launch
 

@@ -70,7 +70,7 @@ class Profile extends PureComponent {
             )
           }
         </View>
-        <View style={styles.itemContainer}>
+        <View style={styles.deckContainer}>
           <Text style={[styles.text, { fontSize: 20, marginBottom: 10 }]}>Lastest Quiz Scores</Text>
           {decks.length > 0
             ? decks.map(deck => (
@@ -85,7 +85,7 @@ class Profile extends PureComponent {
                       { currentDeck: deck },
                     )}
                   >
-                    <View style={styles.item}>
+                    <View style={styles.deck}>
                       <View>
                         <Text style={{ fontSize: 20 }}>
                           {deck.title}
@@ -166,10 +166,10 @@ const styles = StyleSheet.create({
     color: white,
     fontSize: 20,
   },
-  itemContainer: {
+  deckContainer: {
     padding: 20,
   },
-  item: {
+  deck: {
     backgroundColor: white,
     borderRadius: 2,
     padding: 20,

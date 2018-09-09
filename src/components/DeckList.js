@@ -44,7 +44,7 @@ class DeckList extends Component {
         <View style={{ marginBottom: 57 }}>
           {decks.length > 0
             ? Object.values(decks).map(deck => (
-              <View style={styles.item} key={deck.title}>
+              <View style={styles.deck} key={deck.title}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate(
                     'Deck',
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
   },
-  item: {
+  deck: {
     backgroundColor: white,
     borderRadius: 2,
     padding: 20,

@@ -95,7 +95,7 @@ class Deck extends Component {
               <Text style={styles.title}>Cards</Text>
               {questions && questions.length
                 ? questions.map(item => (
-                  <View style={styles.item} key={this.generateKeyID()}>
+                  <View style={styles.cards} key={this.generateKeyID()}>
                     <Text>{item.question}</Text>
                   </View>
                 ))
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
-  item: {
+  cards: {
     backgroundColor: white,
     borderRadius: 2,
     padding: 20,

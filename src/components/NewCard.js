@@ -70,7 +70,7 @@ class NewCard extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.item}>
+        <View style={styles.formPage}>
           <TextInput
             value={question}
             maxLength={180}
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 4,
     borderColor: '#e6b800',
   },
-  item: {
+  formPage: {
     backgroundColor: white,
     borderRadius: 2,
     padding: 20,
