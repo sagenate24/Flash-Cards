@@ -1,7 +1,6 @@
 import 'react-native';
 import React from 'react';
 import { shallow } from 'enzyme';
-
 import DeckList from '../DeckList';
 
 const mockDecks = {
@@ -22,10 +21,8 @@ const mockDecks = {
   },
 };
 
-it('should match Snapshot', (done) => {
+it('should match Snapshot', () => {
   const snap = shallow(<DeckList.WrappedComponent decks={mockDecks} />);
 
   expect(snap).toMatchSnapshot();
-
-  done();
 });

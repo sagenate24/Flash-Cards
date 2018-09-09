@@ -6,57 +6,24 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Modal,
 } from 'react-native';
 import { receiveDecks } from '../actions/decks';
 import { getInitialData } from '../utils/helpers';
 import { receiveProfile } from '../actions/profile';
 import { gray, white, black, red } from '../utils/colors';
 
-import OnLoad from './OnLoad';
-
 class DeckList extends Component {
-  state = {
-    ready: false,
-    modalType: 'none',
-  };
-
   componentDidMount() {
     const { dispatch } = this.props;
 
     getInitialData().then(({ decks, profile }) => {
       dispatch(receiveDecks(decks));
       dispatch(receiveProfile(profile));
-    }).then(() => {
-      setTimeout(() => {
-        this.setState(() => ({
-          ready: true,
-        }));
-      }, 1500);
     });
-
-    setTimeout(() => {
-      this.setState(() => ({
-        modalType: 'slide',
-      }));
-    }, 1000);
   }
 
   render() {
     const { decks, navigation } = this.props;
-    const { ready, modalType } = this.state;
-
-    if (ready === false) {
-      return (
-        <Modal
-          animationType={modalType}
-          transparent={false}
-          visible={!ready}
-        >
-          <OnLoad />
-        </Modal>
-      );
-    }
 
     return (
       <ScrollView style={styles.container}>

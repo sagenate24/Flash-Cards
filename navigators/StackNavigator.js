@@ -10,7 +10,6 @@ import NewCard from '../components/NewCard';
 import NewDeck from '../components/NewDeck';
 import Quiz from '../components/Quiz';
 import Results from '../components/Results';
-import OnLoad from '../components/OnLoad';
 
 export const Stack = createStackNavigator({
   Home: {
@@ -89,13 +88,6 @@ export const Stack = createStackNavigator({
         backgroundColor: white,
         borderBottomWidth: 0,
       },
-    }),
-  },
-  OnLoad: {
-    screen: OnLoad,
-    mode: 'modal',
-    navigationOptions: () => ({
-      header: null,
     }),
   },
 }, {
