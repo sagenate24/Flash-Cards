@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
-import { timeToString } from '../utils/helpers';
+import { timeToString, profanityDetector } from '../utils/helpers';
 import { black, red, white } from '../utils/colors';
 
 import ProfilePic from './ProfilePic';
@@ -62,8 +62,11 @@ class Profile extends PureComponent {
             )
           }
           {profile.username.length > 1
-            ? <Text style={[styles.text, { fontSize: 30, padding: 20 }]}>{profile.username}</Text>
-            : (
+            ? (
+              <Text style={[styles.text, { fontSize: 20, padding: 20 }]}>
+                {profile.parentControl === 'on' ? profanityDetector(profile.username) : profile.username}
+              </Text>
+            ) : (
               <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
                 <Text style={[styles.text, { fontSize: 18, padding: 20, color: 'gray' }]}>Create Username</Text>
               </TouchableOpacity>
@@ -82,13 +85,16 @@ class Profile extends PureComponent {
                     key={deck.timeStamp}
                     onPress={() => navigation.navigate(
                       'Deck',
-                      { currentDeck: deck },
+                      {
+                        currentDeck: deck,
+                        parentalControl: profile.parentControl,
+                      },
                     )}
                   >
                     <View style={styles.deck}>
                       <View>
                         <Text style={{ fontSize: 20 }}>
-                          {deck.title}
+                          {profile.parentControl === 'on' ? profanityDetector(deck.title) : deck.title}
                         </Text>
                       </View>
                       <View style={styles.bottomCardContent}>

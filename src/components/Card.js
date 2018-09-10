@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Text,
   View,
@@ -9,6 +10,7 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { white, black, red } from '../utils/colors';
+import { profanityDetector } from '../utils/helpers';
 
 class Card extends Component {
   state = {
@@ -67,7 +69,7 @@ class Card extends Component {
   }
 
   render() {
-    const { question, answer, questionsRemaining } = this.props;
+    const { question, answer, questionsRemaining, parentalControl } = this.props;
     const { bounceValue, animatedValue } = this.state;
 
     this.value = 0;
@@ -132,14 +134,14 @@ class Card extends Component {
             {cardsLeft}
             <Text style={styles.cardHeader}>Question</Text>
             <View style={styles.content}>
-              <Text style={styles.cardText}>{question}</Text>
+              <Text style={styles.cardText}>{parentalControl === 'on' ? profanityDetector(question) : question}</Text>
             </View>
           </Animated.View>
           <Animated.View style={[backAnimatedStyle, styles.card, styles.flipCardBack, { opacity: this.backOpacity }]}>
             {cardsLeft}
             <Text style={styles.cardHeader}>Answer</Text>
             <View style={styles.content}>
-              <Text style={styles.cardText}>{answer}</Text>
+              <Text style={styles.cardText}>{parentalControl === 'on' ? profanityDetector(answer) : answer}</Text>
             </View>
           </Animated.View>
         </View>
@@ -193,4 +195,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+function mapStateToProps({ profile }) {
+  return {
+    parentalControl: profile.parentControl,
+  };
+}
+
+export default connect(mapStateToProps)(Card);

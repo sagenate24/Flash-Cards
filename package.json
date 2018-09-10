@@ -12,11 +12,11 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "jest-expo": "~27.0.0",
+    "react-dom": "^16.4.2",
     "react-native-mock": "^0.3.1",
     "react-native-scripts": "1.14.0",
     "react-test-renderer": "^16.4.2",
-    "redux-mock-store": "^1.5.3",
-    "react-dom": "^16.4.2"
+    "redux-mock-store": "^1.5.3"
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^6.3.1",
+    "bad-words": "^1.6.3",
     "expo": "^27.0.1",
     "react": "16.3.1",
     "react-native": "~0.55.2",

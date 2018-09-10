@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { addCard } from '../actions/decks';
 import { addCardToDeck } from '../utils/api';
 import { white, black, red } from '../utils/colors';
+import { profanityDetector } from '../utils/helpers';
 
 import NASBtn from './NASBtn';
 
@@ -35,13 +36,23 @@ class NewCard extends Component {
   };
 
   submit = () => {
-    const { deck, dispatch } = this.props;
+    const { deck, dispatch, parentalControl } = this.props;
     const deckTitle = deck.title;
     const { question, answer } = this.state;
+    let checkedQ;
+    let checkedA;
+
+    if (parentalControl === 'on') {
+      checkedQ = profanityDetector(question);
+      checkedA = profanityDetector(answer);
+    } else {
+      checkedQ = question;
+      checkedA = answer;
+    }
 
     const card = {
-      question,
-      answer,
+      question: checkedQ,
+      answer: checkedA,
     };
 
     dispatch(addCard({ card, deckTitle }));
@@ -143,9 +154,10 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state, { navigation }) {
-  const { currentDeck } = navigation.state.params;
+  const { currentDeck, parentalControl } = navigation.state.params;
 
   return {
+    parentalControl,
     deck: currentDeck,
   };
 }

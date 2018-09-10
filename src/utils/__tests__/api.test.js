@@ -171,14 +171,34 @@ it('should get profile', async () => {
   expect(profile).toEqual(mockStorage['FlashCards:profile']);
 });
 
-it('should delete profile', async () => {
-  const profile = await deleteProfile();
+// export const deleteProfile = async () => {
+//   try {
+//     await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+//       avatar: '',
+//       username: '',
+//       cover: '',
+//     }));
 
-  expect(profile).toEqual({
-    username: '',
+//     const profile = await AsyncStorage.getItem(PROFILE_KEY)
+//       .then(results => formatProfileResults(results));
+
+//     return profile;
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
+
+it('should delete profile', async () => {
+  await deleteProfile();
+
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.mergeItem).toHaveBeenCalledWith('FlashCards:profile', JSON.stringify({
     avatar: '',
+    username: '',
     cover: '',
-  });
+  }));
+  expect(AsyncStorage.getItem).toHaveBeenCalledTimes(1);
+  expect(AsyncStorage.getItem).toHaveBeenCalledWith('FlashCards:profile');
 });
 
 it('should add a profile image', async () => {

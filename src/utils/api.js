@@ -91,8 +91,14 @@ export const getProfile = async () => {
 
 export const deleteProfile = async () => {
   try {
+    await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+      avatar: '',
+      username: '',
+      cover: '',
+    }));
+
     const profile = await AsyncStorage.getItem(PROFILE_KEY)
-      .then(() => formatProfileResults(null));
+      .then(results => formatProfileResults(results));
 
     return profile;
   } catch (error) {
@@ -124,6 +130,16 @@ export const addProfileName = async (username) => {
   try {
     await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
       username,
+    }));
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const editParentalControl = async (status) => {
+  try {
+    await AsyncStorage.mergeItem(PROFILE_KEY, JSON.stringify({
+      parentControl: status,
     }));
   } catch (error) {
     console.log(error.message);

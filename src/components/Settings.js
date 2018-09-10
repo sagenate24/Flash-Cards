@@ -7,13 +7,14 @@ import {
   StyleSheet,
   ImageEditor,
   TouchableOpacity,
+  Switch,
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
 import { ImagePicker, Permissions } from 'expo';
-import { askPermissionsAsync } from '../utils/helpers';
 import { white, black, gray, red, yellow } from '../utils/colors';
-import { editCover, editAvatar, editUsername, receiveProfile } from '../actions/profile';
-import { deleteProfile, addProfileImg, addProfileName, addProfileCover } from '../utils/api';
+import { askPermissionsAsync } from '../utils/helpers';
+import { editCover, editAvatar, editUsername, receiveProfile, editParentControl } from '../actions/profile';
+import { deleteProfile, addProfileImg, addProfileName, addProfileCover, editParentalControl } from '../utils/api';
 
 import NASBtn from './NASBtn';
 
@@ -23,15 +24,26 @@ class Settings extends Component {
     userName: '',
     showInput: false,
     underColorU: false,
+    parentalControls: false,
   };
 
   componentDidMount() {
+    const { parentalControl } = this.props;
     askPermissionsAsync().then((status) => {
       if (status === 'granted') {
         this.setState(() => ({ status }));
       }
       this.setState(() => ({ status }));
     });
+    if (parentalControl === 'on') {
+      this.setState(() => ({
+        parentalControls: true,
+      }));
+    } else {
+      this.setState(() => ({
+        parentalControls: false,
+      }));
+    }
   }
 
   askPermission = (type) => {
@@ -81,8 +93,8 @@ class Settings extends Component {
     dispatch(editUsername(userName));
 
     this.setState(() => ({
-      userName: '',
       showInput: false,
+      userName: '',
     }));
 
     this.goTo('Profile');
@@ -120,17 +132,45 @@ class Settings extends Component {
     }
   }
 
+  handleToggleSwitch = () => {
+    const { parentalControls } = this.state;
+    const { dispatch } = this.props;
+
+    if (!parentalControls) {
+      dispatch(editParentControl('on'));
+      editParentalControl('on');
+
+      this.setState(() => ({
+        parentalControls: true,
+      }));
+    } else if (parentalControls) {
+      dispatch(editParentControl('off'));
+      editParentalControl('off');
+
+      this.setState(() => ({
+        parentalControls: false,
+      }));
+    }
+  }
+
   render() {
-    const { status, showInput, userName, underColorU } = this.state;
-    const { userDataLength } = this.props;
+    const { status, showInput, userName, underColorU, parentalControls } = this.state;
+    const { allEmptyValues, username } = this.props;
 
     return (
       <View style={styles.container}>
-        <TouchableOpacity style={styles.item} onPress={() => this.showOrHideInput()}>
-          <Text style={styles.itemText}>Edit Username</Text>
+        <View>
+          <View style={[styles.item, { flexDirection: 'row' }]}>
+            <Text style={[styles.itemText, { marginTop: 4, flex: 6 }]}>Edit Username</Text>
+            <Switch
+              value={showInput}
+              onValueChange={this.showOrHideInput}
+              style={{ flex: 1 }}
+            />
+          </View>
           {showInput
             ? (
-              <View>
+              <View style={styles.inputName}>
                 <TextInput
                   maxLength={16}
                   value={userName}
@@ -141,9 +181,9 @@ class Settings extends Component {
                   style={underColorU === true ? styles.inputIsActive : styles.input}
                 />
                 <NASBtn
-                  disabled={userName === ''}
+                  disabled={userName === '' || userName === username}
                   onPress={this.submitUserName}
-                  tintColor={{ backgroundColor: red }}
+                  tintColor={{ backgroundColor: red, marginRight: 20, marginLeft: 20 }}
                 >
                   Submit
                 </NASBtn>
@@ -151,17 +191,25 @@ class Settings extends Component {
             )
             : null
           }
-        </TouchableOpacity>
+        </View>
+        <View style={[styles.item, { flexDirection: 'row' }]}>
+          <Text style={[styles.itemText, { marginTop: 4, flex: 6 }]}>Parental Control</Text>
+          <Switch
+            value={parentalControls}
+            onValueChange={this.handleToggleSwitch}
+            style={{ flex: 1 }}
+          />
+        </View>
         {status === 'granted' && (
-          <View>
+          <View style={{ marginTop: 10 }}>
             <TouchableOpacity style={styles.item} onPress={() => this.askPermission('avatar')}>
               <Text style={styles.itemText}>Edit Profile Photo</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.item} onPress={() => this.askPermission('cover')}>
               <Text style={styles.itemText}>Edit Cover Photo</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.item} disabled={userDataLength === 0} onPress={() => this.removeProfile()}>
-              <Text style={[styles.deleteInfo, userDataLength === 0 && { opacity: 0.7 }]}>Delete Profile</Text>
+            <TouchableOpacity style={[styles.item, { marginTop: 10 }]} disabled={allEmptyValues === true} onPress={() => this.removeProfile()}>
+              <Text style={[styles.deleteText, allEmptyValues === true && { opacity: 0.7 }]}>Delete Profile</Text>
             </TouchableOpacity>
           </View>
         )}
@@ -194,8 +242,6 @@ class Settings extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    backgroundColor: white,
   },
   center: {
     flex: 1,
@@ -204,22 +250,34 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginRight: 30,
   },
-  deleteInfo: {
+  inputName: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    borderColor: gray,
+    borderBottomWidth: 1,
+    backgroundColor: white,
+  },
+  deleteText: {
     color: red,
-    fontSize: 22,
+    fontSize: 20,
   },
   item: {
-    padding: 10,
+    backgroundColor: white,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 15,
+    paddingBottom: 15,
     borderColor: gray,
     borderBottomWidth: 1,
   },
   itemText: {
-    fontSize: 21,
+    fontSize: 20,
     color: black,
   },
   input: {
     margin: 10,
-    fontSize: 18,
+    fontSize: 20,
+    color: black,
     borderBottomWidth: 2,
     paddingBottom: 2,
     borderColor: black,
@@ -227,7 +285,8 @@ const styles = StyleSheet.create({
   },
   inputIsActive: {
     margin: 10,
-    fontSize: 18,
+    fontSize: 20,
+    color: black,
     borderBottomWidth: 4,
     borderColor: yellow,
     backgroundColor: white,
@@ -246,11 +305,17 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps({ profile }) {
-  const profileValues = Object.values(profile);
-  const nonEmptyProfileValues = profileValues.filter(i => i !== '');
+  let allEmptyValues;
+  if (profile.username === '' && profile.avatar === '' && profile.cover === '') {
+    allEmptyValues = true;
+  } else {
+    allEmptyValues = null;
+  }
 
   return {
-    userDataLength: nonEmptyProfileValues.length,
+    allEmptyValues,
+    username: profile.username,
+    parentalControl: profile.parentControl,
   };
 }
 

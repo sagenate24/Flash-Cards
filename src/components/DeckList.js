@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { receiveDecks } from '../actions/decks';
-import { getInitialData } from '../utils/helpers';
+import { getInitialData, profanityDetector } from '../utils/helpers';
 import { receiveProfile } from '../actions/profile';
 import { gray, white, black, red } from '../utils/colors';
 
@@ -23,7 +23,7 @@ class DeckList extends Component {
   }
 
   render() {
-    const { decks, navigation } = this.props;
+    const { decks, navigation, parentalControl } = this.props;
 
     return (
       <ScrollView style={styles.container}>
@@ -48,11 +48,13 @@ class DeckList extends Component {
                 <TouchableOpacity
                   onPress={() => navigation.navigate(
                     'Deck',
-                    { currentDeck: deck },
+                    { currentDeck: deck,
+                      parentalControl,
+                    },
                   )}
                 >
                   <Text style={{ fontSize: 20 }}>
-                    {deck.title}
+                    {parentalControl === 'on' ? profanityDetector(deck.title) : deck.title}
                   </Text>
                   {deck.questions && deck.questions.length
                     ? (
@@ -148,7 +150,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps({ decks }) {
+function mapStateToProps({ decks, profile }) {
   const deckValuesArr = Object.values(decks);
   const newDeckArr = [];
 
@@ -159,6 +161,7 @@ function mapStateToProps({ decks }) {
   }
 
   return {
+    parentalControl: profile.parentControl,
     decks: Object.values(newDeckArr).map(deck => ({
       ...deck,
     })).sort((a, b) => b.timeStamp - a.timeStamp),

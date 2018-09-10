@@ -10,7 +10,7 @@ import {
 import { removeDeck } from '../utils/api';
 import { addDeck } from '../actions/decks';
 import { black, white, lightBlue, red, queenBlue } from '../utils/colors';
-
+import { profanityDetector } from '../utils/helpers';
 
 import DeckOption from './DeckOption';
 
@@ -36,7 +36,7 @@ class Deck extends Component {
   }
 
   render() {
-    const { deck, navigation } = this.props;
+    const { deck, navigation, parentalControl } = this.props;
 
     if (deck === null) {
       return null;
@@ -56,14 +56,19 @@ class Deck extends Component {
                   <Text style={[styles.removeText, { marginRight: 10 }]}>DELETE</Text>
                 </TouchableOpacity>
               </View>
-              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.title}>
+                {parentalControl === 'on' ? profanityDetector(title) : title}
+              </Text>
               <View style={styles.optionsContainer}>
                 <TouchableOpacity
                   disabled={questions.length === 0}
                   style={[styles.navOption, questions.length === 0 && { opacity: 0.6 }]}
                   onPress={() => navigation.navigate(
                     'Quiz',
-                    { currentDeck: deck },
+                    {
+                      currentDeck: deck,
+                      parentalControl,
+                    },
                   )}
                 >
                   <DeckOption
@@ -79,7 +84,10 @@ class Deck extends Component {
                   style={styles.navOption}
                   onPress={() => navigation.navigate(
                     'NewCard',
-                    { currentDeck: deck },
+                    {
+                      currentDeck: deck,
+                      parentalControl,
+                    },
                   )}
                 >
                   <DeckOption
@@ -96,7 +104,9 @@ class Deck extends Component {
               {questions && questions.length
                 ? questions.map(item => (
                   <View style={styles.cards} key={this.generateKeyID()}>
-                    <Text>{item.question}</Text>
+                    <Text>
+                      {parentalControl === 'on' ? profanityDetector(item.question) : item.question}
+                    </Text>
                   </View>
                 ))
                 : <Text style={styles.empty}>No Cards</Text>}
@@ -181,9 +191,10 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(state, { navigation }) {
-  const { currentDeck } = navigation.state.params;
+  const { currentDeck, parentalControl } = navigation.state.params;
 
   return {
+    parentalControl,
     deck: state.decks[currentDeck.title],
   };
 }

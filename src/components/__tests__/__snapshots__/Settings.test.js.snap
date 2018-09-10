@@ -4,53 +4,125 @@ exports[`should match Snapshot 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#fff",
       "flex": 1,
-      "padding": 10,
     }
   }
 >
-  <View
-    accessibilityComponentType={undefined}
-    accessibilityLabel={undefined}
-    accessibilityTraits={undefined}
-    accessible={true}
-    collapsable={undefined}
-    hasTVPreferredFocus={undefined}
-    hitSlop={undefined}
-    isTVSelectable={true}
-    nativeID={undefined}
-    onLayout={undefined}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      Object {
-        "borderBottomWidth": 1,
-        "borderColor": "#e1e8f0",
-        "opacity": 1,
-        "padding": 10,
+  <View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+            "borderBottomWidth": 1,
+            "borderColor": "#e1e8f0",
+            "paddingBottom": 15,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 15,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "color": "#404040",
+              "fontSize": 20,
+            },
+            Object {
+              "flex": 6,
+              "marginTop": 4,
+            },
+          ]
+        }
+      >
+        Edit Username
+      </Text>
+      <RCTSwitch
+        disabled={false}
+        onChange={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        onValueChange={[Function]}
+        style={
+          Array [
+            Object {
+              "height": 31,
+              "width": 51,
+            },
+            Object {
+              "flex": 1,
+            },
+          ]
+        }
+        value={false}
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#fff",
+          "borderBottomWidth": 1,
+          "borderColor": "#e1e8f0",
+          "paddingBottom": 15,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 15,
+        },
+        Object {
+          "flexDirection": "row",
+        },
+      ]
     }
-    testID={undefined}
-    tvParallaxProperties={undefined}
   >
     <Text
       accessible={true}
       allowFontScaling={true}
       ellipsizeMode="tail"
       style={
-        Object {
-          "color": "#404040",
-          "fontSize": 21,
-        }
+        Array [
+          Object {
+            "color": "#404040",
+            "fontSize": 20,
+          },
+          Object {
+            "flex": 6,
+            "marginTop": 4,
+          },
+        ]
       }
     >
-      Edit Username
+      Parental Control
     </Text>
+    <RCTSwitch
+      disabled={false}
+      onChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      onValueChange={[Function]}
+      style={
+        Array [
+          Object {
+            "height": 31,
+            "width": 51,
+          },
+          Object {
+            "flex": 1,
+          },
+        ]
+      }
+      value={false}
+    />
   </View>
 </View>
 `;

@@ -42,7 +42,7 @@ it('should format a new deck', () => {
 it('should set a dummy profile', () => {
   const mockProfile = formatProfileResults(null);
 
-  expect(mockProfile).toEqual({ username: '', avatar: '', cover: '' });
+  expect(mockProfile).toEqual({ username: '', avatar: '', cover: '', parentControl: 'off' });
 });
 
 it('should return the profile parsed', () => {

@@ -1,8 +1,15 @@
 import { Notifications, Permissions } from 'expo';
 import { AsyncStorage } from 'react-native';
+import Filter from 'bad-words';
 import { getDecks, getProfile } from './api';
 
+const filter = new Filter();
+
 const NOTIFICATION_KEY = 'FlashCards:notifications';
+
+export function profanityDetector(text) {
+  return filter.clean(text);
+}
 
 export const getInitialData = () => Promise.all([
   getDecks(),

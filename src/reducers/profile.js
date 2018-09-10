@@ -3,6 +3,7 @@ import {
   EDIT_AVATAR,
   EDIT_COVER,
   EDIT_USERNAME,
+  EDIT_PARENTAL_CONTROL,
 } from '../actions/profile';
 
 export default function profile(state = {}, action) {
@@ -26,6 +27,11 @@ export default function profile(state = {}, action) {
       return {
         ...state,
         username: action.username,
+      };
+    case EDIT_PARENTAL_CONTROL:
+      return {
+        ...state,
+        parentControl: action.status,
       };
     default:
       return state;

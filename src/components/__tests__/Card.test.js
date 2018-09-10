@@ -13,7 +13,7 @@ beforeEach(() => {
 
 it('should match Snapshot', () => {
   const snap = renderer.create(
-    <Card question='why?' answer='because' questionsRemaining={1} />,
+    <Card.WrappedComponent question='why?' answer='because' questionsRemaining={1} />,
   ).toJSON();
 
   expect(snap).toMatchSnapshot();
