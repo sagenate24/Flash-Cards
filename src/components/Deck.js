@@ -18,8 +18,8 @@ class Deck extends Component {
   handleRemoveDeck = () => {
     const { remove, goBack, deck } = this.props;
 
-    remove();
     goBack();
+    remove();
     removeDeck(deck.title);
   }
 
@@ -207,7 +207,7 @@ function mapDispatchToProps(dispatch, { navigation }) {
       [currentDeck.title]: null,
     })),
     goBack: () => navigation.navigate(
-      'DeckList',
+      'Home',
     ),
   };
 }

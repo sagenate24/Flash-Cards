@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 import { timeToString, profanityDetector } from '../utils/helpers';
 import { black, red, white } from '../utils/colors';
+/* eslint-disable */
 
 import ProfilePic from './ProfilePic';
 import CircleScore from './CircleScore';
@@ -35,7 +36,7 @@ class Profile extends PureComponent {
                 onPress={() => navigation.navigate('Settings')}
               >
                 <Text style={{
-                  fontSize: 16, alignSelf: 'center', marginTop: 10, color: 'gray',
+                  fontSize: 16, alignSelf: 'center', fontWeight: 'bold', marginTop: 10, color: 'gray',
                 }}
                 >
                   Choose cover photo
@@ -199,12 +200,12 @@ const styles = StyleSheet.create({
     width: 50,
   },
   empty: {
-    color: '#C0C0C0',
+    color: 'gray',
     flex: 1,
     fontWeight: 'bold',
     fontSize: 19,
     alignSelf: 'center',
-    marginTop: 100,
+    marginTop: Platform.OS === 'ios' ? 100 : 40,
   },
 });
 

@@ -61,7 +61,7 @@ class Settings extends Component {
 
     ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [2, 1],
+      aspect: [1, 1],
     }).then((result) => {
       if (result.cancelled) {
         return;
@@ -69,7 +69,6 @@ class Settings extends Component {
       ImageEditor.cropImage(result.uri, {
         offset: { x: 0, y: 0 },
         size: { width: result.width, height: result.height },
-        displaySize: { width: 200, height: 100 },
         resizeMode: 'contain',
       }, () => {
         if (type === 'avatar') {
@@ -156,6 +155,7 @@ class Settings extends Component {
   render() {
     const { status, showInput, userName, underColorU, parentalControls } = this.state;
     const { allEmptyValues, username } = this.props;
+    const charactersLeft = 20 - userName.length;
 
     return (
       <View style={styles.container}>
@@ -172,7 +172,7 @@ class Settings extends Component {
             ? (
               <View style={styles.inputName}>
                 <TextInput
-                  maxLength={16}
+                  maxLength={20}
                   value={userName}
                   selectionColor="#000"
                   underlineColorAndroid="rgba(0,0,0,0)"
@@ -180,6 +180,9 @@ class Settings extends Component {
                   onChangeText={userName => this.setState({ userName })}
                   style={underColorU === true ? styles.inputIsActive : styles.input}
                 />
+                {charactersLeft <= 6 && (
+                  <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
+                )}
                 <NASBtn
                   disabled={userName === '' || userName === username}
                   onPress={this.submitUserName}
@@ -275,7 +278,10 @@ const styles = StyleSheet.create({
     color: black,
   },
   input: {
-    margin: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 40,
+    marginLeft: 40,
     fontSize: 20,
     color: black,
     borderBottomWidth: 2,
@@ -284,7 +290,10 @@ const styles = StyleSheet.create({
     backgroundColor: white,
   },
   inputIsActive: {
-    margin: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 40,
+    marginLeft: 40,
     fontSize: 20,
     color: black,
     borderBottomWidth: 4,
@@ -301,6 +310,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: white,
     fontSize: 20,
+  },
+  inputIsGettingFull: {
+    color: red,
+    marginLeft: 40,
+    fontSize: 16,
+    opacity: 0.9,
   },
 });
 

@@ -1,9 +1,24 @@
 {
   "expo": {
     "sdkVersion": "27.0.0",
+    "orientation": "portrait",
+    "name": "FlashCards",
+    "description": "Study more with FlashCards",
+    "slug": "flashcards",
+    "version": "1.0",
+    "icon": "./flashCardsIcon.png",
     "splash": {
       "image": "./splash.png",
       "resizeMode": "cover"
+    },
+    "notification": {
+      "icon": "./flashCardsIcon.png"
+    },
+    "ios": {
+      "bundleIdentifier": "org.nathansage.flashcards"
+    },
+    "android": {
+      "package": "org.nathansage.flashcards"
     }
   }
 }

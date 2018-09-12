@@ -6,24 +6,42 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import { receiveDecks } from '../actions/decks';
 import { getInitialData, profanityDetector } from '../utils/helpers';
 import { receiveProfile } from '../actions/profile';
-import { gray, white, black, red } from '../utils/colors';
+import { gray, white, black, red, queenBlue } from '../utils/colors';
 
 class DeckList extends Component {
+  state = {
+    ready: false,
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
 
     getInitialData().then(({ decks, profile }) => {
       dispatch(receiveDecks(decks));
       dispatch(receiveProfile(profile));
+    }).then(() => {
+      this.setState(() => ({
+        ready: true,
+      }));
     });
   }
 
   render() {
     const { decks, navigation, parentalControl } = this.props;
+    const { ready } = this.state;
+
+    if (!ready) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator size='large' color={queenBlue} />
+        </View>
+      );
+    }
 
     return (
       <ScrollView style={styles.container}>

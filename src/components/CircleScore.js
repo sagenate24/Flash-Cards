@@ -7,7 +7,7 @@ export const colorPicker = (percent) => {
   if (percent <= 40) {
     return red;
   }
-  if (percent <= 80) {
+  if (percent >= 41 && percent < 100) {
     return yellow;
   }
   if (percent === 100) {

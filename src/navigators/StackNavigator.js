@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, Platform } from 'react-native';
 import { createStackNavigator, HeaderBackButton } from 'react-navigation';
 import { Feather } from '@expo/vector-icons';
 import { white, queenBlue } from '../utils/colors';
@@ -10,20 +10,22 @@ import NewCard from '../components/NewCard';
 import NewDeck from '../components/NewDeck';
 import Quiz from '../components/Quiz';
 import Results from '../components/Results';
+import { AndriodNavigator } from './AndriodNavigator';
 
 export const Stack = createStackNavigator({
   Home: {
-    screen: Tabs,
+    screen: Platform.OS === 'ios' ? Tabs : AndriodNavigator,
     headerBackImage: null,
     navigationOptions: ({ navigation }) => {
       const Titles = ['HOME', 'PROFILE', 'SETTINGS'];
       return {
         headerTintColor: white,
-        title: Titles[navigation.state.index],
+        title: Platform.OS === 'ios' ? Titles[navigation.state.index] : null,
         headerRightContainerStyle: {
           padding: 5,
         },
         headerStyle: {
+          height: Platform.OS === 'ios' ? 45 : 0,
           backgroundColor: queenBlue,
         },
       };
@@ -78,7 +80,7 @@ export const Stack = createStackNavigator({
     screen: Results,
     navigationOptions: ({ navigation }) => ({
       headerLeft: (
-        <TouchableOpacity onPress={() => { navigation.navigate('DeckList'); }}>
+        <TouchableOpacity onPress={() => { navigation.navigate('Home'); }}>
           <Feather name='x' style={{ color: '#595959', marginLeft: 8, marginTop: -2 }} size={22} />
         </TouchableOpacity>
       ),

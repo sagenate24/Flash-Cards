@@ -1,5 +1,4 @@
 import React from 'react';
-import { Platform } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Ionicons } from '@expo/vector-icons';
 import { queenBlue, white } from '../utils/colors';
@@ -14,13 +13,7 @@ export const Tabs = createBottomTabNavigator({
     screen: DeckList,
     animationEnabled: true,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => {
-        return (
-          Platform.OS === 'ios'
-            ? <Ionicons size={35} name="ios-home" color={tintColor} />
-            : <Ionicons size={30} name="md-home" color={tintColor} />
-        );
-      },
+      tabBarIcon: ({ tintColor }) => <Ionicons size={35} name="ios-home" color={tintColor} />,
     },
   },
   Profile: {
@@ -31,7 +24,7 @@ export const Tabs = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => (
         <ProfilePic
           borderColor={tintColor}
-          backUpSize={30}
+          backUpSize={35}
           styles={{
             borderRadius: 20, width: 40, height: 40, borderWidth: 2,
           }}
@@ -43,13 +36,7 @@ export const Tabs = createBottomTabNavigator({
     screen: Settings,
     animationEnabled: true,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => {
-        return (
-          Platform.OS === 'ios'
-            ? <Ionicons size={35} name="ios-settings" color={tintColor} />
-            : <Ionicons size={30} name="md-settings" color={tintColor} />
-        );
-      },
+      tabBarIcon: ({ tintColor }) => <Ionicons size={35} name="ios-settings" color={tintColor} />,
     },
   },
 }, {
@@ -71,5 +58,3 @@ export const Tabs = createBottomTabNavigator({
     },
   },
 });
-
-// export default Tabs;

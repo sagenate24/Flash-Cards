@@ -88,6 +88,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "color": "gray",
                   "fontSize": 16,
+                  "fontWeight": "bold",
                   "marginTop": 10,
                 }
               }
@@ -517,6 +518,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "color": "gray",
                   "fontSize": 16,
+                  "fontWeight": "bold",
                   "marginTop": 10,
                 }
               }
@@ -541,6 +543,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "color": "gray",
                   "fontSize": 16,
+                  "fontWeight": "bold",
                   "marginTop": 10,
                 }
               }
@@ -574,6 +577,7 @@ ShallowWrapper {
                 "alignSelf": "center",
                 "color": "gray",
                 "fontSize": 16,
+                "fontWeight": "bold",
                 "marginTop": 10,
               },
             },
@@ -2395,6 +2399,7 @@ ShallowWrapper {
                     "alignSelf": "center",
                     "color": "gray",
                     "fontSize": 16,
+                    "fontWeight": "bold",
                     "marginTop": 10,
                   }
                 }
@@ -2824,6 +2829,7 @@ ShallowWrapper {
                     "alignSelf": "center",
                     "color": "gray",
                     "fontSize": 16,
+                    "fontWeight": "bold",
                     "marginTop": 10,
                   }
                 }
@@ -2848,6 +2854,7 @@ ShallowWrapper {
                     "alignSelf": "center",
                     "color": "gray",
                     "fontSize": 16,
+                    "fontWeight": "bold",
                     "marginTop": 10,
                   }
                 }
@@ -2881,6 +2888,7 @@ ShallowWrapper {
                   "alignSelf": "center",
                   "color": "gray",
                   "fontSize": 16,
+                  "fontWeight": "bold",
                   "marginTop": 10,
                 },
               },
