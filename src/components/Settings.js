@@ -58,10 +58,16 @@ class Settings extends Component {
 
   pickImage = (type) => {
     const { dispatch, navigation } = this.props;
+    let aspectSize;
+    if (type === 'cover') {
+      aspectSize = [2, 1];
+    } else {
+      aspectSize = [1, 1];
+    }
 
     ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
-      aspect: [1, 1],
+      aspect: aspectSize,
     }).then((result) => {
       if (result.cancelled) {
         return;
