@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { addDeck } from '../actions/decks';
 import { addDeckTitle, getDeck } from '../utils/api';
 import { white, black, red } from '../utils/colors';
-import { profanityDetector } from '../utils/helpers';
 
 import NASBtn from './NASBtn';
 
@@ -22,19 +21,11 @@ class NewDeck extends Component {
 
   submit = () => {
     const { title } = this.state;
-    const { dispatch, navigation, deckTitleList, parentalControl } = this.props;
+    const { dispatch, navigation, deckTitleList } = this.props;
     const matchedTitle = deckTitleList.find(deckTitle => deckTitle === title);
 
     if (matchedTitle !== title) {
-      let checkedT;
-
-      if (parentalControl === 'on') {
-        checkedT = profanityDetector(title);
-      } else {
-        checkedT = title;
-      }
-
-      addDeckTitle(checkedT).then(() => getDeck(checkedT).then((deck) => {
+      addDeckTitle(title).then(() => getDeck(title).then((deck) => {
         dispatch(addDeck({
           [deck.title]: deck,
         }));

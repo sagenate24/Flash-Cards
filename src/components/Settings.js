@@ -8,6 +8,7 @@ import {
   ImageEditor,
   TouchableOpacity,
   Switch,
+  Linking,
 } from 'react-native';
 import { Foundation } from '@expo/vector-icons';
 import { ImagePicker, Permissions } from 'expo';
@@ -219,6 +220,12 @@ class Settings extends Component {
             </TouchableOpacity>
             <TouchableOpacity style={[styles.item, { marginTop: 10 }]} disabled={allEmptyValues === true} onPress={() => this.removeProfile()}>
               <Text style={[styles.deleteText, allEmptyValues === true && { opacity: 0.7 }]}>Delete Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.item, { marginTop: 10 }]}
+              onPress={() => { Linking.openURL('https://s3.us-east-2.amazonaws.com/flashcardsprivacypolicy/privacy_policy.html'); }}
+            >
+              <Text style={[styles.itemText]}>Privacy Policy</Text>
             </TouchableOpacity>
           </View>
         )}
