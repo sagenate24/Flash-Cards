@@ -55,11 +55,14 @@ class NewCard extends Component {
   };
 
   toHome = () => {
-    const { navigation, deck } = this.props;
+    const { navigation, parentalControl, deck } = this.props;
 
     navigation.navigate(
       'Deck',
-      { currentDeck: deck },
+      {
+        currentDeck: deck,
+        parentalControl,
+      },
     );
   };
 
@@ -98,7 +101,12 @@ class NewCard extends Component {
             <Text style={styles.inputIsGettingFull}>{charactersLeftA}</Text>
           )}
         </View>
-        <NASBtn tintColor={{ backgroundColor: red }} disabled={question === '' || answer === ''} onPress={this.submit}>
+        <NASBtn
+          onPress={this.submit}
+          disabled={question === '' || answer === ''}
+          tintColor={{ borderColor: red, borderWidth: 3, backgroundColor: white }}
+          textStyle={{ color: red }}
+        >
           Create Card
         </NASBtn>
       </View>

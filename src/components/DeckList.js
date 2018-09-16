@@ -47,7 +47,7 @@ class DeckList extends Component {
       <ScrollView style={styles.container}>
         <View>
           <TouchableOpacity
-            style={styles.newDeck}
+            style={styles.newDeckButton}
             onPress={() => navigation.navigate('NewDeck')}
           >
             <Text style={styles.btnText}>
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
       height: 3,
     },
   },
-  newDeck: {
+  newDeckButton: {
     backgroundColor: red,
     borderRadius: 2,
     padding: 24,

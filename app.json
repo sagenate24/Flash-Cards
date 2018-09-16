@@ -5,20 +5,21 @@
     "name": "FlashCards",
     "description": "Study more with FlashCards",
     "slug": "flashcards",
-    "version": "1.0",
-    "icon": "./flashCardsIcon.png",
+    "version": "1.01",
+    "icon": "./web_hi_res_512.png",
     "splash": {
       "image": "./splash.png",
       "resizeMode": "cover"
     },
     "notification": {
-      "icon": "./flashCardsIcon.png"
+      "icon": "./web_hi_res_512.png"
     },
     "ios": {
       "bundleIdentifier": "org.nathansage.flashcards"
     },
     "android": {
-      "package": "org.nathansage.flashcards"
+      "package": "org.nathansage.flashcards",
+      "versionCode": 2.0
     }
   }
 }

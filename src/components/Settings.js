@@ -87,7 +87,7 @@ class Settings extends Component {
         }
 
         navigation.navigate('Profile');
-      }, () => console.log('error'));
+      }, () => {});
     });
   };
 
@@ -191,9 +191,10 @@ class Settings extends Component {
                   <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
                 )}
                 <NASBtn
-                  disabled={userName === '' || userName === username}
                   onPress={this.submitUserName}
-                  tintColor={{ backgroundColor: red, marginRight: 20, marginLeft: 20 }}
+                  disabled={userName === '' || userName === username}
+                  textStyle={{ color: red }}
+                  tintColor={{ borderColor: red, borderWidth: 3, backgroundColor: white, marginRight: 80, marginLeft: 80 }}
                 >
                   Submit
                 </NASBtn>

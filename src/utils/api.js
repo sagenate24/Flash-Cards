@@ -14,7 +14,7 @@ export const getDecks = async () => {
 
     return decks;
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -24,7 +24,7 @@ export const getDeck = async (deckTitle) => {
 
     return decks[deckTitle];
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -40,7 +40,7 @@ export const addCardToDeck = async (card, deckTitle) => {
       },
     }));
   } catch (error) {
-    console.log('EERRRROORR OH MY GURD', error.message);
+    return error;
   }
 };
 
@@ -48,7 +48,7 @@ export const addDeckTitle = async (title) => {
   try {
     await AsyncStorage.mergeItem(STORAGE_KEY, formatNewDeck(title));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -60,7 +60,7 @@ export const removeDeck = async (key) => {
 
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -73,7 +73,7 @@ export const recentActivityScore = async (deckTitle, score, timeStamp) => {
       },
     }));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -85,7 +85,7 @@ export const getProfile = async () => {
 
     return profile;
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -102,7 +102,7 @@ export const deleteProfile = async () => {
 
     return profile;
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -112,7 +112,7 @@ export const addProfileImg = async (image) => {
       avatar: image,
     }));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -122,7 +122,7 @@ export const addProfileCover = async (image) => {
       cover: image,
     }));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -132,7 +132,7 @@ export const addProfileName = async (username) => {
       username,
     }));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };
 
@@ -142,6 +142,6 @@ export const editParentalControl = async (status) => {
       parentControl: status,
     }));
   } catch (error) {
-    console.log(error.message);
+    return error;
   }
 };

@@ -21,7 +21,7 @@ class NewDeck extends Component {
 
   submit = () => {
     const { title } = this.state;
-    const { dispatch, navigation, deckTitleList } = this.props;
+    const { dispatch, navigation, deckTitleList, parentalControl } = this.props;
     const matchedTitle = deckTitleList.find(deckTitle => deckTitle === title);
 
     if (matchedTitle !== title) {
@@ -31,7 +31,10 @@ class NewDeck extends Component {
         }));
         navigation.navigate(
           'Deck',
-          { currentDeck: deck },
+          {
+            currentDeck: deck,
+            parentalControl,
+          },
         );
       }));
 
@@ -71,7 +74,12 @@ class NewDeck extends Component {
             <Text style={styles.inputIsGettingFull}>{charactersLeft}</Text>
           )}
         </View>
-        <NASBtn tintColor={{ backgroundColor: red }} disabled={title === ''} onPress={this.submit}>
+        <NASBtn
+          onPress={this.submit}
+          disabled={title === ''}
+          tintColor={{ borderColor: red, borderWidth: 3, backgroundColor: white }}
+          textStyle={{ color: red }}
+        >
           Create Deck
         </NASBtn>
       </View>

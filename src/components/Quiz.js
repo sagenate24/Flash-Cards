@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { connect } from 'react-redux';
-import { red, queenBlue } from '../utils/colors';
+import { red, queenBlue, white } from '../utils/colors';
 
 import Card from './Card';
 import NASBtn from './NASBtn';
@@ -65,7 +65,7 @@ class Quiz extends Component {
 
     return (
       <View style={{ flex: 1, padding: 20 }}>
-        <View style={{ flex: 4 }}>
+        <View style={Platform.OS === 'ios' ? { flex: 4.2 } : { flex: 3.2 }}>
           <Card
             questionsRemaining={questionsRemaining}
             answer={questions[questionIndex].answer}
@@ -73,10 +73,18 @@ class Quiz extends Component {
           />
         </View>
         <View style={{ flex: 1 }}>
-          <NASBtn tintColor={{ backgroundColor: queenBlue }} onPress={this.correctAnswer}>
+          <NASBtn
+            onPress={this.correctAnswer}
+            textStyle={{ color: queenBlue }}
+            tintColor={{ borderColor: queenBlue, borderWidth: 3, backgroundColor: white }}
+          >
             Correct
           </NASBtn>
-          <NASBtn tintColor={{ backgroundColor: red }} onPress={this.incorrectAnswer}>
+          <NASBtn
+            onPress={this.incorrectAnswer}
+            textStyle={{ color: red }}
+            tintColor={{ borderColor: red, borderWidth: 3, backgroundColor: white }}
+          >
             Incorrect
           </NASBtn>
         </View>

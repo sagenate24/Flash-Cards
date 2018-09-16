@@ -41,6 +41,7 @@ class Deck extends Component {
     if (deck === null) {
       return null;
     }
+
     const { title, questions } = deck;
 
     return (

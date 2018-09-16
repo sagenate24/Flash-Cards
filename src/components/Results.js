@@ -63,14 +63,16 @@ class Results extends Component {
             <Text>You got {correctAnswers} out of {deck.questions.length} correct.</Text>
           </View>
           <NASBtn
-            tintColor={[styles.button, { backgroundColor: red }]}
             onPress={() => this.goTo('Quiz')}
+            textStyle={{ color: red }}
+            tintColor={[styles.button, { borderColor: red, borderWidth: 3, backgroundColor: white }]}
           >
             Retake
           </NASBtn>
           <NASBtn
-            tintColor={[styles.button, { backgroundColor: queenBlue }]}
             onPress={() => this.goTo('Deck')}
+            textStyle={{ color: queenBlue }}
+            tintColor={[styles.button, { borderColor: queenBlue, borderWidth: 3, backgroundColor: white }]}
           >
             Study more
           </NASBtn>
