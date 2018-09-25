@@ -5,21 +5,24 @@
     "name": "FlashCards",
     "description": "Study more with FlashCards",
     "slug": "flashcards",
-    "version": "1.01",
-    "icon": "./web_hi_res_512.png",
+    "icon": "./flashCardsIcon.png",
     "splash": {
       "image": "./splash.png",
       "resizeMode": "cover"
     },
     "notification": {
-      "icon": "./web_hi_res_512.png"
+      "icon": "./flashCardsIcon.png"
     },
     "ios": {
-      "bundleIdentifier": "org.nathansage.flashcards"
+      "bundleIdentifier": "org.nathansage.flashcards",
+      "buildNumber": "4.0",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "'FlashCards' needs permission to your camera roll in order to customize your profile and cover image in the profile section."
+      }
     },
     "android": {
       "package": "org.nathansage.flashcards",
-      "versionCode": 2.0
+      "versionCode": 3
     }
   }
 }
